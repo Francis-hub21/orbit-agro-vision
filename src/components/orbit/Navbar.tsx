@@ -24,9 +24,9 @@ export function Navbar() {
             <img
               src={logo}
               alt="Orbit Agro Chemical Industries logo"
-              width={40}
-              height={40}
-              className="h-10 w-10 rounded-full bg-white/95 p-1 shadow-[0_0_18px_oklch(0.72_0.20_150/0.45)]"
+              width={44}
+              height={44}
+              className="h-11 w-11 rounded-full object-contain shadow-[0_0_18px_oklch(0.72_0.20_150/0.45)]"
             />
             <span className="font-display font-medium text-sm md:text-base leading-tight">
               Orbit<span className="text-primary"> Agro</span>
