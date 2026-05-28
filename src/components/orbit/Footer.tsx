@@ -9,46 +9,44 @@ export function Footer() {
               <div className="h-8 w-8 rounded-full border border-primary/60 flex items-center justify-center">
                 <div className="h-2 w-2 rounded-full bg-primary shadow-[0_0_10px_var(--color-primary)]" />
               </div>
-              <span className="font-display tracking-[0.2em] uppercase text-sm">
-                Orbit<span className="text-primary"> Agro</span>
+              <span className="font-display font-medium text-sm">
+                Orbit<span className="text-primary"> Agro</span> Chemical Industries
               </span>
             </div>
             <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
-              Engineering the future of intelligent agriculture across Africa. Precision crop protection,
-              distribution intelligence and agronomy at scale.
+              We provide superior quality crop protection products to enable farmers to enjoy high
+              yields with very minimal investment. Established 2009. Nairobi, Kenya.
             </p>
-            <form onSubmit={(e) => e.preventDefault()} className="mt-6 flex max-w-sm">
-              <input
-                placeholder="Your email"
-                className="flex-1 rounded-l-full bg-input/40 border border-border px-4 py-3 text-sm focus:border-primary focus:outline-none"
-              />
-              <button className="rounded-r-full bg-primary px-5 text-xs uppercase tracking-[0.2em] text-primary-foreground">
-                Subscribe
-              </button>
-            </form>
+            <div className="mt-6 space-y-2 text-sm text-muted-foreground">
+              <div><span className="text-primary">Phone:</span> <a href="tel:+254752368468" className="hover:text-primary">+254 752 368 468</a></div>
+              <div><span className="text-primary">Email:</span> <a href="mailto:orbitagro@orbitagro.co.ke" className="hover:text-primary">orbitagro@orbitagro.co.ke</a></div>
+              <div><span className="text-primary">Hours:</span> Mon — Fri · 08:00 — 17:00</div>
+              <div><span className="text-primary">Address:</span> Nairobi, Kenya</div>
+            </div>
           </div>
           <div>
-            <div className="text-[10px] tracking-[0.3em] uppercase text-primary mb-4">Platform</div>
+            <div className="text-[10px] tracking-[0.3em] uppercase text-primary mb-4">Products</div>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#solutions" className="hover:text-primary">Solutions</a></li>
-              <li><a href="#crop-doctor" className="hover:text-primary">Crop Doctor</a></li>
-              <li><a href="#calculator" className="hover:text-primary">Calculator</a></li>
-              <li><a href="#distributor" className="hover:text-primary">Distributors</a></li>
+              <li><a href="#solutions" className="hover:text-primary">Fungicides</a></li>
+              <li><a href="#solutions" className="hover:text-primary">Insecticides</a></li>
+              <li><a href="#solutions" className="hover:text-primary">Herbicides</a></li>
+              <li><a href="#solutions" className="hover:text-primary">Fertilizers</a></li>
+              <li><a href="#solutions" className="hover:text-primary">Bio Stimulants</a></li>
             </ul>
           </div>
           <div>
             <div className="text-[10px] tracking-[0.3em] uppercase text-primary mb-4">Company</div>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary">About</a></li>
-              <li><a href="#" className="hover:text-primary">Sustainability</a></li>
+              <li><a href="#about" className="hover:text-primary">About Us</a></li>
+              <li><a href="#location" className="hover:text-primary">Location</a></li>
               <li><a href="#contact" className="hover:text-primary">Contact</a></li>
-              <li><a href="#" className="hover:text-primary">Careers</a></li>
+              <li><a href="#crop-doctor" className="hover:text-primary">Crop Doctor</a></li>
             </ul>
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-border flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
-          <div>© {new Date().getFullYear()} Orbit Agrochemical Ltd · Nairobi, Kenya</div>
-          <div className="tracking-[0.3em] uppercase">Engineered in Africa</div>
+          <div>© {new Date().getFullYear()} Orbit Agro Chemical Industries Limited · Nairobi, Kenya · All Rights Reserved</div>
+          <div className="tracking-[0.3em] uppercase">We Grow Through Partnerships</div>
         </div>
       </div>
     </footer>

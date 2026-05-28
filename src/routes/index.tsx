@@ -11,6 +11,7 @@ import { Distributor } from "@/components/orbit/Distributor";
 import { Stats } from "@/components/orbit/Stats";
 import { Testimonials } from "@/components/orbit/Testimonials";
 import { Contact } from "@/components/orbit/Contact";
+import { Location } from "@/components/orbit/Location";
 import { Footer } from "@/components/orbit/Footer";
 import { AIAssistant } from "@/components/orbit/AIAssistant";
 
