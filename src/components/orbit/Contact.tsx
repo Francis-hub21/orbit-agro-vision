@@ -49,11 +49,13 @@ export function Contact() {
 
           <Reveal delay={0.15} className="lg:col-span-2">
             <div className="space-y-5 h-full">
-              <InfoCard icon={MapPin} label="Headquarters" value="Industrial Area · Nairobi, Kenya" />
-              <InfoCard icon={Phone} label="Sales Line" value="+254 700 000 000" />
-              <InfoCard icon={Mail} label="Enterprise" value="solutions@orbitagro.co.ke" />
+              <InfoCard icon={MapPin} label="Headquarters" value="Nairobi, Kenya" />
+              <InfoCard icon={Phone} label="Sales Line" value="+254 752 368 468" />
+              <InfoCard icon={Mail} label="Email" value="orbitagro@orbitagro.co.ke" />
               <a
-                href="#"
+                href="https://wa.me/254752368468"
+                target="_blank"
+                rel="noreferrer"
                 className="block glass-emerald rounded-2xl p-6 group hover:shadow-[0_0_30px_oklch(0.72_0.20_150/0.4)] transition-all"
               >
                 <div className="flex items-center gap-4">
