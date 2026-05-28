@@ -4,19 +4,24 @@ import { Quote } from "lucide-react";
 
 const items = [
   {
-    quote: "Orbit's crop intelligence cut our pesticide spend by 22% in one season — while increasing yield. The platform feels like a co-pilot for the entire farm.",
-    name: "Joseph Kimani",
-    role: "Estate Manager · Nakuru",
+    quote: "Big thank you to you, Orbit Agro. I had a fantastic talk with one of your agronomists — wow, he is an encyclopedia of knowledge. I took heaps of notes and have truckloads of things to follow up on in my farm. KEEP UP THE GOOD JOB!!",
+    name: "Paul Mwangi",
+    role: "Farmer · Nakuru County",
   },
   {
-    quote: "We onboarded 340 agrovets to the distributor portal in under three months. Inventory transparency changed everything for our regional logistics.",
-    name: "Achieng Otieno",
-    role: "Regional Director · Kisumu",
+    quote: "I have used Glyweed on my farm and it worked wonders. I highly recommend farmers to try it.",
+    name: "Sally Cherotich",
+    role: "Farmer · Uasin Gishu County",
   },
   {
-    quote: "The dosage calculator alone has saved my smallholder farmers thousands. Precise, scientific and beautifully simple.",
-    name: "Dr. Amina Yusuf",
-    role: "Lead Agronomist · Meru",
+    quote: "I believe one of the best farming secrets is its ability to network like-minded individuals. Help and valuable knowledge can be shared.",
+    name: "Mary Mueni",
+    role: "Farmer · Makueni County",
+  },
+  {
+    quote: "Nimetumia bidhaa za Orbit Agro mara kwa mara na matokeo yameniridhisha. Hongera pia kwa wataalamu wenu ambao tunawasiliana nao mara kwa mara.",
+    name: "Patrick Ndichu",
+    role: "Farmer · Nyeri County",
   },
 ];
 
@@ -25,12 +30,13 @@ export function Testimonials() {
     <section className="relative py-32 px-6">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          eyebrow="Trusted Across Africa"
+          eyebrow="Testimonials"
           title={<>Voices from the <span className="text-gradient-emerald">field.</span></>}
+          desc="Real words from farmers across Kenya who grow with Orbit Agro."
         />
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 gap-5">
           {items.map((t, i) => (
-            <Reveal key={t.name} delay={i * 0.1}>
+            <Reveal key={t.name} delay={i * 0.08}>
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.4 }}
