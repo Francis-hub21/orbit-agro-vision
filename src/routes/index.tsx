@@ -50,6 +50,7 @@ function Index() {
         <Distributor />
         <Stats />
         <Testimonials />
+        <Location />
         <Contact />
         <Footer />
         <AIAssistant />
