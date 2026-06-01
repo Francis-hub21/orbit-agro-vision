@@ -5,7 +5,7 @@ const links = [
   { href: "#solutions", label: "Products" },
   { href: "#about", label: "About" },
   { href: "#crop-doctor", label: "Crop Doctor" },
-  { href: "#calculator", label: "Calculator" },
+  { href: "#farm-visit", label: "Farm Visit" },
   { href: "#location", label: "Location" },
   { href: "#contact", label: "Contact" },
 ];
