@@ -3,6 +3,7 @@ import { useState } from "react";
 import { CinematicLoader } from "@/components/orbit/CinematicLoader";
 import { Navbar } from "@/components/orbit/Navbar";
 import { Hero } from "@/components/orbit/Hero";
+import { AboutHero } from "@/components/orbit/AboutHero";
 import { Solutions } from "@/components/orbit/Solutions";
 import { Storytelling } from "@/components/orbit/Storytelling";
 import { CropDoctor } from "@/components/orbit/CropDoctor";
@@ -10,6 +11,7 @@ import { Calculator } from "@/components/orbit/Calculator";
 import { Distributor } from "@/components/orbit/Distributor";
 import { Stats } from "@/components/orbit/Stats";
 import { Testimonials } from "@/components/orbit/Testimonials";
+import { FarmVisit } from "@/components/orbit/FarmVisit";
 import { Contact } from "@/components/orbit/Contact";
 import { Location } from "@/components/orbit/Location";
 import { Footer } from "@/components/orbit/Footer";
@@ -43,6 +45,7 @@ function Index() {
       <main className="relative">
         <Navbar />
         <Hero />
+        <AboutHero />
         <Solutions />
         <Storytelling />
         <CropDoctor />
@@ -50,6 +53,7 @@ function Index() {
         <Distributor />
         <Stats />
         <Testimonials />
+        <FarmVisit />
         <Location />
         <Contact />
         <Footer />
