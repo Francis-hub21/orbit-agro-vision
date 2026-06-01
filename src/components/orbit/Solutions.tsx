@@ -2,6 +2,14 @@ import { Shield, Sprout, FlaskConical, Bug, Leaf, Droplets, HeartPulse, SprayCan
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Reveal, SectionHeader } from "./Reveal";
+import imgFung from "@/assets/orbit/cat-fungicides.jpg";
+import imgInsect from "@/assets/orbit/cat-insecticides.jpg";
+import imgBio from "@/assets/orbit/cat-biostimulants.jpg";
+import imgHerb from "@/assets/orbit/cat-herbicides.jpg";
+import imgFert from "@/assets/orbit/cat-fertilizers.jpg";
+import imgSoil from "@/assets/orbit/cat-soil.jpg";
+import imgPub from "@/assets/orbit/cat-publichealth.jpg";
+import imgSpray from "@/assets/orbit/cat-sprayers.jpg";
 
 type Product = {
   name?: string;
@@ -19,6 +27,7 @@ type Category = {
   icon: typeof Bug;
   title: string;
   tagline: string;
+  image: string;
   products: Product[];
 };
 
@@ -27,6 +36,7 @@ const categories: Category[] = [
     icon: Shield,
     title: "Fungicides",
     tagline: "Broad-spectrum protection against blights, rusts and mildews.",
+    image: imgFung,
     products: [
       {
         activeIngredient: "Mancozeb 800g/Kg",
@@ -51,6 +61,7 @@ const categories: Category[] = [
     icon: Bug,
     title: "Insecticides",
     tagline: "Targeted insect control at every growth stage.",
+    image: imgInsect,
     products: [
       {
         activeIngredient: "Alpha-Cypermethrin 100g/L",
@@ -75,6 +86,7 @@ const categories: Category[] = [
     icon: FlaskConical,
     title: "Bio Stimulants",
     tagline: "Bio-active compounds that unlock yield potential and stress resilience.",
+    image: imgBio,
     products: [
       {
         name: "Blossom",
@@ -101,6 +113,7 @@ const categories: Category[] = [
     icon: Leaf,
     title: "Herbicides",
     tagline: "Selective and non-selective weed control engineered for minimum crop stress.",
+    image: imgHerb,
     products: [
       {
         name: "Glyweed",
@@ -122,6 +135,7 @@ const categories: Category[] = [
     icon: Sprout,
     title: "Fertilizers",
     tagline: "Foliar and soil nutrient blends tuned to Kenyan soils and growth stages.",
+    image: imgFert,
     products: [
       {
         name: "Morgro Multipurpose",
@@ -141,6 +155,7 @@ const categories: Category[] = [
     icon: Droplets,
     title: "Soil Conditioners",
     tagline: "Restorative formulations that rebuild soil structure, pH and microbial life.",
+    image: imgSoil,
     products: [
       {
         description: "Bio-organic humic granules that mix and blend well with fertilizer or manure for a rich humic-based soil.",
@@ -159,6 +174,7 @@ const categories: Category[] = [
     icon: HeartPulse,
     title: "Public Health",
     tagline: "Vector and pest control for homes, institutions and public spaces.",
+    image: imgPub,
     products: [
       {
         activeIngredient: "Fipronil 3% w/v",
@@ -178,6 +194,7 @@ const categories: Category[] = [
     icon: SprayCan,
     title: "Knapsack Sprayers",
     tagline: "Durable, precision-engineered sprayers for accurate field application.",
+    image: imgSpray,
     products: [
       {
         description: "A premium, powerful and high-pressure pump with a fully internal pump mechanism that keeps the spray solution off the operator. Built to withstand day-to-day farm operations.",
@@ -199,11 +216,9 @@ const CATALOGUE_URL = "https://www.orbitagro.co.ke/assets/orbit-agro-product-cat
 
 function ProductCard({ p }: { p: Product }) {
   return (
-    <div className="rounded-xl border border-border bg-background/30 p-5">
+    <div className="rounded-xl border border-border bg-background/40 p-5">
       <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
-        <div className="font-display text-lg">
-          {p.name || p.activeIngredient}
-        </div>
+        <div className="font-display text-lg">{p.name || p.activeIngredient}</div>
         {p.classification && (
           <span className="text-[10px] tracking-[0.25em] uppercase text-primary/80 border border-primary/30 rounded-full px-2 py-0.5">
             {p.classification}
@@ -234,9 +249,7 @@ function ProductCard({ p }: { p: Product }) {
           <div>
             <div className="text-[10px] tracking-[0.25em] uppercase text-primary mb-2">Application Rate</div>
             <div className="text-foreground/90">{p.applicationRate}</div>
-            {p.preHarvest && (
-              <div className="text-xs text-muted-foreground mt-1">Pre-harvest: {p.preHarvest}</div>
-            )}
+            {p.preHarvest && <div className="text-xs text-muted-foreground mt-1">Pre-harvest: {p.preHarvest}</div>}
           </div>
         )}
       </div>
@@ -264,6 +277,7 @@ function ProductCard({ p }: { p: Product }) {
 
 export function Solutions() {
   const [open, setOpen] = useState<string | null>("Fungicides");
+  const openCategory = categories.find((c) => c.title === open);
 
   return (
     <section id="solutions" className="relative py-32 px-6">
@@ -274,7 +288,7 @@ export function Solutions() {
           desc="Eight product lines specially formulated to help farmers enjoy high yields with very minimal investment."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
           {categories.map((c, i) => {
             const isOpen = open === c.title;
             return (
@@ -283,19 +297,29 @@ export function Solutions() {
                   onClick={() => setOpen(isOpen ? null : c.title)}
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className={`group relative w-full text-left h-full glass rounded-2xl p-7 overflow-hidden cursor-pointer ${isOpen ? "ring-1 ring-primary/60 shadow-[0_0_30px_oklch(0.72_0.20_150/0.25)]" : ""}`}
+                  className={`group relative w-full text-left h-full glass rounded-2xl overflow-hidden cursor-pointer ${isOpen ? "ring-1 ring-primary/60 shadow-[0_0_30px_oklch(0.72_0.20_150/0.25)]" : ""}`}
                 >
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
-                  <div className="relative">
-                    <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl glass-emerald">
-                      <c.icon className="h-5 w-5 text-primary" />
+                  <div className="aspect-[4/3] overflow-hidden relative">
+                    <img
+                      src={c.image}
+                      alt={c.title}
+                      loading="lazy"
+                      width={1024}
+                      height={768}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
+                    <div className="absolute top-3 left-3 inline-flex h-10 w-10 items-center justify-center rounded-xl glass-emerald">
+                      <c.icon className="h-4 w-4 text-primary" />
                     </div>
+                  </div>
+                  <div className="p-5">
                     <h3 className="font-display text-xl mb-2 flex items-center gap-2">
                       {c.title}
                       <ChevronDown className={`h-4 w-4 text-primary transition-transform ${isOpen ? "rotate-180" : ""}`} />
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{c.tagline}</p>
-                    <div className="mt-3 text-xs text-primary/80">{c.products.length} product{c.products.length > 1 ? "s" : ""} →</div>
+                    <div className="mt-3 text-xs text-primary/90">{c.products.length} product{c.products.length > 1 ? "s" : ""} →</div>
                   </div>
                 </motion.button>
               </Reveal>
@@ -304,31 +328,37 @@ export function Solutions() {
         </div>
 
         <AnimatePresence mode="wait">
-          {open && (
+          {openCategory && (
             <motion.div
-              key={open}
+              key={openCategory.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="glass rounded-2xl p-6 md:p-8 mb-12"
             >
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <div className="text-[10px] tracking-[0.3em] uppercase text-primary mb-1">Category Details</div>
-                  <h4 className="font-display text-2xl">{open}</h4>
+              <div className="grid md:grid-cols-[280px_1fr] gap-6 mb-6">
+                <div className="rounded-xl overflow-hidden aspect-[4/3] md:aspect-auto">
+                  <img src={openCategory.image} alt={openCategory.title} className="w-full h-full object-cover" />
                 </div>
-                <a
-                  href={CATALOGUE_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hidden sm:inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10 transition-colors"
-                >
-                  <Download className="h-3.5 w-3.5" /> Full Catalogue
-                </a>
+                <div className="flex flex-col justify-between gap-4">
+                  <div>
+                    <div className="text-[10px] tracking-[0.3em] uppercase text-primary mb-1">Category Details</div>
+                    <h4 className="font-display text-2xl md:text-3xl">{openCategory.title}</h4>
+                    <p className="text-muted-foreground mt-2 max-w-xl">{openCategory.tagline}</p>
+                  </div>
+                  <a
+                    href={CATALOGUE_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="self-start inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10 transition-colors"
+                  >
+                    <Download className="h-3.5 w-3.5" /> Full Catalogue
+                  </a>
+                </div>
               </div>
               <div className="grid lg:grid-cols-2 gap-5">
-                {categories.find((c) => c.title === open)!.products.map((p, idx) => (
+                {openCategory.products.map((p, idx) => (
                   <ProductCard key={idx} p={p} />
                 ))}
               </div>

@@ -1,4 +1,4 @@
-import { Reveal, SectionHeader } from "./Reveal";
+import { SectionHeader } from "./Reveal";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 
@@ -25,33 +25,48 @@ const items = [
   },
 ];
 
+// Duplicate for seamless marquee
+const loop = [...items, ...items];
+
 export function Testimonials() {
   return (
-    <section className="relative py-32 px-6">
-      <div className="mx-auto max-w-7xl">
-        <SectionHeader
-          eyebrow="Testimonials"
-          title={<>Voices from the <span className="text-gradient-emerald">field.</span></>}
-          desc="Real words from farmers across Kenya who grow with Orbit Agro."
-        />
-        <div className="grid md:grid-cols-2 gap-5">
-          {items.map((t, i) => (
-            <Reveal key={t.name} delay={i * 0.08}>
-              <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.4 }}
-                className="glass rounded-2xl p-8 h-full flex flex-col"
-              >
-                <Quote className="h-7 w-7 text-primary mb-5" />
-                <p className="text-base leading-relaxed text-foreground/90 flex-1">{t.quote}</p>
-                <div className="mt-6 pt-6 border-t border-border">
-                  <div className="font-display text-lg">{t.name}</div>
-                  <div className="text-xs tracking-wider uppercase text-muted-foreground mt-1">{t.role}</div>
-                </div>
-              </motion.div>
-            </Reveal>
-          ))}
+    <section className="relative py-32 overflow-hidden">
+      <div className="px-6">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="Testimonials"
+            title={<>Voices from the <span className="text-gradient-emerald">field.</span></>}
+            desc="Real words from farmers across Kenya who grow with Orbit Agro."
+          />
         </div>
+      </div>
+
+      <div className="relative">
+        {/* edge fades */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-background to-transparent" />
+
+        <motion.div
+          className="flex gap-5 w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 40, ease: "linear", repeat: Infinity }}
+        >
+          {loop.map((t, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -6, scale: 1.01 }}
+              transition={{ duration: 0.4 }}
+              className="glass rounded-2xl p-8 w-[360px] md:w-[440px] shrink-0 flex flex-col"
+            >
+              <Quote className="h-7 w-7 text-primary mb-5" />
+              <p className="text-base leading-relaxed text-foreground/90 flex-1">{t.quote}</p>
+              <div className="mt-6 pt-6 border-t border-border">
+                <div className="font-display text-lg">{t.name}</div>
+                <div className="text-xs tracking-wider uppercase text-muted-foreground mt-1">{t.role}</div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
