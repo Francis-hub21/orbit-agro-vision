@@ -40,6 +40,22 @@ export function FarmVisit() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
+                const fd = new FormData(e.currentTarget as HTMLFormElement);
+                const name = fd.get("Full Name") || "";
+                const phone = fd.get("Phone (+254...)") || "";
+                const region = fd.get("County / Region") || "";
+                const date = fd.get("Preferred Date") || "";
+                const crops = fd.get("Crop(s) Grown") || "";
+                const acres = fd.get("Approx. Acreage") || "";
+                const focus = fd.get("focus") || "";
+                const subject = encodeURIComponent(`Farm Visit Request — ${name}`);
+                const body = encodeURIComponent(
+                  `New farm visit request from the Orbit Agro website:\n\n` +
+                  `Name: ${name}\nPhone: ${phone}\nCounty/Region: ${region}\n` +
+                  `Preferred Date: ${date}\nCrops: ${crops}\nAcreage: ${acres}\n\n` +
+                  `Focus areas:\n${focus}\n`
+                );
+                window.location.href = `mailto:orbitagro@orbitagro.co.ke?subject=${subject}&body=${body}`;
                 setSubmitted(true);
               }}
               className="glass-emerald rounded-3xl p-8 md:p-10 space-y-5"
