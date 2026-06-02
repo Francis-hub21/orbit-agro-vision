@@ -131,6 +131,7 @@ function Field({
         {label} {required && <span className="text-primary">*</span>}
       </div>
       <input
+        name={label}
         type={type}
         placeholder={placeholder}
         required={required}
