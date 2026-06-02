@@ -69,36 +69,17 @@ export function CinematicLoader({ onDone }: { onDone: () => void }) {
             className="relative mb-12"
           >
             <div className="absolute inset-0 -m-8 rounded-full bg-primary/30 blur-3xl animate-pulse-glow" />
-            <svg width="120" height="120" viewBox="0 0 120 120" className="relative">
-              <defs>
-                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="oklch(0.92 0.18 150)" />
-                  <stop offset="100%" stopColor="oklch(0.55 0.20 155)" />
-                </linearGradient>
-              </defs>
-              <motion.circle
-                cx="60" cy="60" r="50"
-                fill="none" stroke="url(#g)" strokeWidth="1.5"
-                initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-                transition={{ duration: 2, ease: "easeOut" }}
-              />
-              <motion.circle
-                cx="60" cy="60" r="32"
-                fill="none" stroke="url(#g)" strokeWidth="1" strokeDasharray="4 4"
-                initial={{ rotate: 0 }} animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                style={{ transformOrigin: "60px 60px" }}
-              />
-              <motion.path
-                d="M40 70 Q60 40 80 70"
-                fill="none" stroke="url(#g)" strokeWidth="2.5" strokeLinecap="round"
-                initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-                transition={{ duration: 1.5, delay: 0.6 }}
-              />
-              <motion.circle cx="60" cy="60" r="4" fill="oklch(0.92 0.20 150)"
-                initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 1.4 }}
-              />
-            </svg>
+            <motion.div
+              className="absolute inset-0 -m-3 rounded-full border border-primary/40"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              style={{ borderStyle: "dashed" }}
+            />
+            <img
+              src={orbitLogo}
+              alt="Orbit Agro"
+              className="relative h-32 w-32 rounded-full object-contain shadow-[0_0_60px_oklch(0.72_0.20_150/0.6)]"
+            />
           </motion.div>
 
           <motion.div
