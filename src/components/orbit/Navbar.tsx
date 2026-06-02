@@ -31,7 +31,7 @@ export function Navbar() {
             <span className="font-display font-medium text-sm md:text-base leading-tight">
               Orbit<span className="text-primary"> Agro</span>
               <span className="hidden md:block text-[9px] tracking-[0.25em] uppercase text-muted-foreground">
-                Chemical Industries
+                Agro Products
               </span>
             </span>
           </a>
