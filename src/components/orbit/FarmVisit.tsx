@@ -55,7 +55,7 @@ export function FarmVisit() {
                   `Preferred Date: ${date}\nCrops: ${crops}\nAcreage: ${acres}\n\n` +
                   `Focus areas:\n${focus}\n`
                 );
-                window.location.href = `mailto:karanjafrancis091@gmail.com?subject=${subject}&body=${body}`;
+                window.location.href = `mailto:karanjafrancis081@gmail.com?subject=${subject}&body=${body}`;
                 setSubmitted(true);
               }}
               className="glass-emerald rounded-3xl p-8 md:p-10 space-y-5"
