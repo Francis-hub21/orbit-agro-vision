@@ -59,10 +59,10 @@ export function Hero() {
             </div>
 
             <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.02] font-light tracking-tight">
-              Engineering the<br />
-              <span className="text-gradient-emerald font-medium">Future of Intelligent</span>
+              Cultivating a<br />
+              <span className="text-gradient-emerald font-medium">higher standard</span>
               <br />
-              Agriculture.
+              for the future of farming.
             </h1>
 
             <motion.p

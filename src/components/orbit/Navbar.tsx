@@ -31,7 +31,7 @@ export function Navbar() {
             <span className="font-display font-medium text-sm md:text-base leading-tight">
               Orbit<span className="text-primary"> Agro</span>
               <span className="hidden md:block text-[9px] tracking-[0.25em] uppercase text-muted-foreground">
-                Chemical Industries
+                Agro Products
               </span>
             </span>
           </a>
@@ -46,7 +46,8 @@ export function Navbar() {
           </ul>
           <a
             href="#contact"
-            className="rounded-full bg-primary px-5 py-2 text-xs font-medium uppercase tracking-[0.15em] text-primary-foreground shadow-[0_0_24px_oklch(0.72_0.20_150/0.5)] hover:shadow-[0_0_36px_oklch(0.72_0.20_150/0.7)] transition-all"
+            className="rounded-full px-5 py-2 text-xs font-medium uppercase tracking-[0.15em] text-white shadow-[0_0_24px_oklch(0.58_0.22_27/0.5)] hover:shadow-[0_0_36px_oklch(0.58_0.22_27/0.8)] transition-all"
+            style={{ background: "var(--gradient-emerald-red)" }}
           >
             Get Quote
           </a>
