@@ -89,6 +89,7 @@ export function FarmVisit() {
                   <div>
                     <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">What would you like the agronomist to focus on?</div>
                     <textarea
+                      name="focus"
                       rows={3}
                       placeholder="Pests, soil, fertilizer plan, irrigation, etc."
                       className="w-full rounded-xl bg-input/40 border border-border px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary resize-none"
