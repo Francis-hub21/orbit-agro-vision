@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import logo from "@/assets/orbit/logo.png";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { href: "#solutions", label: "Products" },
@@ -44,13 +45,16 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <a
-            href="#contact"
-            className="rounded-full px-5 py-2 text-xs font-medium uppercase tracking-[0.15em] text-white shadow-[0_0_24px_oklch(0.58_0.22_27/0.5)] hover:shadow-[0_0_36px_oklch(0.58_0.22_27/0.8)] transition-all"
-            style={{ background: "var(--gradient-emerald-red)" }}
-          >
-            Get Quote
-          </a>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <a
+              href="#contact"
+              className="rounded-full px-5 py-2 text-xs font-medium uppercase tracking-[0.15em] text-white shadow-[0_0_24px_oklch(0.58_0.22_27/0.5)] hover:shadow-[0_0_36px_oklch(0.58_0.22_27/0.8)] transition-all"
+              style={{ background: "var(--gradient-emerald-red)" }}
+            >
+              Get Quote
+            </a>
+          </div>
         </nav>
       </div>
     </motion.header>
