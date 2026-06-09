@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import logo from "@/assets/orbit/logo.png";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { href: "#solutions", label: "Products" },
