@@ -80,8 +80,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: "/src/assets/orbit/logo.png" },
-      { rel: "apple-touch-icon", href: "/src/assets/orbit/logo.png" },
+      { rel: "icon", type: "image/png", href: "/__l5e/assets-v1/ebb446c9-1226-4a6a-99fd-bb477563d692/logo.png" },
+      { rel: "apple-touch-icon", href: "/__l5e/assets-v1/ebb446c9-1226-4a6a-99fd-bb477563d692/logo.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
