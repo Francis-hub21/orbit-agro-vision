@@ -1,17 +1,22 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Play, ArrowRight } from "lucide-react";
 import { TerrainScene } from "./TerrainScene";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { DemoModal } from "./DemoModal";
 
 export function Hero() {
   const [demo, setDemo] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const sceneScale = useTransform(scrollYProgress, [0, 1], [1, 0.35]);
+  const sceneOpacity = useTransform(scrollYProgress, [0, 0.9], [1, 0]);
+  const particleSpread = useTransform(scrollYProgress, [0, 1], [0, 1]);
   return (
-    <section className="relative h-screen min-h-[820px] w-full overflow-hidden">
-      {/* 3D Terrain */}
-      <div className="absolute inset-0">
+    <section ref={ref} className="relative h-screen min-h-[820px] w-full overflow-hidden">
+      {/* 3D Terrain — solar system core, zooms out on scroll */}
+      <motion.div style={{ scale: sceneScale, opacity: sceneOpacity }} className="absolute inset-0 origin-center">
         <TerrainScene />
-      </div>
+      </motion.div>
 
       {/* Atmospheric overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/10 to-background pointer-events-none" />
