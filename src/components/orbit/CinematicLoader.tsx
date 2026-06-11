@@ -76,11 +76,25 @@ export function CinematicLoader({ onDone }: { onDone: () => void }) {
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               style={{ borderStyle: "dashed" }}
             />
-            <img
-              src={orbitLogo}
-              alt="Orbit Agro"
-              className="relative h-32 w-32 rounded-full object-contain shadow-[0_0_60px_oklch(0.72_0.20_150/0.6)]"
-            />
+            <motion.div
+              className="relative h-32 w-32"
+              animate={{ rotateY: [0, 180, 360] }}
+              transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <img
+                src={orbitLogo.url}
+                alt="Orbit Agro"
+                className="absolute inset-0 h-32 w-32 rounded-full object-contain shadow-[0_0_60px_oklch(0.72_0.20_150/0.6)]"
+                style={{ backfaceVisibility: "hidden" }}
+              />
+              <img
+                src={orbitLogoAlt.url}
+                alt="Orbit Agro alternate"
+                className="absolute inset-0 h-32 w-32 rounded-full object-cover shadow-[0_0_60px_oklch(0.72_0.20_150/0.6)]"
+                style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+              />
+            </motion.div>
           </motion.div>
 
           <motion.div
