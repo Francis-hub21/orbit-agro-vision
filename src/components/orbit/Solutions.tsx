@@ -288,11 +288,31 @@ export function Solutions() {
           desc="Eight product lines specially formulated to help farmers enjoy high yields with very minimal investment."
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+          {/* central orbit core, visible behind cards while they orbit in */}
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center -z-10">
+            <motion.div
+              initial={{ scale: 0.6, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ margin: "-100px" }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="h-40 w-40 rounded-full bg-[radial-gradient(circle,oklch(0.72_0.20_150/0.35),transparent_70%)] blur-2xl"
+            />
+          </div>
           {categories.map((c, i) => {
             const isOpen = open === c.title;
+            const angle = (i / categories.length) * Math.PI * 2;
+            const radius = 420;
+            const ox = Math.cos(angle) * radius;
+            const oy = Math.sin(angle) * radius;
             return (
-              <Reveal key={c.title} delay={i * 0.05}>
+              <motion.div
+                key={c.title}
+                initial={{ x: ox, y: oy, opacity: 0, scale: 0.4, rotate: (angle * 180) / Math.PI }}
+                whileInView={{ x: 0, y: 0, opacity: 1, scale: 1, rotate: 0 }}
+                viewport={{ margin: "-80px" }}
+                transition={{ duration: 1.1, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <motion.button
                   onClick={() => setOpen(isOpen ? null : c.title)}
                   whileHover={{ y: -6 }}
@@ -322,7 +342,7 @@ export function Solutions() {
                     <div className="mt-3 text-xs text-primary/90">{c.products.length} product{c.products.length > 1 ? "s" : ""} →</div>
                   </div>
                 </motion.button>
-              </Reveal>
+              </motion.div>
             );
           })}
         </div>
