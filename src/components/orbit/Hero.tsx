@@ -24,13 +24,15 @@ export function Hero() {
   const [demo, setDemo] = useState(false);
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const sceneScale = useTransform(scrollYProgress, [0, 1], [1, 0.35]);
-  const sceneOpacity = useTransform(scrollYProgress, [0, 0.9], [1, 0]);
+  const sceneScale = useTransform(scrollYProgress, [0, 1], [1, 0.15]);
+  const sceneRotate = useTransform(scrollYProgress, [0, 1], [0, 35]);
+  const sceneY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const sceneOpacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 0.4, 0]);
   const particleSpread = useTransform(scrollYProgress, [0, 1], [0, 1]);
   return (
     <section ref={ref} className="relative h-screen min-h-[820px] w-full overflow-hidden">
-      {/* 3D Terrain — solar system core, zooms out on scroll */}
-      <motion.div style={{ scale: sceneScale, opacity: sceneOpacity }} className="absolute inset-0 origin-center">
+      {/* 3D Terrain — solar system core, zooms out and tilts on scroll */}
+      <motion.div style={{ scale: sceneScale, opacity: sceneOpacity, rotate: sceneRotate, y: sceneY }} className="absolute inset-0 origin-center">
         <TerrainScene />
       </motion.div>
 
