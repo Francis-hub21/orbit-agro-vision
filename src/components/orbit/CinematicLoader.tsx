@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import orbitLogo from "@/assets/orbit/logo.png";
+import orbitLogo from "@/assets/orbit/logo.png.asset.json";
+import orbitLogoAlt from "@/assets/orbit/logo-alt.jpg.asset.json";
 
 const stages = [
   "Initializing Agricultural Intelligence",
