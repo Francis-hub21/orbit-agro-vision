@@ -25,11 +25,15 @@ export function Storytelling() {
 
         <Reveal>
           <div className="relative rounded-3xl overflow-hidden mb-16 aspect-[16/9] md:aspect-[21/9]">
-            <img
+            <motion.img
               src={aboutImg}
               alt="Orbit Agro farmland and crop fields in Kenya"
               width={1280}
               height={854}
+              initial={{ scale: 1.25, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
