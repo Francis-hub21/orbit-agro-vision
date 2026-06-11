@@ -300,18 +300,18 @@ export function Solutions() {
             />
           </div>
           {categories.map((c, i) => {
-            const isOpen = open === c.title;
             const angle = (i / categories.length) * Math.PI * 2;
-            const radius = 420;
+            const radius = 180;
             const ox = Math.cos(angle) * radius;
             const oy = Math.sin(angle) * radius;
+            const isOpen = open === c.title;
             return (
               <motion.div
                 key={c.title}
-                initial={{ x: ox, y: oy, opacity: 0, scale: 0.4, rotate: (angle * 180) / Math.PI }}
+                initial={{ x: ox, y: oy, opacity: 0, scale: 0.55, rotate: -25 }}
                 whileInView={{ x: 0, y: 0, opacity: 1, scale: 1, rotate: 0 }}
-                viewport={{ margin: "-80px" }}
-                transition={{ duration: 1.1, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 1.1, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
               >
                 <motion.button
                   onClick={() => setOpen(isOpen ? null : c.title)}
