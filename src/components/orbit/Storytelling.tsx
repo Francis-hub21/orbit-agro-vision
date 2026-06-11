@@ -30,11 +30,18 @@ export function Storytelling() {
               alt="Orbit Agro farmland and crop fields in Kenya"
               width={1280}
               height={854}
-              initial={{ scale: 1.25, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
+              initial={{ scale: 1.6, opacity: 0, filter: "blur(12px)" }}
+              whileInView={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-0 w-full h-full object-cover"
+            />
+            <motion.div
+              className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(0.72_0.20_150/0.25),transparent_70%)]"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 2, delay: 0.6 }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/40" />
