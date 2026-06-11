@@ -22,30 +22,29 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/10 to-background pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,var(--background)_85%)] pointer-events-none" />
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 30 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute h-1 w-1 rounded-full bg-primary"
-            initial={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: 0,
-            }}
-            animate={{
-              opacity: [0, 0.8, 0],
-              y: [0, -100],
-            }}
-            transition={{
-              duration: 6 + Math.random() * 4,
-              repeat: Infinity,
-              delay: Math.random() * 4,
-            }}
-            style={{ filter: "blur(0.5px)" }}
-          />
-        ))}
-      </div>
+      {/* Floating particles + scroll-driven solar dispersion */}
+      <motion.div style={{ opacity: sceneOpacity }} className="absolute inset-0 pointer-events-none">
+        {Array.from({ length: 60 }).map((_, i) => {
+          const angle = (i / 60) * Math.PI * 2;
+          const dx = Math.cos(angle) * 80;
+          const dy = Math.sin(angle) * 80;
+          return (
+            <motion.div
+              key={i}
+              className="absolute h-1 w-1 rounded-full bg-primary"
+              style={{
+                left: "50%",
+                top: "50%",
+                filter: "blur(0.5px)",
+                x: useTransform(particleSpread, [0, 1], [dx * 0.2, dx * 12]),
+                y: useTransform(particleSpread, [0, 1], [dy * 0.2, dy * 12]),
+                opacity: useTransform(particleSpread, [0, 0.2, 0.9], [0, 1, 0]),
+                scale: useTransform(particleSpread, [0, 1], [0.6, 2]),
+              }}
+            />
+          );
+        })}
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 flex h-full items-center">
