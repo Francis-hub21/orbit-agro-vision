@@ -1,8 +1,24 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { Play, ArrowRight } from "lucide-react";
 import { TerrainScene } from "./TerrainScene";
 import { useRef, useState } from "react";
 import { DemoModal } from "./DemoModal";
+
+function SolarParticle({ index, total, progress }: { index: number; total: number; progress: MotionValue<number> }) {
+  const angle = (index / total) * Math.PI * 2;
+  const dx = Math.cos(angle) * 80;
+  const dy = Math.sin(angle) * 80;
+  const x = useTransform(progress, [0, 1], [dx * 0.2, dx * 12]);
+  const y = useTransform(progress, [0, 1], [dy * 0.2, dy * 12]);
+  const opacity = useTransform(progress, [0, 0.2, 0.9], [0, 1, 0]);
+  const scale = useTransform(progress, [0, 1], [0.6, 2]);
+  return (
+    <motion.div
+      className="absolute h-1 w-1 rounded-full bg-primary"
+      style={{ left: "50%", top: "50%", filter: "blur(0.5px)", x, y, opacity, scale }}
+    />
+  );
+}
 
 export function Hero() {
   const [demo, setDemo] = useState(false);
