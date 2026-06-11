@@ -1,46 +1,49 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { Play, ArrowRight } from "lucide-react";
 import { TerrainScene } from "./TerrainScene";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { DemoModal } from "./DemoModal";
+
+function SolarParticle({ index, total, progress }: { index: number; total: number; progress: MotionValue<number> }) {
+  const angle = (index / total) * Math.PI * 2;
+  const dx = Math.cos(angle) * 80;
+  const dy = Math.sin(angle) * 80;
+  const x = useTransform(progress, [0, 1], [dx * 0.2, dx * 12]);
+  const y = useTransform(progress, [0, 1], [dy * 0.2, dy * 12]);
+  const opacity = useTransform(progress, [0, 0.2, 0.9], [0, 1, 0]);
+  const scale = useTransform(progress, [0, 1], [0.6, 2]);
+  return (
+    <motion.div
+      className="absolute h-1 w-1 rounded-full bg-primary"
+      style={{ left: "50%", top: "50%", filter: "blur(0.5px)", x, y, opacity, scale }}
+    />
+  );
+}
 
 export function Hero() {
   const [demo, setDemo] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const sceneScale = useTransform(scrollYProgress, [0, 1], [1, 0.35]);
+  const sceneOpacity = useTransform(scrollYProgress, [0, 0.9], [1, 0]);
+  const particleSpread = useTransform(scrollYProgress, [0, 1], [0, 1]);
   return (
-    <section className="relative h-screen min-h-[820px] w-full overflow-hidden">
-      {/* 3D Terrain */}
-      <div className="absolute inset-0">
+    <section ref={ref} className="relative h-screen min-h-[820px] w-full overflow-hidden">
+      {/* 3D Terrain — solar system core, zooms out on scroll */}
+      <motion.div style={{ scale: sceneScale, opacity: sceneOpacity }} className="absolute inset-0 origin-center">
         <TerrainScene />
-      </div>
+      </motion.div>
 
       {/* Atmospheric overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/10 to-background pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,var(--background)_85%)] pointer-events-none" />
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 30 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute h-1 w-1 rounded-full bg-primary"
-            initial={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: 0,
-            }}
-            animate={{
-              opacity: [0, 0.8, 0],
-              y: [0, -100],
-            }}
-            transition={{
-              duration: 6 + Math.random() * 4,
-              repeat: Infinity,
-              delay: Math.random() * 4,
-            }}
-            style={{ filter: "blur(0.5px)" }}
-          />
+      {/* Floating particles + scroll-driven solar dispersion */}
+      <motion.div style={{ opacity: sceneOpacity }} className="absolute inset-0 pointer-events-none">
+        {Array.from({ length: 60 }).map((_, i) => (
+          <SolarParticle key={i} index={i} total={60} progress={particleSpread} />
         ))}
-      </div>
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 flex h-full items-center">
