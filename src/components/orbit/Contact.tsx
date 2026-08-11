@@ -1,7 +1,30 @@
 import { Reveal, SectionHeader } from "./Reveal";
-import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle, Check } from "lucide-react";
+import { useState } from "react";
+
+const INQUIRY_TYPES = ["Farmer", "Distributor", "Enterprise", "Export"];
 
 export function Contact() {
+  const [inquiry, setInquiry] = useState("Farmer");
+  const [form, setForm] = useState({ name: "", organization: "", email: "", phone: "", message: "" });
+  const set = (k: string) => (v: string) => setForm((f) => ({ ...f, [k]: v }));
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const body = [
+      `Inquiry type: ${inquiry}`,
+      `Name: ${form.name}`,
+      `Organization: ${form.organization}`,
+      `Email: ${form.email}`,
+      `Phone: ${form.phone}`,
+      "",
+      form.message,
+    ].join("\n");
+    window.location.href = `mailto:orbitagro@orbitagro.co.ke?subject=${encodeURIComponent(
+      `${inquiry} inquiry — ${form.name || "Website"}`,
+    )}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <section id="contact" className="relative py-32 px-6">
       <div className="mx-auto max-w-7xl">
