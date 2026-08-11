@@ -119,12 +119,27 @@ export function Contact() {
   );
 }
 
-function Field({ label, type }: { label: string; type: string }) {
+function Field({
+  label,
+  type,
+  value,
+  onChange,
+  required,
+}: {
+  label: string;
+  type: string;
+  value: string;
+  onChange: (v: string) => void;
+  required?: boolean;
+}) {
   return (
     <div>
       <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">{label}</div>
       <input
         type={type}
+        value={value}
+        required={required}
+        onChange={(e) => onChange(e.target.value)}
         className="w-full rounded-xl bg-input/40 border border-border px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
       />
     </div>
