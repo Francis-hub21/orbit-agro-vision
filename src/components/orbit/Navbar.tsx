@@ -32,7 +32,12 @@ export function Navbar() {
     }
   });
 
-  useEffect(() => () => closeTimer.current && clearTimeout(closeTimer.current), []);
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
+  }, []);
+
 
   const openMenu = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
