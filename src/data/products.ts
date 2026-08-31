@@ -1,6 +1,38 @@
+import penncozeb from "@/assets/orbit/products/penncozeb.jpg";
+import devisulphur from "@/assets/orbit/products/devisulphur.jpg";
+import mosthane from "@/assets/orbit/products/mosthane.jpg";
+import zyban from "@/assets/orbit/products/zyban.jpg";
+import sherrif from "@/assets/orbit/products/sherrif.jpg";
+import lavida from "@/assets/orbit/products/lavida.jpg";
+import samurai from "@/assets/orbit/products/samurai.jpg";
+import vidalia from "@/assets/orbit/products/vidalia.jpg";
+import xspore from "@/assets/orbit/products/xspore.jpg";
+import headlines from "@/assets/orbit/products/headlines.jpg";
+import esteem from "@/assets/orbit/products/esteem.jpg";
+import efosite from "@/assets/orbit/products/efosite.jpg";
+import alphacymba from "@/assets/orbit/products/alphacymba.jpg";
+import halothrin from "@/assets/orbit/products/halothrin.jpg";
+import robust from "@/assets/orbit/products/robust.jpg";
+import rajput from "@/assets/orbit/products/rajput.jpg";
+import chordata from "@/assets/orbit/products/chordata.jpg";
+import emactin from "@/assets/orbit/products/emactin.jpg";
+import blazer from "@/assets/orbit/products/blazer.jpg";
+import expel from "@/assets/orbit/products/expel.jpg";
+import vagan from "@/assets/orbit/products/vagan.jpg";
+import blossom from "@/assets/orbit/products/blossom.jpg";
+import pronto from "@/assets/orbit/products/pronto.jpg";
+import glyweed from "@/assets/orbit/products/glyweed.jpg";
+import eradika from "@/assets/orbit/products/eradika.jpg";
+import humigold from "@/assets/orbit/products/humigold.jpg";
+import morgro from "@/assets/orbit/products/morgro.jpg";
+import woprofert from "@/assets/orbit/products/woprofert.png";
+import velji from "@/assets/orbit/products/velji.png";
+import sprayer from "@/assets/orbit/cat-sprayers.jpg";
+
 export type Product = {
   slug: string;
   name: string;
+  image?: string;
   activeIngredient?: string;
   classification?: string;
   description?: string;
@@ -9,7 +41,6 @@ export type Product = {
   applicationRate?: string;
   modeOfAction?: string;
   benefits?: string[];
-  image?: string;
 };
 
 export type Family = {
@@ -38,20 +69,172 @@ export const families: Family[] = [
     title: "Fungicides",
     tagline: "Broad-spectrum protection against blights, rusts, mildews and leaf spots.",
     intro:
-      "Preventive and systemic fungicides formulated for vegetables, field crops, fruits and flowers — engineered to stop disease before it takes hold.",
+      "Preventive, contact and systemic fungicides formulated for vegetables, field crops, fruits and flowers — engineered to stop disease before it takes hold and to cure active infection.",
     products: [
-      p("Penncozeb 80% WP"),
-      p("Devisulphur 80WP"),
-      p("Mosthane"),
-      p("Zyban 500SC"),
-      p("Sherrif 75WP"),
-      p("Lavida 73WDG"),
-      p("Samurai 72WP"),
-      p("Vidalia 69WP"),
-      p("X-Spore 43SC"),
-      p("Headlines 700WP"),
-      p("Esteem 50WDG"),
-      p("Efosite 80WP"),
+      p("Penncozeb 80% WP", {
+        image: penncozeb,
+        activeIngredient: "Mancozeb 800 g/kg",
+        classification: "Dithiocarbamate",
+        description:
+          "High quality preventive fungicide with broad spectrum for the control of fungal diseases in various crops like vegetables, field crops, fruits and flowers/ornamentals.",
+        targets: ["Late blight", "Early blight", "Anthracnose", "Powdery mildew", "Leafspot", "Damping off"],
+        preHarvest: "7 days in vegetables",
+        applicationRate: "50 g / 20 L  ·  2 kg / Ha",
+        modeOfAction:
+          "Contact fungicide with protective action, applied prior to disease set. Non-specific thiol reactant that inhibits respiration in the fungus.",
+        benefits: ["Broad spectrum fungicide", "No known resistance", "High level of control before disease pressure"],
+      }),
+      p("Devisulphur 80WP", {
+        image: devisulphur,
+        activeIngredient: "Sulphur 800 g/kg",
+        classification: "Multi-site inorganic",
+        description:
+          "A premium sulphur fungicide and miticide with preventative action — a micronized wettable formulation designed to deliver superior disease and mite control.",
+        targets: ["Rust", "Angular leaf spot", "Anthracnose", "Powdery mildew", "Mites"],
+        preHarvest: "0 days open field · 3 days greenhouse",
+        applicationRate: "50 g / 20 L  ·  2 kg / Ha",
+        modeOfAction:
+          "Thiol reactant that forms a protective barrier on the leaf surface and acts as a stomach toxin on mites.",
+        benefits: ["Excellent surface coverage", "Low phytotoxicity risk", "Easy to mix and spray", "Suspends easily in the tank"],
+      }),
+      p("Mosthane", {
+        image: mosthane,
+        activeIngredient: "Mancozeb 800 g/kg",
+        classification: "Dithiocarbamate",
+        description:
+          "Cost effective fungicide with a wide spectrum of fungal disease control in various crops — vegetables, field crops and fruits.",
+        targets: ["Late blight", "Early blight", "Anthracnose", "Powdery mildew", "Leafspot", "Damping off"],
+        preHarvest: "7 days",
+        applicationRate: "50 g / 20 L  ·  2 kg / Ha",
+        modeOfAction: "Protectant contact fungicide with redistribution on the leaf surface.",
+        benefits: ["Effective against a large variety of fungi", "Protectant with redistribution", "No known resistance"],
+      }),
+      p("Zyban 500SC", {
+        image: zyban,
+        activeIngredient: "Carbendazim 500 g/L",
+        classification: "Benzimidazole",
+        description: "Systemic fungicide with protective and curative action on disease.",
+        targets: [
+          "Powdery mildew",
+          "Botrytis",
+          "Leafspot",
+          "Anthracnose",
+          "Root rot",
+          "Rice blast",
+          "Sheath blight",
+          "Rust",
+          "Fusarium wilt",
+        ],
+        applicationRate: "15–20 ml / 20 L  ·  0.75–1.0 L / Ha",
+        modeOfAction: "Readily absorbed by the plant and translocated, giving protective and curative activity.",
+        benefits: ["Readily absorbed", "Excellent protective and curative activity"],
+      }),
+      p("Sherrif 75WP", {
+        image: sherrif,
+        activeIngredient: "Carbendazim 120 g/kg + Mancozeb 630 g/kg",
+        classification: "Benzimidazole + Dithiocarbamate",
+        description:
+          "Broad spectrum systemic and contact fungicide for the cure and protection of a profitable vegetable and ornamental/flower crop.",
+        targets: [
+          "Rice blast",
+          "Damping off",
+          "Bean rust",
+          "Anthracnose",
+          "Angular leafspot",
+          "Fusarium wilt",
+          "Root rot",
+          "Blights",
+        ],
+        applicationRate: "20–25 g / 20 L  ·  1.0–1.25 kg / Ha",
+        modeOfAction: "Dual systemic and contact activity — protects the leaf surface while moving inside the plant.",
+        benefits: ["Multiple application modes", "Excellent protective and curative action", "Fast acting"],
+      }),
+      p("Lavida 73WDG", {
+        image: lavida,
+        activeIngredient: "Cymoxanil 50 g/kg + Mancozeb 680 g/kg",
+        classification: "Water dispersible granules · systemic + contact",
+        description:
+          "Broad spectrum foliar fungicide with systemic and contact action, curative and preventive, for potatoes, tomatoes, grapes, cucurbits, onions, chives, garlic and roses.",
+        targets: ["Late blight", "Downy mildew", "Early blight", "Damping off"],
+        preHarvest: "10 days",
+        applicationRate: "30 g / 20 L  ·  1.5 kg / Ha",
+        modeOfAction: "Cymoxanil moves systemically for curative action while mancozeb protects the leaf surface.",
+        benefits: ["Fast disintegration", "Uniform dispersion", "High suspension rate", "No known resistance"],
+      }),
+      p("Samurai 72WP", {
+        image: samurai,
+        activeIngredient: "Metalaxyl 80 g/kg + Mancozeb 640 g/kg",
+        classification: "Systemic + contact wettable powder",
+        description: "Systemic and contact broad spectrum fungicide with both protective and curative action.",
+        targets: ["Early blight", "Late blight", "Downy mildew", "Damping off"],
+        applicationRate: "50 g / 20 L  ·  2.0 kg / Ha",
+        modeOfAction: "Metalaxyl is absorbed and translocated; mancozeb gives multisite contact protection.",
+        benefits: ["Rainfast", "Excellent protective and curative action", "Low resistance risk (multisite)"],
+      }),
+      p("Vidalia 69WP", {
+        image: vidalia,
+        activeIngredient: "Mancozeb 600 g/kg + Dimethomorph 90 g/kg",
+        classification: "Systemic + protective wettable powder",
+        description: "Systemic and protective fungicide for tomatoes, potatoes, onions and roses.",
+        targets: ["Late blight", "Downy mildew", "Early blight"],
+        preHarvest: "3 days",
+        applicationRate: "Vegetables 50 g / 20 L (2.5 kg/Ha) · Roses 30–40 g / 20 L (1.5–2 kg/Ha)",
+        modeOfAction: "Translaminar movement through the leaf combined with contact protection.",
+        benefits: ["Translaminar activity", "High level of control before disease pressure"],
+      }),
+      p("X-Spore 43SC", {
+        image: xspore,
+        activeIngredient: "Tebuconazole 430 g/L",
+        classification: "Triazole (systemic)",
+        description:
+          "Systemic triazole fungicide with protective, curative and eradicant action across vegetables, cereals, onions and coffee.",
+        targets: [
+          "Rust, anthracnose and leafspot (French bean)",
+          "Early blight (tomato)",
+          "Leaf, stem and stripe rust, yellow leafspot (wheat)",
+          "Rust and purple blotch (onion)",
+          "Coffee rust",
+        ],
+        preHarvest: "7 days",
+        applicationRate: "10 ml / 20 L  ·  500 ml / Ha (vegetables)",
+        modeOfAction: "Sterol biosynthesis inhibitor absorbed and translocated in the plant.",
+        benefits: ["Broad spectrum", "Protective, curative and eradicant", "Good plant compatibility"],
+      }),
+      p("Headlines 700WP", {
+        image: headlines,
+        activeIngredient: "Thiophanate-methyl 700 g/kg",
+        classification: "Wettable powder · systemic",
+        description: "Systemic fungicide with curative and preventive control.",
+        targets: ["Damping off, leafspot and powdery mildew (tomato)", "Powdery mildew and botrytis (rose)"],
+        preHarvest: "3 days",
+        applicationRate: "20 g / 20 L  ·  1 kg / 1000 L / Ha",
+      }),
+      p("Esteem 50WDG", {
+        image: esteem,
+        activeIngredient: "Azoxystrobin 500 g/kg",
+        classification: "Strobilurin · water dispersible granules",
+        description: "Systemic fungicide with curative and preventive control.",
+        targets: [
+          "Leafspot and downy mildew (cucumber)",
+          "Downy mildew and botrytis (rose)",
+          "Rust, leafspot and anthracnose (French bean)",
+        ],
+        applicationRate: "15 g / 20 L  ·  500 g / 600 L / Ha",
+      }),
+      p("Efosite 80WP", {
+        image: efosite,
+        activeIngredient: "Fosetyl-aluminium 800 g/kg",
+        classification: "Wettable powder · systemic",
+        description: "Systemic fungicide with curative and preventive control.",
+        targets: [
+          "Downy mildew (cucumber, onion, lettuce, cucurbits, rose, snowpea, squash)",
+          "Sheath blight and rice blast (rice)",
+          "Canker (citrus, banana)",
+          "Ringspot (carnation)",
+          "Purple blotch and rust (onion)",
+        ],
+        applicationRate: "60 g / 20 L  ·  3 kg / 1000 L / Ha",
+      }),
     ],
   },
   {
@@ -59,58 +242,328 @@ export const families: Family[] = [
     title: "Insecticides",
     tagline: "Targeted insect control at every crop growth stage.",
     intro:
-      "Fast knock-down and long-residual insecticides for aphids, thrips, whiteflies, caterpillars, bollworms, borers and mites.",
+      "Fast knock-down and long-residual insecticides for aphids, thrips, whiteflies, caterpillars, bollworms, borers, armyworms and mites.",
     products: [
-      p("Alpha Cymba 10EC"),
-      p("Halothrin 2.5EC"),
-      p("Robust 48EC"),
-      p("Rajput 40EC"),
-      p("Chordata 10.2EC"),
-      p("Em-actin 57SC"),
-      p("Blazer 221ZC"),
+      p("Alpha Cymba 10EC", {
+        image: alphacymba,
+        activeIngredient: "Alpha-Cypermethrin 100 g/L",
+        classification: "Pyrethroid",
+        description: "Broad spectrum, low dose acting insecticide with rapid knock-down action and high mortality.",
+        targets: ["Aphids", "Cutworms", "Thrips", "Whiteflies", "Caterpillars", "Borers", "Leaf miners"],
+        preHarvest: "1–3 days in vegetables",
+        applicationRate: "5 ml / 20 L  ·  250 ml / Ha",
+        modeOfAction:
+          "Non-systemic insecticide with contact and stomach action, acting on the central and peripheral nervous system at very low doses.",
+        benefits: [
+          "Suitable for IPM programs",
+          "Compatible with most fungicides and fertilizers",
+          "Fast acting knock-down",
+          "Low product residues on crops",
+        ],
+      }),
+      p("Halothrin 2.5EC", {
+        image: halothrin,
+        activeIngredient: "Lambda-Cyhalothrin 25 g/L",
+        classification: "Pyrethroid",
+        description: "Fast and rapid knock-down insecticide with long residual activity and a short pre-harvest interval.",
+        targets: [
+          "Whiteflies",
+          "Thrips",
+          "Aphids",
+          "Caterpillars",
+          "Bollworms",
+          "Cutworms",
+          "Leaf miners",
+          "Diamond back moth",
+        ],
+        preHarvest: "3 days",
+        applicationRate: "15 ml / 20 L  ·  750 ml / Ha",
+        modeOfAction: "Contact and stomach action on the insect nervous system, with repellent and anti-feeding effect.",
+        benefits: ["Fast acting", "Anti-feeding and repellent action", "Reduces virus transmission", "Broad spectrum"],
+      }),
+      p("Robust 48EC", {
+        image: robust,
+        activeIngredient: "Chlorpyrifos 480 g/L",
+        classification: "Organophosphate",
+        description: "Broad spectrum non-systemic insecticide with wide crop and pest usage.",
+        targets: [
+          "Thrips",
+          "Aphids",
+          "Whiteflies",
+          "Scales",
+          "Cutworms",
+          "Armyworms",
+          "Bollworms",
+          "Mealy bugs",
+          "Ants",
+          "Termites",
+          "Antestia bugs",
+        ],
+        preHarvest: "14 days · re-entry 24 hours",
+        applicationRate: "30–40 ml / 20 L  ·  1.5–2.0 L / Ha",
+        modeOfAction: "Triple action — vapour, contact and stomach activity as a cholinesterase inhibitor.",
+        benefits: ["Short environmental persistence", "Flexible delivery options", "Triple action control"],
+      }),
+      p("Rajput 40EC", {
+        image: rajput,
+        activeIngredient: "Abamectin 10 g/L + Acetamiprid 30 g/L",
+        classification: "Avermectin + Neonicotinoid",
+        description: "Broad spectrum acaricide and insecticide for vegetables and flowers.",
+        targets: ["Thrips", "Aphids", "Whiteflies", "Spidermites", "Leafminer (Tuta absoluta)", "Squash beetles"],
+        applicationRate: "10 ml / 20 L  ·  500 ml / Ha",
+        modeOfAction:
+          "Acetamiprid acts systemically while abamectin works by contact and ingestion — both interfere with the insect nervous system.",
+        benefits: ["Broad spectrum", "Long residual activity", "Efficacy at low dose", "Translaminar movement"],
+      }),
+      p("Chordata 10.2EC", {
+        image: chordata,
+        activeIngredient: "Abamectin 20 g/L + Pyridaben 100 g/L",
+        classification: "Avermectin + Pyridazinone",
+        description: "Non-systemic insecticide and miticide for mite control in vegetables and ornamentals.",
+        targets: ["Spidermites", "Thrips", "Aphids", "Whiteflies", "Leafminer (Tuta absoluta)"],
+        applicationRate: "10 ml / 20 L  ·  375 ml / Ha",
+        modeOfAction:
+          "Abamectin paralyses pests through nerve inhibition while pyridaben targets larval and nymph stages. Re-apply after 7–10 days.",
+        benefits: ["Rapid knockdown with long residual", "Effective at low rates"],
+      }),
+      p("Em-actin 57SC", {
+        image: emactin,
+        activeIngredient: "Emamectin benzoate 57 g/L",
+        classification: "Avermectin · suspension concentrate",
+        description: "Broad spectrum contact and systemic insecticide and miticide.",
+        targets: [
+          "Stem borers",
+          "Leafminers (Tuta absoluta)",
+          "Diamond back moth",
+          "Caterpillars",
+          "Fall armyworms",
+          "False codling moth",
+          "Thrips",
+          "Spidermites",
+        ],
+        applicationRate: "5 ml / 20 L (vegetables, cereals, ornamentals) · 3.6 ml / 15 L (rice)",
+        benefits: ["Pack sizes 50 ml, 100 ml, 250 ml, 500 ml and 1 L"],
+      }),
+      p("Blazer 221ZC", {
+        image: blazer,
+        activeIngredient: "Thiamethoxam 126 g/L + Lambda-cyhalothrin 95 g/L",
+        classification: "Synthetic pyrethroid + neonicotinoid",
+        description: "Broad spectrum insecticide for a wide range of pests and crops.",
+        targets: ["Fall armyworms", "Thrips", "Whiteflies", "Leafminers", "Mealybugs", "Aphids", "Caterpillars"],
+        preHarvest: "3 days · re-entry 12 hours",
+        applicationRate: "6 ml / 20 L  ·  150 ml / 500 L / Ha",
+        modeOfAction:
+          "Lambda-cyhalothrin gives contact, stomach and repellent action with rapid knockdown, while thiamethoxam moves systemically to control larvae inside the plant.",
+      }),
     ],
   },
   {
     slug: "public-health",
     title: "Public Health",
     tagline: "Vector and pest control for homes, institutions and public spaces.",
-    intro: "Household and institutional insect control for crawling and flying pests.",
-    products: [p("Expel"), p("Vagan 50SC")],
+    intro: "Household, institutional and agroforestry insect control for crawling and flying pests and termites.",
+    products: [
+      p("Expel", {
+        image: expel,
+        activeIngredient: "Fipronil 3% w/v",
+        description:
+          "Public health insecticide for the control of flying and crawling household insects like cockroaches, bedbugs, house flies and ants.",
+        targets: ["Cockroaches", "Bedbugs", "House flies", "Ants"],
+        applicationRate: "50 ml per 1 L of water",
+      }),
+      p("Vagan 50SC", {
+        image: vagan,
+        activeIngredient: "Fipronil 5% w/v",
+        description: "Broad spectrum insecticide and termiticide for the control of termites in agroforestry.",
+        targets: ["Termites", "Thrips"],
+        applicationRate: "50 ml / 20 L  ·  75 ml / 30 L  ·  2.5 L / 1000 L / Ha",
+        benefits: ["Agroforestry", "Building and construction", "Roses", "Carnation"],
+      }),
+    ],
   },
   {
     slug: "bio-stimulants",
     title: "Bio Stimulants",
     tagline: "Bio-active compounds that unlock yield potential and stress resilience.",
-    intro: "Plant growth promoters and amino-acid based biostimulants for flowering, fruit set and stress recovery.",
-    products: [p("Blossom EC"), p("Pronto")],
+    intro:
+      "Plant growth promoters and amino-acid based biostimulants that drive flowering, fruit set, stress recovery and nutrient uptake.",
+    products: [
+      p("Blossom EC", {
+        image: blossom,
+        activeIngredient: "2.2% w/w aromatic nitrogen + proteins + vitamins",
+        classification: "Plant growth promoter",
+        description:
+          "A unique combination of aromatic nitrogen, proteins and vitamins — a highly effective plant growth promoter that increases both reproductive and vegetative buds, improves plant canopy, induces profuse flowering, promotes high conversion of flowers to fruits and reduces flower and fruit fall.",
+        targets: [
+          "Tomatoes",
+          "Coffee",
+          "Rice",
+          "Flowers",
+          "Chilli / hoho",
+          "Seedlings",
+          "Cuttings",
+          "Wheat",
+          "Melons",
+          "Fruit trees",
+          "Squash",
+          "Cucumbers",
+        ],
+        applicationRate: "2–3 L / Ha  ·  2–3 ml / L of water",
+        benefits: [
+          "Enhances vegetative growth",
+          "Increases nutrient uptake and use efficiency",
+          "Induces profuse flowering",
+          "Reduces flower and fruit shedding",
+          "Increases total harvestable yield",
+          "Compatible with pesticides",
+        ],
+      }),
+      p("Pronto", {
+        image: pronto,
+        activeIngredient: "Amino acid complex with nutritional complement",
+        classification: "Amino acid based bio stimulant",
+        description:
+          "Amino acid biostimulant that combines a nutritional complement with a complex of amino acids that enables cell formation and enhances metabolism in plants. Pronto revitalizes plants under stress, maintains and improves pesticide efficacy and improves growth, flowering and yield.",
+        targets: [
+          "Vegetables",
+          "Flowers",
+          "Coffee",
+          "Fruit trees",
+          "Pineapples",
+          "Potatoes",
+          "Maize",
+          "Cereals",
+          "Turf grass",
+          "Cotton",
+          "Ornamentals",
+        ],
+        applicationRate: "20 ml / 20 L  ·  1 L / Ha",
+        modeOfAction: "Penetrates through the stomata and can be used at all crop stages.",
+        benefits: [
+          "Improves tolerance to drought, frost and insect stress",
+          "Better pollination",
+          "Less flower and fruit drop",
+          "Improved fertilizer absorption",
+          "Enhanced photosynthesis and chlorophyll formation",
+        ],
+      }),
+    ],
   },
   {
     slug: "herbicides",
     title: "Herbicides",
-    tagline: "Non-selective weed control engineered for minimum crop stress.",
-    intro: "Systemic post-emergence herbicides for grasses, sedges and broad-leaved weeds.",
-    products: [p("Glyweed 41SL"), p("Eradika 41SL")],
+    tagline: "Non-selective, systemic weed control engineered for minimum crop stress.",
+    intro: "Systemic post-emergence herbicides for grasses, sedges and broad-leaved weeds — including zero-tillage programs.",
+    products: [
+      p("Glyweed 41SL", {
+        image: glyweed,
+        activeIngredient: "Glyphosate 360 g/L",
+        classification: "Glycine derivative",
+        description:
+          "A systemic, non-selective herbicide for the control of grasses, sedges and broad leaved weeds. Depending on the crop, Glyweed can be used pre-plant or post-plant, and is an important tool in zero-tillage farming.",
+        applicationRate: "135 ml / 20 L  ·  approx. 2 L / Ha",
+        modeOfAction:
+          "Rapidly absorbed through foliage and green stems then translocated to roots, rhizomes, tubers and stolons, inhibiting biosynthesis of essential amino acids.",
+        benefits: ["Inactivated on contact with soil", "Rapid translocation to roots and rhizomes", "Broad spectrum activity"],
+      }),
+      p("Eradika 41SL", {
+        image: eradika,
+        activeIngredient: "Glyphosate 410 g/L",
+        classification: "Glycine derivative",
+        description: "A non-selective systemic post-emergence herbicide for the control of weeds in non-cropped areas.",
+        applicationRate: "200 ml / 20 L  ·  2 L / Ha",
+      }),
+    ],
   },
   {
     slug: "fertilizers",
     title: "Fertilizers",
-    tagline: "Foliar and soluble nutrient blends tuned to Kenyan soils and growth stages.",
-    intro: "Water-soluble and foliar fertilizers delivering macro-nutrients, trace elements and amino acids.",
-    products: [p("Morgro"), p("Wopro-Fert"), p("Velji")],
+    tagline: "Foliar and 100% water-soluble nutrient blends tuned to every growth stage.",
+    intro:
+      "Foliar fertilizers and fully water-soluble blends delivering macro-nutrients, chelated trace elements and amino acids.",
+    products: [
+      p("Morgro", {
+        image: morgro,
+        activeIngredient: "N.P.K. 14:10:8 + trace elements + amino acids",
+        classification: "Multipurpose liquid foliar fertilizer",
+        description:
+          "A liquid foliar fertilizer and plant booster that is rapidly absorbed through the leaves and provides plants with essential nutrients — trace elements, macro nutrients and amino acids.",
+        targets: ["Vegetables", "Flowers", "Coffee", "Fruit trees", "Pineapples", "Potatoes", "Maize", "Cereals"],
+        applicationRate: "Vegetables 50 ml / 20 L (2.5 L/Ha) · Cereals 50 ml / 20 L (2.5 L/Ha) · Fruit trees 80 ml / 20 L (4.0 L/Ha)",
+        modeOfAction:
+          "Improves the suspendability of spray liquids, reduces transplant shock and improves root and stem development and crop uniformity.",
+        benefits: ["Balanced foliar nutrition", "Quick crop response under stress", "Readily absorbed", "Multi-crop use"],
+      }),
+      p("Wopro-Fert", {
+        image: woprofert,
+        activeIngredient: "Fe-DTPA 11.5% · Fe-EDDHA 6%",
+        classification: "100% water-soluble fertilizer · iron chelate",
+        description:
+          "100% water soluble fertiliser. An iron chelate usable as a foliar feed and in all fertigation systems, compatible with most pesticide products. Fe-DTPA is stable at pH up to 7.0 and resists calcium replacement; Fe-EDDHA remains stable up to pH 11.0.",
+        targets: ["Horticulture crops", "Field crops", "Cereals", "Turf grass", "Flowers", "Fruit crops"],
+        applicationRate: "1–3 g / L irrigation water · 1 kg / 200 L / Ha foliar",
+        benefits: ["Corrects iron deficiency", "Aids chlorophyll synthesis", "Improves crop yield"],
+      }),
+      p("Velji", {
+        image: velji,
+        activeIngredient: "100% EDTA-chelated, fully water-soluble N.P.K. + MgO + micros",
+        classification: "Water-soluble foliar fertilizer range",
+        description:
+          "A range of fully water-soluble foliar fertilizers: Root Energizer (12:40:15) for root initiation and development; Leaf Energizer (27:11:9) high nitrogen for vegetative growth; Fruit & Flower Energizer (15:5:35) for flowering, fruiting, even ripening and fruit size and colour; and Complete Crop Energizer Triple 19 (19:19:19) for balanced growth at any stage.",
+        applicationRate: "2–4 kg / Ha  ·  30–60 g per knapsack",
+        benefits: [
+          "Suitable for greenhouse and open field",
+          "Precise stage-specific formulations",
+          "Immediate crop response",
+          "Tank-mixable with pesticides",
+        ],
+      }),
+    ],
   },
   {
     slug: "soil-conditioners",
     title: "Soil Conditioners",
     tagline: "Restorative formulations that rebuild soil structure and biology.",
-    intro: "Humic and fulvic acid based conditioners that improve nutrient availability and root development.",
-    products: [p("Humigold")],
+    intro: "Humic and fulvic acid based conditioners that improve nutrient availability, soil structure and root development.",
+    products: [
+      p("Humigold", {
+        image: humigold,
+        activeIngredient: "Humic acid / fulvic acid",
+        classification: "Bio-organic humic granules",
+        description: "Bio-organic humic granules that mix and blend well with fertilizer or manure for a rich humic based soil.",
+        targets: ["Horticulture crops", "Cereals", "Field crops", "Lawns", "Flowers", "Kitchen gardens"],
+        applicationRate: "Fertilizer blend 1–2 kg per 50 kg bag of D.A.P, T.S.P, M.A.P, C.A.N etc.",
+        benefits: [
+          "Buffers excessive/toxic elements in the soil",
+          "Reduces nutrient lock-up",
+          "Promotes root development",
+          "Improves soil structure",
+        ],
+      }),
+    ],
   },
   {
     slug: "knapsack-sprayers",
     title: "Knapsack Sprayers",
     tagline: "Durable, precision-engineered sprayers for accurate field application.",
-    intro: "High-pressure knapsack sprayers built for day-to-day farm operations.",
-    products: [p("Orbit Knapsack Sprayer")],
+    intro: "High-pressure knapsack sprayers built to withstand day-to-day farm operations.",
+    products: [
+      p("Orbit Premium Knapsack Sprayer", {
+        image: sprayer,
+        classification: "Application equipment",
+        description:
+          "A premium, powerful and high pressure pump with a fully internal pump mechanism that keeps the spray solution off the operator. Built to withstand day to day farm operations.",
+        benefits: [
+          "High pressure piston pump",
+          "Lightweight with trigger on the handle",
+          "Left or right hand operation",
+          "Easy-to-adjust carrying strap",
+          "Internal mechanical agitator for constant mixing",
+          "Ergonomic design that reduces back strain",
+          "High-density polyethylene UV-resistant tank",
+        ],
+      }),
+    ],
   },
 ];
 
