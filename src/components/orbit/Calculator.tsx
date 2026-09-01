@@ -1,15 +1,44 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Reveal, SectionHeader } from "./Reveal";
-import { Calculator as CalcIcon, Droplets, Clock, ShieldAlert } from "lucide-react";
+import { Calculator as CalcIcon, Droplets, Clock, ShieldAlert, Leaf, FlaskConical } from "lucide-react";
 import { motion } from "framer-motion";
+import { crops, cropProducts } from "@/data/crops";
+
+/** Pull the "x ml/g per 20 L" figure out of a catalogue application-rate string. */
+function parseRatePer20L(rate?: string): { value: number; unit: string } | null {
+  if (!rate) return null;
+  const m = rate.match(/(\d+(?:\.\d+)?)\s*(?:–|-)?\s*(\d+(?:\.\d+)?)?\s*(ml|g|gms|gm)\s*\/\s*20\s*L/i);
+  if (!m) return null;
+  const low = parseFloat(m[1]);
+  const high = m[2] ? parseFloat(m[2]) : low;
+  const unit = m[3].toLowerCase().startsWith("g") ? "g" : "ml";
+  return { value: (low + high) / 2, unit };
+}
 
 export function Calculator() {
+  const [cropId, setCropId] = useState(crops[0].id);
+  const crop = crops.find((c) => c.id === cropId) ?? crops[0];
+  const products = useMemo(() => cropProducts(crop), [crop]);
+
+  const [productSlug, setProductSlug] = useState(products[0]?.slug ?? "");
+  useEffect(() => {
+    setProductSlug(products[0]?.slug ?? "");
+  }, [products]);
+  const product = products.find((p) => p.slug === productSlug) ?? products[0];
+
+  const parsed = parseRatePer20L(product?.applicationRate);
   const [acres, setAcres] = useState(2.5);
   const [sprayer, setSprayer] = useState(20);
-  const [rate, setRate] = useState(35); // ml/20L
+  const [rate, setRate] = useState(parsed?.value ?? 35);
 
+  useEffect(() => {
+    if (parsed) setRate(parsed.value);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productSlug]);
+
+  const unit = parsed?.unit ?? "ml";
   const totalWater = useMemo(() => Math.round(acres * 200), [acres]); // 200 L/acre baseline
-  const totalProduct = useMemo(() => Math.round((totalWater / sprayer) * rate), [totalWater, sprayer, rate]);
+  const totalProduct = useMemo(() => Math.round((totalWater / 20) * rate), [totalWater, rate]);
   const tanks = useMemo(() => Math.ceil(totalWater / sprayer), [totalWater, sprayer]);
 
   return (
@@ -18,15 +47,66 @@ export function Calculator() {
         <SectionHeader
           eyebrow="Precision Dosage Calculator"
           title={<>Zero waste. <span className="text-gradient-emerald">Zero guesswork.</span></>}
-          desc="Calibrate your spray to the milliliter. Engineered to eliminate over-application, protect crops and maximize your investment."
+          desc="Pick your crop and the matched Orbit Agro product — dosage, water volume and the product's own pre-harvest safety interval are calculated for you."
         />
 
         <div className="grid lg:grid-cols-2 gap-8">
           <Reveal>
             <div className="glass rounded-3xl p-8 md:p-10 space-y-8">
+              <div>
+                <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-3">Crop / Plant</div>
+                <div className="flex flex-wrap gap-2">
+                  {crops.map((c) => (
+                    <button
+                      key={c.id}
+                      onClick={() => setCropId(c.id)}
+                      className={`rounded-full px-4 py-1.5 text-xs border transition-all ${
+                        cropId === c.id ? "border-primary bg-primary/15 text-primary" : "border-border hover:border-primary/50"
+                      }`}
+                    >
+                      {c.emoji} {c.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-3">
+                  Product for {crop.name}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {products.map((p) => (
+                    <button
+                      key={p.slug}
+                      onClick={() => setProductSlug(p.slug)}
+                      className={`rounded-xl px-4 py-2 text-xs border text-left transition-all ${
+                        productSlug === p.slug
+                          ? "border-primary bg-primary/15 text-primary"
+                          : "border-border hover:border-primary/50"
+                      }`}
+                    >
+                      {p.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <Slider label="Acreage" value={acres} min={0.25} max={50} step={0.25} unit="acres" onChange={setAcres} />
               <Slider label="Sprayer Tank" value={sprayer} min={5} max={200} step={5} unit="L" onChange={setSprayer} />
-              <Slider label="Product Rate" value={rate} min={5} max={100} step={1} unit="ml / 20L" onChange={setRate} />
+              <Slider
+                label="Product Rate"
+                value={rate}
+                min={1}
+                max={150}
+                step={1}
+                unit={`${unit} / 20L`}
+                onChange={setRate}
+              />
+              {product?.applicationRate && (
+                <p className="text-xs text-muted-foreground">
+                  Label rate for {product.name}: {product.applicationRate}
+                </p>
+              )}
             </div>
           </Reveal>
 
@@ -41,13 +121,25 @@ export function Calculator() {
                   <div className="text-[10px] tracking-[0.3em] uppercase text-primary">Live Calculation</div>
                 </div>
 
-                <ResultRow icon={Droplets} label="Total Product Needed" value={`${totalProduct.toLocaleString()} ml`} accent />
+                <ResultRow icon={Leaf} label="Crop" value={crop.name} />
+                <ResultRow icon={FlaskConical} label="Product" value={product?.name ?? "—"} />
+                <ResultRow
+                  icon={Droplets}
+                  label="Total Product Needed"
+                  value={`${totalProduct.toLocaleString()} ${unit}`}
+                  accent
+                />
                 <ResultRow icon={Droplets} label="Total Water Volume" value={`${totalWater.toLocaleString()} L`} />
                 <ResultRow icon={Clock} label="Spray Tanks Required" value={`${tanks} tanks`} />
-                <ResultRow icon={ShieldAlert} label="Safety Interval (PHI)" value="14 days" />
+                <ResultRow
+                  icon={ShieldAlert}
+                  label="Safety Interval (PHI)"
+                  value={product?.preHarvest ?? "Follow label directions"}
+                />
 
                 <div className="mt-8 pt-6 border-t border-primary/20 text-xs text-muted-foreground leading-relaxed">
-                  Always read the product label. Wear appropriate PPE. Apply during cool, low-wind conditions for optimal absorption.
+                  Always read the {product?.name ?? "product"} label. Wear appropriate PPE. Apply during cool, low-wind
+                  conditions for optimal absorption.
                 </div>
               </div>
             </div>
@@ -80,6 +172,7 @@ function Slider({
           min={min} max={max} step={step} value={value}
           onChange={(e) => onChange(parseFloat(e.target.value))}
           className="absolute inset-0 w-full opacity-0 cursor-pointer"
+          aria-label={label}
         />
         <div
           className="absolute top-1/2 h-4 w-4 -translate-y-1/2 -translate-x-1/2 rounded-full bg-primary shadow-[0_0_14px_var(--color-primary)] pointer-events-none"
@@ -92,15 +185,12 @@ function Slider({
 
 function ResultRow({ icon: Icon, label, value, accent = false }: { icon: typeof Droplets; label: string; value: string; accent?: boolean }) {
   return (
-    <motion.div
-      layout
-      className={`flex items-center justify-between py-4 border-b border-border last:border-0 ${accent ? "" : ""}`}
-    >
+    <motion.div layout className="flex items-center justify-between gap-4 py-4 border-b border-border last:border-0">
       <div className="flex items-center gap-3 text-sm text-muted-foreground">
         <Icon className="h-4 w-4 text-primary" />
         {label}
       </div>
-      <div className={`font-display ${accent ? "text-3xl text-gradient-emerald" : "text-lg"}`}>{value}</div>
+      <div className={`font-display text-right ${accent ? "text-3xl text-gradient-emerald" : "text-lg"}`}>{value}</div>
     </motion.div>
   );
 }
