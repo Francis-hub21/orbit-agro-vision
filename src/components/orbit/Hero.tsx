@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { Play, ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { TerrainScene } from "./TerrainScene";
 import { useRef, useState } from "react";
 import { DemoModal } from "./DemoModal";
