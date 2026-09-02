@@ -86,13 +86,13 @@ export function Hero() {
               transition={{ delay: 1.1, duration: 0.8 }}
               className="mt-10 flex flex-wrap items-center gap-4"
             >
-              <a
-                href="#solutions"
+              <Link
+                to="/products"
                 className="group inline-flex items-center gap-3 rounded-full bg-primary px-7 py-4 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground shadow-[0_0_30px_oklch(0.72_0.20_150/0.6)] hover:shadow-[0_0_50px_oklch(0.72_0.20_150/0.9)] transition-all"
               >
                 Explore Solutions
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              </Link>
               <button
                 onClick={() => setDemo(true)}
                 className="group inline-flex items-center gap-3 rounded-full glass px-7 py-4 text-sm font-medium uppercase tracking-[0.15em] hover:border-primary/60 transition-all"
