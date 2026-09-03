@@ -96,9 +96,9 @@ export function Contact() {
               <InfoCard icon={Phone} label="Sales Line" value="+254 752 368 468" />
               <InfoCard icon={Mail} label="Email" value="orbitagro@orbitagro.co.ke" />
               <a
-                href="https://wa.me/254752368468"
+                href="https://wa.me/254752368468?text=Hello%20Orbit%20Agro%2C%20I%20would%20like%20more%20information%20about%20your%20products."
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="block glass-emerald rounded-2xl p-6 group hover:shadow-[0_0_30px_oklch(0.72_0.20_150/0.4)] transition-all"
               >
                 <div className="flex items-center gap-4">
