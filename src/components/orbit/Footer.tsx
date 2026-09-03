@@ -26,7 +26,7 @@ export function Footer() {
             <a
               href="https://wa.me/254752368468?text=Hello%20Orbit%20Agro%2C%20I%20would%20like%20more%20information%20about%20your%20products."
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-2.5 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10 transition-colors"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
