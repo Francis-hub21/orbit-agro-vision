@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsFamilyRouteImport } from './routes/products.$family'
@@ -17,6 +18,11 @@ import { Route as ProductsFamilyRouteImport } from './routes/products.$family'
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -37,12 +43,14 @@ const ProductsFamilyRoute = ProductsFamilyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/news': typeof NewsRoute
   '/products/$family': typeof ProductsFamilyRoute
   '/products/': typeof ProductsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/news': typeof NewsRoute
   '/products/$family': typeof ProductsFamilyRoute
   '/products': typeof ProductsIndexRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/news': typeof NewsRoute
   '/products/$family': typeof ProductsFamilyRoute
   '/products/': typeof ProductsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/news' | '/products/$family' | '/products/'
+  fullPaths: '/' | '/admin' | '/news' | '/products/$family' | '/products/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/news' | '/products/$family' | '/products'
-  id: '__root__' | '/' | '/news' | '/products/$family' | '/products/'
+  to: '/' | '/admin' | '/news' | '/products/$family' | '/products'
+  id: '__root__' | '/' | '/admin' | '/news' | '/products/$family' | '/products/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   NewsRoute: typeof NewsRoute
   ProductsFamilyRoute: typeof ProductsFamilyRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/news'
       fullPath: '/news'
       preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   NewsRoute: NewsRoute,
   ProductsFamilyRoute: ProductsFamilyRoute,
   ProductsIndexRoute: ProductsIndexRoute,
