@@ -34,6 +34,17 @@ export function Footer() {
               </svg>
               Chat with us on WhatsApp
             </a>
+            <div className="mt-4 text-sm text-muted-foreground">
+              <span className="text-primary">Facebook:</span>{" "}
+              <a
+                href="https://www.facebook.com/people/Orbit-Agrochemical-industries-ltd/100069240842491/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-primary/40 underline-offset-4 hover:text-primary"
+              >
+                Orbit Agrochemical Industries Ltd
+              </a>
+            </div>
           </div>
           <div>
             <div className="text-[10px] tracking-[0.3em] uppercase text-primary mb-4">Products</div>
