@@ -7,6 +7,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { families } from "@/data/products";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/#about", label: "About" },
   { href: "/#crop-doctor", label: "Crop Doctor" },
   { href: "/news", label: "News" },
