@@ -10,6 +10,10 @@ import { families, getFamily, type Product } from "@/data/products";
 const CATALOGUE_URL = "https://www.orbitagro.co.ke/assets/orbit-agro-product-catalogue_web.pdf";
 
 export const Route = createFileRoute("/products/$family")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    from: typeof search.from === "string" ? search.from : undefined,
+    product: typeof search.product === "string" ? search.product : undefined,
+  }),
   loader: ({ params }) => {
     const family = getFamily(params.family);
     if (!family) throw notFound();
