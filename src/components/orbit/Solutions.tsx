@@ -84,6 +84,9 @@ function ProductCard({ p, onContact }: { p: Product; onContact: (n: string) => v
 
 function FamilyPanel({ family, onContact }: { family: Family; onContact: (n: string) => void }) {
   const m = meta[family.slug];
+  const [showAll, setShowAll] = useState(false);
+  const visible = showAll ? family.products : family.products.slice(0, 2);
+  const hidden = family.products.length - visible.length;
   return (
     <motion.div
       initial={{ opacity: 0, height: 0 }}
