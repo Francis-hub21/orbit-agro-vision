@@ -125,8 +125,16 @@ function ProductBlock({ product, onContact }: { product: Product; onContact: (na
   );
 }
 
+const backTargets: Record<string, { label: string; href: string }> = {
+  "crop-doctor": { label: "Back to Crop Doctor", href: "/#crop-doctor" },
+  calculator: { label: "Back to the dosage calculator", href: "/#calculator" },
+  solutions: { label: "Back to Our Products", href: "/#solutions" },
+};
+
 function FamilyPage() {
   const { family } = Route.useLoaderData();
+  const { from } = Route.useSearch();
+  const back = from ? backTargets[from] : undefined;
   const [requested, setRequested] = useState<string | null>(null);
 
   return (
@@ -134,9 +142,19 @@ function FamilyPage() {
       <Navbar />
       <section className="px-6 pt-40 pb-16">
         <div className="mx-auto max-w-7xl">
-          <Link to="/products" className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary">
-            <ArrowLeft className="h-3.5 w-3.5" /> All product families
-          </Link>
+          <div className="flex flex-wrap items-center gap-3">
+            {back && (
+              <a
+                href={back.href}
+                className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10 transition-colors"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" /> {back.label}
+              </a>
+            )}
+            <Link to="/products" className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary">
+              <ArrowLeft className="h-3.5 w-3.5" /> All product families
+            </Link>
+          </div>
           <div className="mt-6 text-[10px] tracking-[0.4em] uppercase text-primary">Product Family</div>
           <h1 className="mt-3 font-display text-4xl md:text-6xl font-light">{family.title}</h1>
           <p className="mt-5 max-w-2xl text-muted-foreground leading-relaxed">{family.intro}</p>
