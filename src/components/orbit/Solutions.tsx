@@ -121,15 +121,31 @@ function FamilyPanel({ family, onContact }: { family: Family; onContact: (n: str
           </div>
         </div>
         {m && (
-          <div className="rounded-xl overflow-hidden mb-6 max-h-56">
-            <img src={m.image} alt={family.title} className="w-full h-full object-cover" />
+          <div className="rounded-xl overflow-hidden mb-6 aspect-[16/7] sm:aspect-[21/7]">
+            <img src={m.image} alt={family.title} loading="lazy" className="w-full h-full object-cover" />
           </div>
         )}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {family.products.map((p) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {visible.map((p) => (
             <ProductCard key={p.slug} p={p} onContact={onContact} />
           ))}
         </div>
+        {hidden > 0 && (
+          <button
+            onClick={() => setShowAll(true)}
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/40 px-6 py-3 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10 transition-colors"
+          >
+            Show {hidden} more {family.title.toLowerCase()} <ArrowRight className="h-3.5 w-3.5" />
+          </button>
+        )}
+        {showAll && family.products.length > 2 && (
+          <button
+            onClick={() => setShowAll(false)}
+            className="mt-6 ml-3 inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-xs uppercase tracking-[0.15em] hover:border-primary/60 transition-colors"
+          >
+            Show fewer
+          </button>
+        )}
       </div>
     </motion.div>
   );
