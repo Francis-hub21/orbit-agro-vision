@@ -242,7 +242,7 @@ export function CropDoctor() {
                             </div>
                             <div className="min-w-0">
                               <div className="font-display text-xl md:text-2xl">{primary.name}</div>
-                              <div className="text-xs text-muted-foreground mt-1">{primary.familyTitle ?? primary.family}</div>
+                              <div className="text-xs text-muted-foreground mt-1">{primary.family}</div>
                               {primary.targets?.length ? (
                                 <div className="mt-2 flex flex-wrap gap-1.5">
                                   {primary.targets.slice(0, 4).map((t) => (
