@@ -3,6 +3,7 @@ import { Reveal, SectionHeader } from "./Reveal";
 import { Calculator as CalcIcon, Droplets, Clock, ShieldAlert, Leaf, FlaskConical } from "lucide-react";
 import { motion } from "framer-motion";
 import { crops, cropProducts } from "@/data/crops";
+import { phiDays } from "./CropDoctor";
 
 /** Pull the "x ml/g per 20 L" figure out of a catalogue application-rate string. */
 function parseRatePer20L(rate?: string): { value: number; unit: string } | null {
@@ -40,6 +41,18 @@ export function Calculator() {
   const totalWater = useMemo(() => Math.round(acres * 200), [acres]); // 200 L/acre baseline
   const totalProduct = useMemo(() => Math.round((totalWater / 20) * rate), [totalWater, rate]);
   const tanks = useMemo(() => Math.ceil(totalWater / sprayer), [totalWater, sprayer]);
+
+  /**
+   * Safety interval (PHI) adjusted to the actual programme: the product's own label PHI is
+   * the baseline, then scaled by how far the chosen rate sits above/below the label rate and
+   * by tank size (bigger tanks = heavier, coarser deposits per pass).
+   */
+  const labelRate = parsed?.value ?? rate;
+  const basePhi = phiDays(product?.preHarvest);
+  const rateFactor = labelRate > 0 ? rate / labelRate : 1;
+  const tankFactor = 1 + (sprayer - 20) / 400;
+  const phiFactor = Math.min(2.5, Math.max(0.6, rateFactor * tankFactor));
+  const adjustedPhi = basePhi !== null ? Math.max(1, Math.round(basePhi * phiFactor)) : null;
 
   return (
     <section id="calculator" className="relative py-32 px-6">
@@ -121,8 +134,13 @@ export function Calculator() {
                   <div className="text-[10px] tracking-[0.3em] uppercase text-primary">Live Calculation</div>
                 </div>
 
-                <ResultRow icon={Leaf} label="Crop" value={crop.name} />
+                <ResultRow icon={Leaf} label="Crop / Plant" value={`${crop.emoji} ${crop.name}`} />
                 <ResultRow icon={FlaskConical} label="Product" value={product?.name ?? "—"} />
+                <ResultRow
+                  icon={ShieldAlert}
+                  label="Targets on this crop"
+                  value={(product?.targets?.slice(0, 3).join(", ") || crop.threats.slice(0, 3).join(", ")) ?? "—"}
+                />
                 <ResultRow
                   icon={Droplets}
                   label="Total Product Needed"
@@ -133,11 +151,24 @@ export function Calculator() {
                 <ResultRow icon={Clock} label="Spray Tanks Required" value={`${tanks} tanks`} />
                 <ResultRow
                   icon={ShieldAlert}
-                  label="Safety Interval (PHI)"
+                  label="Adjusted Safety Interval (PHI)"
+                  value={adjustedPhi !== null ? `${adjustedPhi} days` : product?.preHarvest ?? "Follow label directions"}
+                  accent
+                />
+                <ResultRow
+                  icon={ShieldAlert}
+                  label="Label PHI"
                   value={product?.preHarvest ?? "Follow label directions"}
                 />
 
                 <div className="mt-8 pt-6 border-t border-primary/20 text-xs text-muted-foreground leading-relaxed">
+                  {adjustedPhi !== null && basePhi !== null && (
+                    <>
+                      At {rate} {unit}/20L in a {sprayer} L tank, the interval on {product?.name} shifts from{" "}
+                      {basePhi} to {adjustedPhi} days — heavier rates and larger tanks leave more residue, lighter rates
+                      less. Never harvest earlier than the label PHI.{" "}
+                    </>
+                  )}
                   Always read the {product?.name ?? "product"} label. Wear appropriate PPE. Apply during cool, low-wind
                   conditions for optimal absorption.
                 </div>
