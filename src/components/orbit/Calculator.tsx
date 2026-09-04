@@ -3,6 +3,7 @@ import { Reveal, SectionHeader } from "./Reveal";
 import { Calculator as CalcIcon, Droplets, Clock, ShieldAlert, Leaf, FlaskConical } from "lucide-react";
 import { motion } from "framer-motion";
 import { crops, cropProducts } from "@/data/crops";
+import { phiDays } from "./CropDoctor";
 
 /** Pull the "x ml/g per 20 L" figure out of a catalogue application-rate string. */
 function parseRatePer20L(rate?: string): { value: number; unit: string } | null {
