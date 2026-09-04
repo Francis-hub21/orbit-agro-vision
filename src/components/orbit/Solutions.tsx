@@ -58,7 +58,7 @@ function ProductCard({ p, onContact }: { p: Product; onContact: (n: string) => v
     <div className="glass rounded-2xl overflow-hidden flex flex-col">
       {p.image && (
         <div className="aspect-[4/3] bg-primary/5 overflow-hidden">
-          <img src={p.image} alt={`${p.name} pack`} loading="lazy" className="w-full h-full object-cover" />
+          <img src={p.image} alt={`${p.name} pack`} loading="lazy" className="w-full h-full object-contain p-3" />
         </div>
       )}
       <div className="p-5 flex flex-col gap-3 flex-1">
