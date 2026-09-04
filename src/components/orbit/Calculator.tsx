@@ -41,6 +41,18 @@ export function Calculator() {
   const totalProduct = useMemo(() => Math.round((totalWater / 20) * rate), [totalWater, rate]);
   const tanks = useMemo(() => Math.ceil(totalWater / sprayer), [totalWater, sprayer]);
 
+  /**
+   * Safety interval (PHI) adjusted to the actual programme: the product's own label PHI is
+   * the baseline, then scaled by how far the chosen rate sits above/below the label rate and
+   * by tank size (bigger tanks = heavier, coarser deposits per pass).
+   */
+  const labelRate = parsed?.value ?? rate;
+  const basePhi = phiDays(product?.preHarvest);
+  const rateFactor = labelRate > 0 ? rate / labelRate : 1;
+  const tankFactor = 1 + (sprayer - 20) / 400;
+  const phiFactor = Math.min(2.5, Math.max(0.6, rateFactor * tankFactor));
+  const adjustedPhi = basePhi !== null ? Math.max(1, Math.round(basePhi * phiFactor)) : null;
+
   return (
     <section id="calculator" className="relative py-32 px-6">
       <div className="mx-auto max-w-7xl">
