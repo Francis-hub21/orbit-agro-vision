@@ -106,6 +106,7 @@ function FamilyPanel({ family, onContact }: { family: Family; onContact: (n: str
             <Link
               to="/products/$family"
               params={{ family: family.slug }}
+              search={{ from: "solutions" }}
               className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs uppercase tracking-[0.15em] text-primary-foreground"
             >
               Full {family.title} page <ArrowRight className="h-3.5 w-3.5" />
