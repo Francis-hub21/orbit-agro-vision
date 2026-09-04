@@ -134,8 +134,13 @@ export function Calculator() {
                   <div className="text-[10px] tracking-[0.3em] uppercase text-primary">Live Calculation</div>
                 </div>
 
-                <ResultRow icon={Leaf} label="Crop" value={crop.name} />
+                <ResultRow icon={Leaf} label="Crop / Plant" value={`${crop.emoji} ${crop.name}`} />
                 <ResultRow icon={FlaskConical} label="Product" value={product?.name ?? "—"} />
+                <ResultRow
+                  icon={ShieldAlert}
+                  label="Targets on this crop"
+                  value={(product?.targets?.slice(0, 3).join(", ") || crop.threats.slice(0, 3).join(", ")) ?? "—"}
+                />
                 <ResultRow
                   icon={Droplets}
                   label="Total Product Needed"
@@ -146,11 +151,24 @@ export function Calculator() {
                 <ResultRow icon={Clock} label="Spray Tanks Required" value={`${tanks} tanks`} />
                 <ResultRow
                   icon={ShieldAlert}
-                  label="Safety Interval (PHI)"
+                  label="Adjusted Safety Interval (PHI)"
+                  value={adjustedPhi !== null ? `${adjustedPhi} days` : product?.preHarvest ?? "Follow label directions"}
+                  accent
+                />
+                <ResultRow
+                  icon={ShieldAlert}
+                  label="Label PHI"
                   value={product?.preHarvest ?? "Follow label directions"}
                 />
 
                 <div className="mt-8 pt-6 border-t border-primary/20 text-xs text-muted-foreground leading-relaxed">
+                  {adjustedPhi !== null && basePhi !== null && (
+                    <>
+                      At {rate} {unit}/20L in a {sprayer} L tank, the interval on {product?.name} shifts from{" "}
+                      {basePhi} to {adjustedPhi} days — heavier rates and larger tanks leave more residue, lighter rates
+                      less. Never harvest earlier than the label PHI.{" "}
+                    </>
+                  )}
                   Always read the {product?.name ?? "product"} label. Wear appropriate PPE. Apply during cool, low-wind
                   conditions for optimal absorption.
                 </div>
