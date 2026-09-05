@@ -6,9 +6,12 @@ import logo from "@/assets/orbit/logo.png";
 import { ThemeToggle } from "./ThemeToggle";
 import { families } from "@/data/products";
 
-const links = [
+const leadingLinks = [
   { href: "/", label: "Home" },
   { href: "/#about", label: "About" },
+];
+
+const links = [
   { href: "/#crop-doctor", label: "Crop Doctor" },
   { href: "/news", label: "News" },
   { href: "/#location", label: "Location" },

@@ -135,7 +135,7 @@ export function Calculator() {
                   <div className="text-[10px] tracking-[0.3em] uppercase text-primary">Live Calculation</div>
                 </div>
 
-                <ResultRow icon={Leaf} label="Crop / Plant" value={`${crop.emoji} ${crop.name}`} />
+                <ResultRow icon={Leaf} label="Crop / Plant" value={crop.name} />
                 <ResultRow icon={FlaskConical} label="Product" value={product?.name ?? "—"} />
                 <ResultRow
                   icon={ShieldAlert}
