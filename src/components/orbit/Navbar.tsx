@@ -78,6 +78,13 @@ export function Navbar() {
           </Link>
 
           <ul className="hidden lg:flex items-center gap-7 text-xs tracking-[0.15em] uppercase text-muted-foreground">
+            {leadingLinks.map((l) => (
+              <li key={l.href}>
+                <a href={l.href} className="hover:text-primary transition-colors duration-300">
+                  {l.label}
+                </a>
+              </li>
+            ))}
             <li className="relative" onMouseEnter={openMenu} onMouseLeave={scheduleClose}>
               <Link
                 to="/products"
