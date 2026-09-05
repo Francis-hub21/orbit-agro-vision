@@ -73,11 +73,12 @@ export function Calculator() {
                     <button
                       key={c.id}
                       onClick={() => setCropId(c.id)}
-                      className={`rounded-full px-4 py-1.5 text-xs border transition-all ${
+                      className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs border transition-all ${
                         cropId === c.id ? "border-primary bg-primary/15 text-primary" : "border-border hover:border-primary/50"
                       }`}
                     >
-                      {c.emoji} {c.name}
+                      <img src={c.image} alt="" loading="lazy" className="h-5 w-5 object-contain" />
+                      {c.name}
                     </button>
                   ))}
                 </div>
