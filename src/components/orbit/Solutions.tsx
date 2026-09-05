@@ -159,7 +159,7 @@ function chunk<T>(arr: T[], size: number) {
 }
 
 export function Solutions() {
-  const [open, setOpen] = useState<string | null>("fungicides");
+  const [open, setOpen] = useState<string | null>(null);
   const [requested, setRequested] = useState<string | null>(null);
   const rows = chunk(families, 4);
 
