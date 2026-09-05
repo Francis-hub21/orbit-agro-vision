@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsFamilyRouteImport } from './routes/products.$family'
 
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/news': typeof NewsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/products/$family': typeof ProductsFamilyRoute
   '/products/': typeof ProductsIndexRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/news': typeof NewsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/products/$family': typeof ProductsFamilyRoute
   '/products': typeof ProductsIndexRoute
 }
@@ -60,27 +68,55 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/news': typeof NewsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/products/$family': typeof ProductsFamilyRoute
   '/products/': typeof ProductsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/news' | '/products/$family' | '/products/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/news'
+    | '/reset-password'
+    | '/products/$family'
+    | '/products/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/news' | '/products/$family' | '/products'
-  id: '__root__' | '/' | '/admin' | '/news' | '/products/$family' | '/products/'
+  to:
+    | '/'
+    | '/admin'
+    | '/news'
+    | '/reset-password'
+    | '/products/$family'
+    | '/products'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/news'
+    | '/reset-password'
+    | '/products/$family'
+    | '/products/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   NewsRoute: typeof NewsRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   ProductsFamilyRoute: typeof ProductsFamilyRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news': {
       id: '/news'
       path: '/news'
@@ -123,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   NewsRoute: NewsRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   ProductsFamilyRoute: ProductsFamilyRoute,
   ProductsIndexRoute: ProductsIndexRoute,
 }
