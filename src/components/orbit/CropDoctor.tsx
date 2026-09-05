@@ -124,7 +124,12 @@ export function CropDoctor() {
                             : "border-border hover:border-primary/50"
                         }`}
                       >
-                        <div className="text-2xl mb-1">{c.emoji}</div>
+                        <img
+                          src={c.image}
+                          alt={c.name}
+                          loading="lazy"
+                          className="mx-auto mb-1 h-10 w-10 object-contain"
+                        />
                         <div className="text-[10px] uppercase tracking-wider">{c.name}</div>
                       </button>
                     ))}

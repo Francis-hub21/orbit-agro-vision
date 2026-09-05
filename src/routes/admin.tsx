@@ -26,7 +26,7 @@ export const Route = createFileRoute("/admin")({
 type Post = { id: string; title: string; body: string; published_at: string };
 
 function AdminPage() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("karanjafrancis091@gmail.com");
   const [password, setPassword] = useState("");
   const [session, setSession] = useState<{ email?: string } | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
