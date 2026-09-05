@@ -86,6 +86,21 @@ function AdminPage() {
     setBusy(false);
   };
 
+  const resetPassword = async () => {
+    if (!email.trim()) {
+      setMsg("Enter your email address first.");
+      return;
+    }
+
+    setBusy(true);
+    setMsg(null);
+    const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setMsg(error ? error.message : "Password reset email sent. Open the link in your inbox to choose a new password.");
+    setBusy(false);
+  };
+
   const claimAdmin = async () => {
     setBusy(true);
     const { data, error } = await supabase.rpc("claim_admin");
@@ -176,6 +191,14 @@ function AdminPage() {
                   className="rounded-full border border-primary/40 px-6 py-3 text-xs uppercase tracking-[0.2em] text-primary hover:bg-primary/10 disabled:opacity-60"
                 >
                   Create staff account
+                </button>
+                <button
+                  type="button"
+                  onClick={resetPassword}
+                  disabled={busy}
+                  className="px-2 py-3 text-xs text-primary hover:underline disabled:opacity-60"
+                >
+                  Forgot password?
                 </button>
               </div>
             </form>
