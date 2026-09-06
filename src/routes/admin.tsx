@@ -324,7 +324,13 @@ function AdminPage() {
                   )}
                   <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-4">
                     <div className="min-w-0">
-                      <div className="text-xs text-primary mb-2">{a.published_at}</div>
+                      <div className="mb-2 inline-block rounded-md bg-primary px-2.5 py-1 text-[11px] font-semibold uppercase text-primary-foreground">
+                        {new Date(`${a.published_at}T00:00:00`).toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        })}
+                      </div>
                       <h2 className="font-display text-xl">{a.title}</h2>
                       <p className="mt-2 text-sm text-foreground/85 leading-relaxed whitespace-pre-line">{a.body}</p>
                     </div>
