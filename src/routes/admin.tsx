@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, Plus, Trash2, Newspaper, LogOut, ShieldCheck } from "lucide-react";
+import { Lock, Plus, Trash2, Newspaper, LogOut, ShieldCheck, ImagePlus, X } from "lucide-react";
 import { Navbar } from "@/components/orbit/Navbar";
 import { Footer } from "@/components/orbit/Footer";
 import { supabase } from "@/integrations/supabase/client";
+import { resolveNewsImages, uploadNewsImage } from "@/lib/news-images";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/admin")({
   component: AdminPage,
 });
 
-type Post = { id: string; title: string; body: string; published_at: string };
+type Post = { id: string; title: string; body: string; published_at: string; image_url: string | null };
 
 function AdminPage() {
   const [email, setEmail] = useState("karanjafrancis091@gmail.com");
@@ -35,14 +36,24 @@ function AdminPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [images, setImages] = useState<Record<string, string>>({});
 
   const refreshPosts = useCallback(async () => {
     const { data } = await supabase
       .from("news_posts")
-      .select("id,title,body,published_at")
+      .select("id,title,body,published_at,image_url")
       .order("published_at", { ascending: false });
-    setPosts((data as Post[]) ?? []);
+    const rows = (data as Post[]) ?? [];
+    setPosts(rows);
+    setImages(await resolveNewsImages(rows.map((r) => r.image_url ?? "")));
   }, []);
+
+  const pickFile = (f: File | null) => {
+    setFile(f);
+    setPreview(f ? URL.createObjectURL(f) : null);
+  };
 
   const checkAdmin = useCallback(async (userId: string) => {
     const { data } = await supabase.from("user_roles").select("role").eq("user_id", userId).eq("role", "admin");
@@ -116,12 +127,22 @@ function AdminPage() {
     e.preventDefault();
     if (!title.trim() || !body.trim()) return;
     setBusy(true);
-    const { error } = await supabase.from("news_posts").insert({ title: title.trim(), body: body.trim() });
-    if (error) setMsg(error.message);
-    else {
-      setTitle("");
-      setBody("");
-      await refreshPosts();
+    setMsg(null);
+    try {
+      let imagePath: string | null = null;
+      if (file) imagePath = await uploadNewsImage(file);
+      const { error } = await supabase
+        .from("news_posts")
+        .insert({ title: title.trim(), body: body.trim(), image_url: imagePath });
+      if (error) setMsg(error.message);
+      else {
+        setTitle("");
+        setBody("");
+        pickFile(null);
+        await refreshPosts();
+      }
+    } catch (err) {
+      setMsg(err instanceof Error ? err.message : "Could not upload the picture.");
     }
     setBusy(false);
   };
@@ -245,6 +266,30 @@ function AdminPage() {
                     placeholder="Write the update…"
                     className={`${input} resize-none`}
                   />
+                  <div className="space-y-3">
+                    <label className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-primary/40 px-5 py-2.5 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10">
+                      <ImagePlus className="h-3.5 w-3.5" /> {file ? "Change picture" : "Add a picture"}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => pickFile(e.target.files?.[0] ?? null)}
+                      />
+                    </label>
+                    {preview && (
+                      <div className="relative w-full max-w-sm">
+                        <img src={preview} alt="Selected picture preview" className="w-full rounded-xl object-cover" />
+                        <button
+                          type="button"
+                          onClick={() => pickFile(null)}
+                          aria-label="Remove selected picture"
+                          className="absolute right-2 top-2 rounded-full bg-background/80 p-1.5 text-foreground hover:text-destructive"
+                        >
+                          <X className="h-3.5 w-3.5" />
+                        </button>
+                      </div>
+                    )}
+                  </div>
                   <button
                     disabled={busy}
                     className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-xs uppercase tracking-[0.2em] text-primary-foreground disabled:opacity-60"
@@ -269,6 +314,14 @@ function AdminPage() {
                   transition={{ duration: 0.35 }}
                   className="glass rounded-2xl p-6"
                 >
+                  {a.image_url && images[a.image_url] && (
+                    <img
+                      src={images[a.image_url]}
+                      alt={a.title}
+                      loading="lazy"
+                      className="mb-4 w-full max-h-72 rounded-xl object-cover"
+                    />
+                  )}
                   <div className="grid grid-cols-[minmax(0,1fr)_auto] gap-4">
                     <div className="min-w-0">
                       <div className="text-xs text-primary mb-2">{a.published_at}</div>
