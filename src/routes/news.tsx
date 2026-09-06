@@ -5,6 +5,7 @@ import { Lock } from "lucide-react";
 import { Navbar } from "@/components/orbit/Navbar";
 import { Footer } from "@/components/orbit/Footer";
 import { supabase } from "@/integrations/supabase/client";
+import { resolveNewsImages } from "@/lib/news-images";
 
 export const Route = createFileRoute("/news")({
   head: () => ({
@@ -23,20 +24,23 @@ export const Route = createFileRoute("/news")({
   component: NewsPage,
 });
 
-type Post = { id: string; title: string; body: string; published_at: string };
+type Post = { id: string; title: string; body: string; published_at: string; image_url: string | null };
 
 function NewsPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const [images, setImages] = useState<Record<string, string>>({});
 
   useEffect(() => {
     supabase
       .from("news_posts")
-      .select("id,title,body,published_at")
+      .select("id,title,body,published_at,image_url")
       .order("published_at", { ascending: false })
-      .then(({ data }) => {
-        setPosts((data as Post[]) ?? []);
+      .then(async ({ data }) => {
+        const rows = (data as Post[]) ?? [];
+        setPosts(rows);
         setLoading(false);
+        setImages(await resolveNewsImages(rows.map((r) => r.image_url ?? "")));
       });
   }, []);
 
@@ -74,6 +78,14 @@ function NewsPage() {
                 transition={{ duration: 0.5, delay: i * 0.05 }}
                 className="glass rounded-2xl p-6 md:p-8"
               >
+                {a.image_url && images[a.image_url] && (
+                  <img
+                    src={images[a.image_url]}
+                    alt={a.title}
+                    loading="lazy"
+                    className="mb-5 w-full max-h-[420px] rounded-xl object-cover"
+                  />
+                )}
                 <div className="text-xs text-primary mb-2">{a.published_at}</div>
                 <h2 className="font-display text-2xl">{a.title}</h2>
                 <p className="mt-3 text-sm text-foreground/85 leading-relaxed whitespace-pre-line">{a.body}</p>
