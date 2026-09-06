@@ -26,6 +26,11 @@ export const Route = createFileRoute("/news")({
 
 type Post = { id: string; title: string; body: string; published_at: string; image_url: string | null };
 
+const monthOf = (d: string) =>
+  new Date(`${d}T00:00:00`).toLocaleDateString("en-US", { month: "short" });
+const dayYearOf = (d: string) =>
+  new Date(`${d}T00:00:00`).toLocaleDateString("en-US", { day: "numeric", year: "numeric" });
+
 function NewsPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
@@ -76,19 +81,31 @@ function NewsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="glass rounded-2xl p-6 md:p-8"
+                className="glass overflow-hidden rounded-2xl"
               >
                 {a.image_url && images[a.image_url] && (
-                  <img
-                    src={images[a.image_url]}
-                    alt={a.title}
-                    loading="lazy"
-                    className="mb-5 w-full max-h-[420px] rounded-xl object-cover"
-                  />
+                  <div className="relative">
+                    <img
+                      src={images[a.image_url]}
+                      alt={a.title}
+                      loading="lazy"
+                      className="w-full max-h-[420px] object-cover"
+                    />
+                  </div>
                 )}
-                <div className="text-xs text-primary mb-2">{a.published_at}</div>
-                <h2 className="font-display text-2xl">{a.title}</h2>
-                <p className="mt-3 text-sm text-foreground/85 leading-relaxed whitespace-pre-line">{a.body}</p>
+                <div className="p-6 md:p-8">
+                  <div className="flex items-center gap-4">
+                    <div className="shrink-0 rounded-lg bg-primary px-4 py-2 text-center leading-tight text-primary-foreground">
+                      <div className="text-base font-semibold uppercase">{monthOf(a.published_at)}</div>
+                      <div className="text-xs">{dayYearOf(a.published_at)}</div>
+                    </div>
+                    <div className="min-w-0">
+                      <h2 className="font-display text-2xl">{a.title}</h2>
+                      <div className="mt-1 text-sm text-muted-foreground">by Admin</div>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm text-foreground/85 leading-relaxed whitespace-pre-line">{a.body}</p>
+                </div>
               </motion.article>
             ))}
           </div>
