@@ -20,6 +20,7 @@ export type Database = {
           body: string
           created_at: string
           id: string
+          image_url: string | null
           published_at: string
           title: string
         }
@@ -28,6 +29,7 @@ export type Database = {
           body: string
           created_at?: string
           id?: string
+          image_url?: string | null
           published_at?: string
           title: string
         }
@@ -36,6 +38,7 @@ export type Database = {
           body?: string
           created_at?: string
           id?: string
+          image_url?: string | null
           published_at?: string
           title?: string
         }
