@@ -85,7 +85,7 @@ export function ContactModal({
               <label className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2 block">
                 Your Email
               </label>
-              <input
+              <input name="email" id="request-email"
                 type="email"
                 required
                 value={email}
@@ -99,7 +99,7 @@ export function ContactModal({
               <label className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2 block">
                 What do you need exactly?
               </label>
-              <textarea
+              <textarea name="need" id="request-need"
                 required
                 rows={4}
                 value={need}

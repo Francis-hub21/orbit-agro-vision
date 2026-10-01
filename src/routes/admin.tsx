@@ -181,7 +181,7 @@ function AdminPage() {
               <div className="text-[10px] tracking-[0.3em] uppercase text-primary flex items-center gap-2">
                 <Lock className="h-3 w-3" /> Staff sign in
               </div>
-              <input
+              <input name="email" id="admin-email"
                 type="email"
                 required
                 value={email}
@@ -189,7 +189,7 @@ function AdminPage() {
                 placeholder="you@orbitagro.co.ke"
                 className={input}
               />
-              <input
+              <input name="password" id="admin-password"
                 type="password"
                 required
                 minLength={8}
@@ -258,8 +258,8 @@ function AdminPage() {
                   <div className="text-[10px] tracking-[0.3em] uppercase text-primary flex items-center gap-2">
                     <Newspaper className="h-3 w-3" /> Publish an update
                   </div>
-                  <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Headline" className={input} />
-                  <textarea
+                  <input name="title" id="news-title" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Headline" className={input} />
+                  <textarea name="body" id="news-body"
                     rows={5}
                     value={body}
                     onChange={(e) => setBody(e.target.value)}
@@ -269,7 +269,7 @@ function AdminPage() {
                   <div className="space-y-3">
                     <label className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-primary/40 px-5 py-2.5 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10">
                       <ImagePlus className="h-3.5 w-3.5" /> {file ? "Change picture" : "Add a picture"}
-                      <input
+                      <input name="image" id="news-image"
                         type="file"
                         accept="image/*"
                         className="hidden"

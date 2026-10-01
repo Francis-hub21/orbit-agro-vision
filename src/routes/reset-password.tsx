@@ -88,7 +88,7 @@ function ResetPasswordPage() {
 
           {recoveryReady && (
             <form onSubmit={updatePassword} className="glass mt-8 space-y-4 rounded-2xl p-6 md:p-8">
-              <input
+              <input name="password" id="new-password"
                 type="password"
                 required
                 minLength={8}
@@ -98,7 +98,7 @@ function ResetPasswordPage() {
                 autoComplete="new-password"
                 className={input}
               />
-              <input
+              <input name="confirmPassword" id="confirm-password"
                 type="password"
                 required
                 minLength={8}
