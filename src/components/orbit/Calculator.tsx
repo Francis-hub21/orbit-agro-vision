@@ -199,7 +199,7 @@ function Slider({
           className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-primary to-emerald-glow shadow-[0_0_10px_var(--color-primary)]"
           style={{ width: `${pct}%` }}
         />
-        <input
+        <input name={label.toLowerCase().replace(/\s+/g, "-")}
           type="range"
           min={min} max={max} step={step} value={value}
           onChange={(e) => onChange(parseFloat(e.target.value))}

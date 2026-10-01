@@ -131,7 +131,7 @@ export function AIAssistant() {
                 }}
                 className="border-t border-primary/20 p-3 flex items-center gap-2"
               >
-                <input
+                <input name="orbit-ai-question" id="orbit-ai-question"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask Orbit AI…"
