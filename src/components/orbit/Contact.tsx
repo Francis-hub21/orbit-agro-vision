@@ -73,7 +73,7 @@ export function Contact() {
               </div>
               <div>
                 <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">Message</div>
-                <textarea name="message" id="contact-message"
+                <textarea name="message" id="contact-message" autoComplete="off"
                   rows={4}
                   value={form.message}
                   onChange={(e) => set("message")(e.target.value)}
@@ -135,7 +135,10 @@ function Field({
   return (
     <div>
       <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">{label}</div>
-      <input name={label.toLowerCase().replace(/\s+/g, "-")}
+      <input
+        name={label.toLowerCase().replace(/\s+/g, "-")}
+        id={`contact-${label.toLowerCase()}`}
+        autoComplete={({ name: "name", organization: "organization", email: "email", phone: "tel" } as Record<string, string>)[label.toLowerCase()] ?? "on"}
         type={type}
         value={value}
         required={required}

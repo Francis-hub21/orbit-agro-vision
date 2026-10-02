@@ -113,7 +113,7 @@ function ProductBlock({ product, onContact }: { product: Product; onContact: (na
               <Mail className="h-3.5 w-3.5" /> Contact Us
             </button>
             <a
-              href="/#contact"
+              href="/contact"
               className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-6 py-3 text-xs uppercase tracking-[0.2em] text-primary hover:bg-primary/10 transition-colors"
             >
               Go to Contact Page
@@ -126,8 +126,8 @@ function ProductBlock({ product, onContact }: { product: Product; onContact: (na
 }
 
 const backTargets: Record<string, { label: string; href: string }> = {
-  "crop-doctor": { label: "Back to Crop Doctor", href: "/#crop-doctor" },
-  calculator: { label: "Back to the dosage calculator", href: "/#calculator" },
+  "crop-doctor": { label: "Back to Crop Doctor", href: "/crop-doctor" },
+  calculator: { label: "Back to the dosage calculator", href: "/crop-doctor#calculator" },
   solutions: { label: "Back to Our Products", href: "/#solutions" },
 };
 
