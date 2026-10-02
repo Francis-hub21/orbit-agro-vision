@@ -8,14 +8,14 @@ import { families } from "@/data/products";
 
 const leadingLinks = [
   { href: "/", label: "Home" },
-  { href: "/#about", label: "About" },
+  { href: "/about", label: "About" },
 ];
 
 const links = [
-  { href: "/#crop-doctor", label: "Crop Doctor" },
+  { href: "/crop-doctor", label: "Crop Doctor" },
   { href: "/news", label: "News" },
-  { href: "/#location", label: "Location" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/location", label: "Location" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -134,7 +134,7 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <a
-              href="/#contact"
+              href="/contact"
               className="rounded-full px-5 py-2 text-xs font-medium uppercase tracking-[0.15em] text-white shadow-[0_0_24px_oklch(0.58_0.22_27/0.5)] hover:shadow-[0_0_36px_oklch(0.58_0.22_27/0.8)] transition-all"
               style={{ background: "var(--gradient-emerald-red)" }}
             >

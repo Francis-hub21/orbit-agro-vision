@@ -34,7 +34,7 @@ export function AboutHero() {
               competitive farming solutions tailored for farmers in Kenya and the region.
             </p>
             <a
-              href="#farm-visit"
+              href="/#farm-visit"
               className="mt-6 inline-flex items-center gap-2 self-start rounded-full bg-primary px-5 py-2.5 text-xs font-medium uppercase tracking-[0.15em] text-primary-foreground shadow-[0_0_20px_oklch(0.72_0.20_150/0.5)] hover:shadow-[0_0_36px_oklch(0.72_0.20_150/0.8)] transition-all"
             >
               Schedule a Farm Visit <ArrowRight className="h-3.5 w-3.5" />

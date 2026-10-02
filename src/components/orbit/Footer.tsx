@@ -49,20 +49,20 @@ export function Footer() {
           <div>
             <div className="text-[10px] tracking-[0.3em] uppercase text-primary mb-4">Products</div>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#solutions" className="hover:text-primary">Fungicides</a></li>
-              <li><a href="#solutions" className="hover:text-primary">Insecticides</a></li>
-              <li><a href="#solutions" className="hover:text-primary">Herbicides</a></li>
-              <li><a href="#solutions" className="hover:text-primary">Fertilizers</a></li>
-              <li><a href="#solutions" className="hover:text-primary">Bio Stimulants</a></li>
+              <li><a href="/products" className="hover:text-primary">Fungicides</a></li>
+              <li><a href="/products" className="hover:text-primary">Insecticides</a></li>
+              <li><a href="/products" className="hover:text-primary">Herbicides</a></li>
+              <li><a href="/products" className="hover:text-primary">Fertilizers</a></li>
+              <li><a href="/products" className="hover:text-primary">Bio Stimulants</a></li>
             </ul>
           </div>
           <div>
             <div className="text-[10px] tracking-[0.3em] uppercase text-primary mb-4">Company</div>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#about" className="hover:text-primary">About Us</a></li>
-              <li><a href="#location" className="hover:text-primary">Location</a></li>
-              <li><a href="#contact" className="hover:text-primary">Contact</a></li>
-              <li><a href="#crop-doctor" className="hover:text-primary">Crop Doctor</a></li>
+              <li><a href="/about" className="hover:text-primary">About Us</a></li>
+              <li><a href="/location" className="hover:text-primary">Location</a></li>
+              <li><a href="/contact" className="hover:text-primary">Contact</a></li>
+              <li><a href="/crop-doctor" className="hover:text-primary">Crop Doctor</a></li>
             </ul>
           </div>
         </div>

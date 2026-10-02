@@ -11,7 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as LocationRouteImport } from './routes/location'
+import { Route as CropDoctorRouteImport } from './routes/crop-doctor'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsFamilyRouteImport } from './routes/products.$family'
@@ -26,9 +30,29 @@ const NewsRoute = NewsRouteImport.update({
   path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocationRoute = LocationRouteImport.update({
+  id: '/location',
+  path: '/location',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CropDoctorRoute = CropDoctorRouteImport.update({
+  id: '/crop-doctor',
+  path: '/crop-doctor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -49,7 +73,11 @@ const ProductsFamilyRoute = ProductsFamilyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/crop-doctor': typeof CropDoctorRoute
+  '/location': typeof LocationRoute
   '/news': typeof NewsRoute
   '/reset-password': typeof ResetPasswordRoute
   '/products/$family': typeof ProductsFamilyRoute
@@ -57,7 +85,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/crop-doctor': typeof CropDoctorRoute
+  '/location': typeof LocationRoute
   '/news': typeof NewsRoute
   '/reset-password': typeof ResetPasswordRoute
   '/products/$family': typeof ProductsFamilyRoute
@@ -66,7 +98,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/contact': typeof ContactRoute
+  '/crop-doctor': typeof CropDoctorRoute
+  '/location': typeof LocationRoute
   '/news': typeof NewsRoute
   '/reset-password': typeof ResetPasswordRoute
   '/products/$family': typeof ProductsFamilyRoute
@@ -76,7 +112,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/admin'
+    | '/contact'
+    | '/crop-doctor'
+    | '/location'
     | '/news'
     | '/reset-password'
     | '/products/$family'
@@ -84,7 +124,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/admin'
+    | '/contact'
+    | '/crop-doctor'
+    | '/location'
     | '/news'
     | '/reset-password'
     | '/products/$family'
@@ -92,7 +136,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/admin'
+    | '/contact'
+    | '/crop-doctor'
+    | '/location'
     | '/news'
     | '/reset-password'
     | '/products/$family'
@@ -101,7 +149,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
+  ContactRoute: typeof ContactRoute
+  CropDoctorRoute: typeof CropDoctorRoute
+  LocationRoute: typeof LocationRoute
   NewsRoute: typeof NewsRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   ProductsFamilyRoute: typeof ProductsFamilyRoute
@@ -124,11 +176,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/location': {
+      id: '/location'
+      path: '/location'
+      fullPath: '/location'
+      preLoaderRoute: typeof LocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crop-doctor': {
+      id: '/crop-doctor'
+      path: '/crop-doctor'
+      fullPath: '/crop-doctor'
+      preLoaderRoute: typeof CropDoctorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -157,7 +237,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
+  ContactRoute: ContactRoute,
+  CropDoctorRoute: CropDoctorRoute,
+  LocationRoute: LocationRoute,
   NewsRoute: NewsRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   ProductsFamilyRoute: ProductsFamilyRoute,
