@@ -5,14 +5,14 @@ import { Link } from "@tanstack/react-router";
 import { Reveal, SectionHeader } from "./Reveal";
 import { ContactModal } from "./ContactModal";
 import { families, type Family, type Product } from "@/data/products";
-import imgFung from "@/assets/orbit/cat-fungicides.jpg";
-import imgInsect from "@/assets/orbit/cat-insecticides.jpg";
-import imgBio from "@/assets/orbit/cat-biostimulants.jpg";
-import imgHerb from "@/assets/orbit/cat-herbicides.jpg";
-import imgFert from "@/assets/orbit/cat-fertilizers.jpg";
-import imgSoil from "@/assets/orbit/cat-soil.jpg";
-import imgPub from "@/assets/orbit/cat-publichealth.jpg";
-import imgSpray from "@/assets/orbit/cat-sprayers.jpg";
+import imgFung from "@/assets/orbit/categories/fungicides.png.asset.json";
+import imgInsect from "@/assets/orbit/categories/insecticides.png.asset.json";
+import imgBio from "@/assets/orbit/categories/biostimulants.png.asset.json";
+import imgHerb from "@/assets/orbit/categories/herbicides.png.asset.json";
+import imgFert from "@/assets/orbit/categories/fertilizers.png.asset.json";
+import imgSoil from "@/assets/orbit/categories/soil-conditioners.png.asset.json";
+import imgPub from "@/assets/orbit/categories/public-health.png.asset.json";
+import imgSpray from "@/assets/orbit/categories/knapsack-sprayers.png.asset.json";
 
 const CATALOGUE_URL = "https://www.orbitagro.co.ke/assets/orbit-agro-product-catalogue_web.pdf";
 
