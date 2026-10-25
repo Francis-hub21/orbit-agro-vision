@@ -5,18 +5,18 @@ import { Link } from "@tanstack/react-router";
 import { Reveal, SectionHeader } from "./Reveal";
 import { ContactModal } from "./ContactModal";
 import { families, type Family, type Product } from "@/data/products";
-import imgFung from "@/assets/orbit/cat-fungicides.jpg";
-import imgInsect from "@/assets/orbit/cat-insecticides.jpg";
-import imgBio from "@/assets/orbit/cat-biostimulants.jpg";
-import imgHerb from "@/assets/orbit/cat-herbicides.jpg";
-import imgFert from "@/assets/orbit/cat-fertilizers.jpg";
-import imgSoil from "@/assets/orbit/cat-soil.jpg";
-import imgPub from "@/assets/orbit/cat-publichealth.jpg";
-import imgSpray from "@/assets/orbit/cat-sprayers.jpg";
+import imgFung from "@/assets/orbit/categories/fungicides.png.asset.json";
+import imgInsect from "@/assets/orbit/categories/insecticides.png.asset.json";
+import imgBio from "@/assets/orbit/categories/biostimulants.png.asset.json";
+import imgHerb from "@/assets/orbit/categories/herbicides.png.asset.json";
+import imgFert from "@/assets/orbit/categories/fertilizers.png.asset.json";
+import imgSoil from "@/assets/orbit/categories/soil-conditioners.png.asset.json";
+import imgPub from "@/assets/orbit/categories/public-health.png.asset.json";
+import imgSpray from "@/assets/orbit/categories/knapsack-sprayers.png.asset.json";
 
 const CATALOGUE_URL = "https://www.orbitagro.co.ke/assets/orbit-agro-product-catalogue_web.pdf";
 
-const meta: Record<string, { icon: typeof Bug; image: string }> = {
+const meta: Record<string, { icon: typeof Bug; image: { url: string } }> = {
   fungicides: { icon: Shield, image: imgFung },
   insecticides: { icon: Bug, image: imgInsect },
   "bio-stimulants": { icon: Sprout, image: imgBio },
@@ -122,8 +122,8 @@ function FamilyPanel({ family, onContact }: { family: Family; onContact: (n: str
           </div>
         </div>
         {m && (
-          <div className="rounded-xl overflow-hidden mb-6 aspect-[16/7] sm:aspect-[21/7]">
-            <img src={m.image} alt={family.title} loading="lazy" className="w-full h-full object-cover" />
+          <div className="rounded-xl overflow-hidden mb-6 aspect-[16/7] sm:aspect-[21/7] bg-white/90">
+            <img src={m.image.url} alt={family.title} loading="lazy" className="w-full h-full object-contain p-3" />
           </div>
         )}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -205,9 +205,9 @@ export function Solutions() {
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         className={`group relative w-full text-left h-full glass rounded-2xl overflow-hidden cursor-pointer ${isOpen ? "ring-1 ring-primary/60 shadow-[0_0_30px_oklch(0.72_0.20_150/0.25)]" : ""}`}
                       >
-                        <div className="aspect-[4/3] overflow-hidden relative">
+                        <div className="aspect-[4/3] overflow-hidden relative bg-white/90">
                           <img
-                            src={meta[f.slug]?.image}
+                            src={meta[f.slug]?.image?.url}
                             alt={f.title}
                             loading="lazy"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
