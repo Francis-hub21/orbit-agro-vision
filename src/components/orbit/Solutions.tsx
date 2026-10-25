@@ -16,7 +16,7 @@ import imgSpray from "@/assets/orbit/categories/knapsack-sprayers.png.asset.json
 
 const CATALOGUE_URL = "https://www.orbitagro.co.ke/assets/orbit-agro-product-catalogue_web.pdf";
 
-const meta: Record<string, { icon: typeof Bug; image: string }> = {
+const meta: Record<string, { icon: typeof Bug; image: { url: string } }> = {
   fungicides: { icon: Shield, image: imgFung },
   insecticides: { icon: Bug, image: imgInsect },
   "bio-stimulants": { icon: Sprout, image: imgBio },
