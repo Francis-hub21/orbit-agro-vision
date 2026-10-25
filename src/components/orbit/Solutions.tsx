@@ -205,9 +205,9 @@ export function Solutions() {
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         className={`group relative w-full text-left h-full glass rounded-2xl overflow-hidden cursor-pointer ${isOpen ? "ring-1 ring-primary/60 shadow-[0_0_30px_oklch(0.72_0.20_150/0.25)]" : ""}`}
                       >
-                        <div className="aspect-[4/3] overflow-hidden relative">
+                        <div className="aspect-[4/3] overflow-hidden relative bg-white/90">
                           <img
-                            src={meta[f.slug]?.image}
+                            src={meta[f.slug]?.image?.url}
                             alt={f.title}
                             loading="lazy"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
