@@ -3,6 +3,7 @@ import { PageShell } from "@/components/orbit/PageShell";
 import { AboutHero } from "@/components/orbit/AboutHero";
 import { Storytelling } from "@/components/orbit/Storytelling";
 import { ExpertsAction } from "@/components/orbit/ExpertsAction";
+import { CoreValues } from "@/components/orbit/CoreValues";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -15,5 +16,5 @@ export const Route = createFileRoute("/about")({
       { name: "twitter:card", content: "summary" },
     ],
   }),
-  component: () => <PageShell><Storytelling /><AboutHero /><ExpertsAction /></PageShell>,
+  component: () => <PageShell><Storytelling /><AboutHero /><ExpertsAction /><CoreValues /></PageShell>,
 });
