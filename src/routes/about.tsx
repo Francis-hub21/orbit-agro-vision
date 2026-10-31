@@ -16,5 +16,5 @@ export const Route = createFileRoute("/about")({
       { name: "twitter:card", content: "summary" },
     ],
   }),
-  component: () => <PageShell><Storytelling /><AboutHero /><ExpertsAction /></PageShell>,
+  component: () => <PageShell><Storytelling /><AboutHero /><ExpertsAction /><CoreValues /></PageShell>,
 });
