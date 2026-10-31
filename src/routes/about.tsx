@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/orbit/PageShell";
 import { AboutHero } from "@/components/orbit/AboutHero";
 import { Storytelling } from "@/components/orbit/Storytelling";
+import { ExpertsAction } from "@/components/orbit/ExpertsAction";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
