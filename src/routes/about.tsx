@@ -3,6 +3,7 @@ import { PageShell } from "@/components/orbit/PageShell";
 import { AboutHero } from "@/components/orbit/AboutHero";
 import { Storytelling } from "@/components/orbit/Storytelling";
 import { ExpertsAction } from "@/components/orbit/ExpertsAction";
+import { CoreValues } from "@/components/orbit/CoreValues";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
