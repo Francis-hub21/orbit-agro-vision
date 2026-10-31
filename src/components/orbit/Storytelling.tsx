@@ -1,5 +1,6 @@
 import { Reveal, SectionHeader } from "./Reveal";
 import aboutImg from "@/assets/orbit/about.jpg";
+import { motion } from "framer-motion";
 
 export function Storytelling() {
   return (
