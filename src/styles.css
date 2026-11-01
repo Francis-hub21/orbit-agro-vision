@@ -198,4 +198,16 @@
     pointer-events: none;
     mix-blend-mode: multiply;
   }
+  .orbit-glow {
+    animation: orbit-glow-pulse 3.2s ease-in-out infinite;
+  }
+}
+
+@keyframes orbit-glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px oklch(0.88 0.15 95 / 0.45)) drop-shadow(0 0 18px oklch(0.88 0.15 95 / 0.28));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px oklch(0.88 0.15 95 / 0.75)) drop-shadow(0 0 36px oklch(0.88 0.15 95 / 0.50));
+  }
 }

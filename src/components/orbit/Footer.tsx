@@ -68,7 +68,15 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-border flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
+        <div className="mt-12 flex justify-center">
+          <img
+            src={thinkLogo.url}
+            alt="You need Agrochemicals.... Think Orbit Agro Products"
+            loading="lazy"
+            className="orbit-glow w-56 md:w-72"
+          />
+        </div>
+        <div className="mt-10 pt-8 border-t border-border flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
           <div>© {new Date().getFullYear()} Orbit Agro Chemical Industries Limited · Nairobi, Kenya · All Rights Reserved</div>
           <div className="tracking-[0.3em] uppercase">We Grow Through Partnerships</div>
         </div>
