@@ -1,3 +1,5 @@
+import thinkLogo from "@/assets/orbit/brand/orbit-think-logo.png.asset.json";
+
 export function Footer() {
   return (
     <footer className="relative border-t border-border mt-20">
