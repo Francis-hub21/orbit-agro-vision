@@ -65,6 +65,7 @@ export function Footer() {
               <li><a href="/location" className="hover:text-primary">Location</a></li>
               <li><a href="/contact" className="hover:text-primary">Contact</a></li>
               <li><a href="/crop-doctor" className="hover:text-primary">Crop Doctor</a></li>
+              <li><a href="/news" className="hover:text-primary">News</a></li>
             </ul>
           </div>
         </div>
