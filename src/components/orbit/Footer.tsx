@@ -1,3 +1,5 @@
+import thinkLogo from "@/assets/orbit/brand/orbit-think-logo.png.asset.json";
+
 export function Footer() {
   return (
     <footer className="relative border-t border-border mt-20">
@@ -63,10 +65,19 @@ export function Footer() {
               <li><a href="/location" className="hover:text-primary">Location</a></li>
               <li><a href="/contact" className="hover:text-primary">Contact</a></li>
               <li><a href="/crop-doctor" className="hover:text-primary">Crop Doctor</a></li>
+              <li><a href="/news" className="hover:text-primary">News</a></li>
             </ul>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-border flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
+        <div className="mt-12 flex justify-center">
+          <img
+            src={thinkLogo.url}
+            alt="You need Agrochemicals.... Think Orbit Agro Products"
+            loading="lazy"
+            className="orbit-glow w-56 md:w-72"
+          />
+        </div>
+        <div className="mt-10 pt-8 border-t border-border flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
           <div>© {new Date().getFullYear()} Orbit Agro Chemical Industries Limited · Nairobi, Kenya · All Rights Reserved</div>
           <div className="tracking-[0.3em] uppercase">We Grow Through Partnerships</div>
         </div>
