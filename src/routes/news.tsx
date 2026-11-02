@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Clock, User, FolderOpen, Phone, Mail, CalendarClock } from "lucide-react";
+import { Clock, User, FolderOpen, Phone, Mail, CalendarClock, MapPin } from "lucide-react";
 import { Navbar } from "@/components/orbit/Navbar";
 import { Footer } from "@/components/orbit/Footer";
 import tomatoImg from "@/assets/orbit/news/news-tomato.png.asset.json";
@@ -9,6 +9,9 @@ import potatoImg from "@/assets/orbit/news/news-potato.png.asset.json";
 import onionImg from "@/assets/orbit/news/news-onion.png.asset.json";
 import wheatImg from "@/assets/orbit/news/news-wheat.png.asset.json";
 import mangoImg from "@/assets/orbit/news/news-mango.png.asset.json";
+import wambuguImg from "@/assets/orbit/news/event-wambugu-atc-2025.jpg.asset.json";
+import agitechImg from "@/assets/orbit/news/event-agitech-expo-2024.jpg.asset.json";
+import kisimaImg from "@/assets/orbit/news/event-kisima-meru-2024.jpg.asset.json";
 
 export const Route = createFileRoute("/news")({
   head: () => ({
@@ -17,13 +20,13 @@ export const Route = createFileRoute("/news")({
       {
         name: "description",
         content:
-          "Farming guides for tomato, maize, potato, onion, wheat and mango from Orbit Agro Chemical Industries Limited — supporting Kenyan farmers for high yields.",
+          "Farming guides, events and announcements from Orbit Agro Chemical Industries Limited — supporting Kenyan farmers for high yields.",
       },
       { property: "og:title", content: "Our News & Farmers Support — Orbit Agro" },
       {
         property: "og:description",
         content:
-          "Farming guides for tomato, maize, potato, onion, wheat and mango from Orbit Agro Chemical Industries Limited.",
+          "Farming guides, events and announcements from Orbit Agro Chemical Industries Limited.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -32,24 +35,68 @@ export const Route = createFileRoute("/news")({
   component: NewsPage,
 });
 
+type CategoryId = "farming-news" | "events-announcements";
+
 type Article = {
   id: string;
   title: string;
   image: string;
   date: string;
-  author: string;
-  category: string;
+  author: string | null;
+  category: CategoryId;
+  location?: string;
   body: string[];
 };
 
+const categories: { id: CategoryId; label: string }[] = [
+  { id: "farming-news", label: "Farming News" },
+  { id: "events-announcements", label: "Events & Announcements" },
+];
+
 const articles: Article[] = [
+  {
+    id: "wambugu-atc-exhibition-2025",
+    title: "Wambugu ATC Exhibition 2025",
+    image: wambuguImg.url,
+    date: "July 25, 2025",
+    author: null,
+    category: "events-announcements",
+    location: "25th and 26th July 2025 · Nyeri",
+    body: [
+      "Orbit Agrochemical Industries Limited at the Wambugu ATC exhibition, held on 25th and 26th July 2025 in Nyeri.",
+    ],
+  },
+  {
+    id: "agitech-grand-expo-2024",
+    title: "AGITECH Grand Expo 2024",
+    image: agitechImg.url,
+    date: "October 11, 2024",
+    author: null,
+    category: "events-announcements",
+    location: "11th and 12th October 2024 · Mutithi, Mwea, Kirinyaga County (Embu – Makutano highway)",
+    body: [
+      "Orbit Agrochemical Industries Limited at the AGITECH Grand Expo 2024, held on 11th and 12th October 2024 at Mutithi, Mwea, Kirinyaga County, along the Embu – Makutano highway.",
+    ],
+  },
+  {
+    id: "kisima-farm-meru-field-day-2024",
+    title: "Kisima Farm, Meru County — Farmers Field Day 2024",
+    image: kisimaImg.url,
+    date: "October 3, 2024",
+    author: null,
+    category: "events-announcements",
+    location: "3rd October 2024 · Kisima Farm, Meru County",
+    body: [
+      "Orbit Agrochemical Industries Limited at the Farmers Field Day 2024, held on 3rd October 2024 at Kisima Farm, Meru County.",
+    ],
+  },
   {
     id: "tomato-farming",
     title: "Tomato Farming",
     image: tomatoImg.url,
     date: "August 14, 2023",
     author: "by Admin",
-    category: "Farming Guides",
+    category: "farming-news",
     body: [
       "Numerous varieties of the tomato plant are widely grown in temperate climates across the world, with greenhouses allowing for the production of tomatoes throughout all seasons of the year. Tomato plants typically grow to 1–3 meters (3–10 ft) in height.",
     ],
@@ -60,7 +107,7 @@ const articles: Article[] = [
     image: maizeImg.url,
     date: "August 14, 2023",
     author: "by Admin",
-    category: "Farming Guides",
+    category: "farming-news",
     body: [
       "Maize is a tall annual grass with a single stem, ranging in height from 1.2 m (4 ft) to 4 m (13 ft). The long narrow leaves arise from the nodes or joints, alternately on opposite sides on the stalk. Maize is monoecious, with separate male and female flowers on the same plant",
     ],
@@ -71,7 +118,7 @@ const articles: Article[] = [
     image: potatoImg.url,
     date: "August 14, 2023",
     author: "by Admin",
-    category: "Farming Guides",
+    category: "farming-news",
     body: [
       "Potato plants are herbaceous perennials that grow about 60 centimetres (24 inches) high, depending on variety, with the leaves dying back after flowering, fruiting and tuber formation.",
     ],
@@ -82,7 +129,7 @@ const articles: Article[] = [
     image: onionImg.url,
     date: "August 14, 2023",
     author: "by Admin",
-    category: "Farming Guides",
+    category: "farming-news",
     body: [
       "The onion has been grown and selectively bred in cultivation for at least 7,000 years. It is a biennial plant but is usually grown as an annual. Modern varieties typically grow to a height of 15 to 45 cm (6 to 18 in).",
     ],
@@ -93,7 +140,7 @@ const articles: Article[] = [
     image: wheatImg.url,
     date: "August 14, 2023",
     author: "by Admin",
-    category: "Farming Guides",
+    category: "farming-news",
     body: [
       "Wheat is an annual crop. It can be planted in autumn and harvested in early summer as winter wheat in climates that are not too severe, or planted in spring and harvested in autumn as spring wheat. It is normally planted after tilling the soil by ploughing and then harrowing to kill weeds and create an even surface.",
     ],
@@ -104,7 +151,7 @@ const articles: Article[] = [
     image: mangoImg.url,
     date: "August 14, 2023",
     author: "by Admin",
-    category: "Farming Guides",
+    category: "farming-news",
     body: [
       "Mango trees grow to 30–40 meters (98–131 feet) tall, with a crown radius of 10–15 m (33–49 ft). The trees are long-lived, as some specimens still fruit after 300 years.",
       "In deep soil, the taproot descends to a depth of 6 m (20 ft), with profuse, wide-spreading feeder roots and anchor roots penetrating deeply into the soil.",
@@ -113,6 +160,8 @@ const articles: Article[] = [
 ];
 
 function NewsPage() {
+  const countOf = (id: CategoryId) => articles.filter((a) => a.category === id).length;
+
   return (
     <main className="relative">
       <Navbar />
@@ -160,13 +209,21 @@ function NewsPage() {
                       <span className="inline-flex items-center gap-1.5">
                         <Clock className="h-3.5 w-3.5 text-primary" /> {a.date}
                       </span>
+                      {a.author && (
+                        <span className="inline-flex items-center gap-1.5">
+                          <User className="h-3.5 w-3.5 text-primary" /> {a.author}
+                        </span>
+                      )}
                       <span className="inline-flex items-center gap-1.5">
-                        <User className="h-3.5 w-3.5 text-primary" /> {a.author}
-                      </span>
-                      <span className="inline-flex items-center gap-1.5">
-                        <FolderOpen className="h-3.5 w-3.5 text-primary" /> {a.category}
+                        <FolderOpen className="h-3.5 w-3.5 text-primary" />{" "}
+                        {categories.find((c) => c.id === a.category)?.label}
                       </span>
                     </div>
+                    {a.location && (
+                      <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
+                        <MapPin className="h-3.5 w-3.5 text-primary" /> {a.location}
+                      </div>
+                    )}
                     <div className="mt-4 space-y-3">
                       {a.body.map((p, j) => (
                         <p key={j} className="text-sm md:text-[15px] text-foreground/85 leading-relaxed">
@@ -184,17 +241,20 @@ function NewsPage() {
                 <h3 className="font-display text-lg">Categories</h3>
                 <div className="mt-3 h-px w-full bg-border" />
                 <ul className="mt-4 space-y-3 text-sm">
-                  {articles.map((a) => (
-                    <li key={a.id}>
-                      <a
-                        href={`#${a.id}`}
-                        className="flex items-center justify-between gap-3 text-muted-foreground transition-colors hover:text-primary"
-                      >
-                        <span>{a.title}</span>
-                        <span className="text-xs opacity-70">1</span>
-                      </a>
-                    </li>
-                  ))}
+                  {categories.map((c) => {
+                    const first = articles.find((a) => a.category === c.id);
+                    return (
+                      <li key={c.id}>
+                        <a
+                          href={`#${first?.id ?? ""}`}
+                          className="flex items-center justify-between gap-3 text-muted-foreground transition-colors hover:text-primary"
+                        >
+                          <span>{c.label}</span>
+                          <span className="text-xs opacity-70">{countOf(c.id)}</span>
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
 
