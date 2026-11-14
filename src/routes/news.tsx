@@ -200,7 +200,11 @@ function NewsPage() {
                       src={a.image}
                       alt={a.title}
                       loading="lazy"
-                      className="w-full aspect-[16/9] object-cover"
+                      className={`w-full aspect-[3/2] ${
+                        a.category === "events-announcements"
+                          ? "bg-background p-3 object-contain"
+                          : "object-cover"
+                      }`}
                     />
                   </div>
                   <div className="p-6 md:p-8">
