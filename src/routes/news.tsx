@@ -195,12 +195,20 @@ function NewsPage() {
                   transition={{ duration: 0.55, delay: 0.04 * (i % 2), ease: [0.22, 1, 0.36, 1] }}
                   className="glass overflow-hidden rounded-2xl scroll-mt-28"
                 >
-                  <div className="relative">
+                  <div
+                    className={`relative w-full ${
+                      a.category === "events-announcements" ? "aspect-[4/5]" : "aspect-[16/9]"
+                    }`}
+                  >
                     <img
                       src={a.image}
                       alt={a.title}
                       loading="lazy"
-                      className="w-full aspect-[16/9] object-cover"
+                      className={`absolute inset-0 h-full w-full ${
+                        a.category === "events-announcements"
+                          ? "bg-background p-3 object-contain"
+                          : "object-cover"
+                      }`}
                     />
                   </div>
                   <div className="p-6 md:p-8">
