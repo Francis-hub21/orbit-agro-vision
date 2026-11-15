@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import logo from "@/assets/orbit/logo.png";
 import { ThemeToggle } from "./ThemeToggle";
 import { families } from "@/data/products";
@@ -60,7 +60,7 @@ export function Navbar() {
       className="fixed top-0 left-0 right-0 z-50"
     >
       <div className="mx-auto mt-4 max-w-7xl px-6">
-        <nav className="glass flex items-center justify-between rounded-full px-5 py-2.5">
+        <nav className="glass relative flex items-center justify-between rounded-full px-4 py-2.5 md:px-5">
           <Link to="/" className="flex items-center gap-3">
             <img
               src={logo}
@@ -135,12 +135,82 @@ export function Navbar() {
             <ThemeToggle />
             <a
               href="/contact"
-              className="rounded-full px-5 py-2 text-xs font-medium uppercase tracking-[0.15em] text-white shadow-[0_0_24px_oklch(0.58_0.22_27/0.5)] hover:shadow-[0_0_36px_oklch(0.58_0.22_27/0.8)] transition-all"
+              className="hidden sm:inline-flex rounded-full px-5 py-2 text-xs font-medium uppercase tracking-[0.15em] text-white shadow-[0_0_24px_oklch(0.58_0.22_27/0.5)] hover:shadow-[0_0_36px_oklch(0.58_0.22_27/0.8)] transition-all"
               style={{ background: "var(--gradient-emerald-red)" }}
             >
               Get Quote
             </a>
+            <button
+              type="button"
+              aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
+              onClick={() => setMenuOpen((open) => !open)}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-foreground hover:bg-primary/10 hover:text-primary transition-colors lg:hidden"
+            >
+              {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
+
+          <AnimatePresence>
+            {menuOpen && (
+              <motion.div
+                id="mobile-navigation"
+                initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                transition={{ duration: 0.18 }}
+                className="glass absolute left-0 right-0 top-[calc(100%+0.5rem)] max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-2xl p-3 shadow-[0_20px_60px_oklch(0_0_0/0.25)] lg:hidden"
+              >
+                <ul className="flex flex-col text-sm text-foreground">
+                  {leadingLinks.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="block rounded-xl px-4 py-3 hover:bg-primary/10 hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                  <li>
+                    <button
+                      type="button"
+                      aria-expanded={menuOpen}
+                      onClick={() => {
+                        setMenuOpen(false);
+                        document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left hover:bg-primary/10 hover:text-primary transition-colors"
+                    >
+                      Our Products <ChevronDown className="h-4 w-4 -rotate-90" />
+                    </button>
+                  </li>
+                  {links.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="block rounded-xl px-4 py-3 hover:bg-primary/10 hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                  <li className="border-t border-border mt-2 pt-2">
+                    <a
+                      href="/contact"
+                      onClick={() => setMenuOpen(false)}
+                      className="block rounded-xl bg-primary px-4 py-3 text-center font-medium text-primary-foreground"
+                    >
+                      Get Quote
+                    </a>
+                  </li>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
       </div>
     </motion.header>
