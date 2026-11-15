@@ -228,13 +228,20 @@ export function Solutions() {
                           </div>
                         </div>
                       </motion.button>
+                      <div className="md:hidden">
+                        <AnimatePresence initial={false}>
+                          {isOpen && <FamilyPanel key={f.slug} family={f} onContact={setRequested} />}
+                        </AnimatePresence>
+                      </div>
                     </motion.div>
                   );
                 })}
               </div>
-              <AnimatePresence initial={false} mode="wait">
-                {openInRow && <FamilyPanel key={openInRow.slug} family={openInRow} onContact={setRequested} />}
-              </AnimatePresence>
+              <div className="hidden md:block">
+                <AnimatePresence initial={false} mode="wait">
+                  {openInRow && <FamilyPanel key={openInRow.slug} family={openInRow} onContact={setRequested} />}
+                </AnimatePresence>
+              </div>
             </div>
           );
         })}
