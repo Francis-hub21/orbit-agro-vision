@@ -176,7 +176,7 @@ export function Solutions() {
           const openInRow = row.find((f) => f.slug === open);
           return (
             <div key={r} className="mb-5">
-              <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="relative grid grid-cols-1 items-start gap-5 sm:grid-cols-2 md:items-stretch lg:grid-cols-4">
                 <div className="pointer-events-none absolute inset-0 flex items-center justify-center -z-10">
                   <motion.div
                     initial={{ scale: 0.6, opacity: 0 }}
@@ -203,7 +203,7 @@ export function Solutions() {
                         onClick={() => setOpen(isOpen ? null : f.slug)}
                         whileHover={{ y: -6 }}
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                        className={`group relative w-full text-left h-full glass rounded-2xl overflow-hidden cursor-pointer ${isOpen ? "ring-1 ring-primary/60 shadow-[0_0_30px_oklch(0.72_0.20_150/0.25)]" : ""}`}
+                        className={`group relative h-auto w-full text-left glass rounded-2xl overflow-hidden cursor-pointer md:h-full ${isOpen ? "ring-1 ring-primary/60 shadow-[0_0_30px_oklch(0.72_0.20_150/0.25)]" : ""}`}
                       >
                         <div className="aspect-[4/3] overflow-hidden relative bg-white/90">
                           <img
