@@ -22,6 +22,7 @@ export function Navbar() {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const last = useRef(0);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -160,7 +161,7 @@ export function Navbar() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -6, scale: 0.98 }}
                 transition={{ duration: 0.18 }}
-                className="glass absolute left-0 right-0 top-[calc(100%+0.5rem)] max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-2xl p-3 shadow-[0_20px_60px_oklch(0_0_0/0.25)] lg:hidden"
+                className="absolute left-0 right-0 top-[calc(100%+0.5rem)] max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-2xl border border-border bg-background p-3 shadow-[0_20px_60px_oklch(0_0_0/0.25)] backdrop-blur-xl lg:hidden"
               >
                 <ul className="flex flex-col text-sm text-foreground">
                   {leadingLinks.map((link) => (
@@ -177,15 +178,47 @@ export function Navbar() {
                   <li>
                     <button
                       type="button"
-                      aria-expanded={menuOpen}
-                      onClick={() => {
-                        setMenuOpen(false);
-                        document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" });
-                      }}
+                      aria-expanded={mobileProductsOpen}
+                      aria-controls="mobile-product-links"
+                      onClick={() => setMobileProductsOpen((open) => !open)}
                       className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left hover:bg-primary/10 hover:text-primary transition-colors"
                     >
-                      Our Products <ChevronDown className="h-4 w-4 -rotate-90" />
+                      Our Products <ChevronDown className={`h-4 w-4 transition-transform ${mobileProductsOpen ? "rotate-180" : ""}`} />
                     </button>
+                    <AnimatePresence initial={false}>
+                      {mobileProductsOpen && (
+                        <motion.div
+                          id="mobile-product-links"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="ml-4 border-l border-primary/20 py-1 pl-3">
+                            <Link
+                              to="/products"
+                              onClick={() => setMenuOpen(false)}
+                              className="block rounded-lg px-3 py-2 text-sm font-medium text-primary hover:bg-primary/10"
+                            >
+                              Browse all products
+                            </Link>
+                            {families.map((family) => (
+                              <Link
+                                key={family.slug}
+                                to="/products/$family"
+                                params={{ family: family.slug }}
+                                onClick={() => setMenuOpen(false)}
+                                className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                              >
+                                {family.title}
+                                <span className="text-xs text-muted-foreground">{family.products.length}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </li>
                   {links.map((link) => (
                     <li key={link.href}>
