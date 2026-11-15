@@ -7,3 +7,4 @@
 - [x] Add three event articles (Wambugu ATC Exhibition 2025, AGITECH Grand Expo 2024, Kisima Farm Meru Field Day 2024) with uploaded event photos
 - [x] Final visual verification of news page + footer (desktop & mobile)
 - [x] Add a three-line mobile navigation menu and show selected product-family details directly beneath that family on phones
+- [ ] Improve phone menu readability and verify product navigation and phone-width fit
