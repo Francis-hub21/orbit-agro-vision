@@ -1,105 +1,55 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Sprout, Beaker, Truck, BarChart3 } from "lucide-react";
-import { useState, useEffect } from "react";
-
-const steps = [
-  { icon: Sprout, title: "Identify the Crop", text: "Tell Orbit what you're growing. Our intelligence engine maps regional risks and growth stages instantly." },
-  { icon: Beaker, title: "Get Precise Solutions", text: "Receive scientifically validated products, dosages and application windows tailored to your acreage." },
-  { icon: Truck, title: "Distribution at Speed", text: "Order through the nearest agrovet or distributor with real-time inventory and logistics tracking." },
-  { icon: BarChart3, title: "Monitor & Optimize", text: "Live weather, drone scans and AI agronomy guidance continuously improve your yield." },
-];
+import { X } from "lucide-react";
+import { useEffect } from "react";
 
 export function DemoModal({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const [i, setI] = useState(0);
   useEffect(() => {
     if (!open) return;
-    const id = setInterval(() => setI((v) => (v + 1) % steps.length), 4200);
-    return () => clearInterval(id);
-  }, [open]);
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [open, onClose]);
+
+  if (!open) return null;
 
   return (
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[90] flex items-center justify-center bg-background/85 backdrop-blur-xl p-6"
-          onClick={onClose}
-        >
-          <motion.div
-            initial={{ scale: 0.92, opacity: 0, y: 30 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl w-full glass-emerald rounded-3xl overflow-hidden"
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-3 backdrop-blur-md sm:p-6"
+      onClick={onClose}
+      role="presentation"
+    >
+      <section
+        aria-labelledby="interactive-demo-title"
+        aria-modal="true"
+        className="relative w-full max-w-6xl overflow-hidden rounded-lg border border-white/15 bg-zinc-950 shadow-2xl"
+        onClick={(event) => event.stopPropagation()}
+        role="dialog"
+      >
+        <div className="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-3 text-white sm:px-6">
+          <h2 id="interactive-demo-title" className="text-sm font-medium sm:text-base">
+            Interactive Demo
+          </h2>
+          <button
+            aria-label="Close interactive demo"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            onClick={onClose}
+            type="button"
           >
-            <button
-              onClick={onClose}
-              className="absolute top-5 right-5 z-10 h-9 w-9 rounded-full glass flex items-center justify-center hover:border-primary/60"
-            >
-              <X className="h-4 w-4" />
-            </button>
-
-            <div className="grid md:grid-cols-2 gap-0">
-              <div className="relative aspect-square md:aspect-auto bg-gradient-to-br from-primary/20 via-transparent to-primary/5 p-12 flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(0.72_0.20_150/0.25),transparent_60%)]" />
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={i}
-                    initial={{ scale: 0.6, opacity: 0, rotate: -10 }}
-                    animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                    exit={{ scale: 1.2, opacity: 0 }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative"
-                  >
-                    <div className="absolute inset-0 -m-8 rounded-full bg-primary/30 blur-3xl" />
-                    <div className="relative h-32 w-32 rounded-full border border-primary/40 flex items-center justify-center bg-background/40">
-                      {(() => {
-                        const Icon = steps[i].icon;
-                        return <Icon className="h-12 w-12 text-primary" />;
-                      })()}
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              <div className="p-10 md:p-12 flex flex-col">
-                <div className="text-[10px] tracking-[0.4em] uppercase text-primary mb-4">
-                  Interactive Demo · Step {i + 1} of {steps.length}
-                </div>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={i}
-                    initial={{ y: 15, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -15, opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <h3 className="font-display text-3xl md:text-4xl font-light mb-4">
-                      {steps[i].title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">{steps[i].text}</p>
-                  </motion.div>
-                </AnimatePresence>
-
-                <div className="mt-auto pt-8 flex items-center gap-2">
-                  {steps.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setI(idx)}
-                      className={`h-1 rounded-full transition-all ${
-                        idx === i ? "w-10 bg-primary" : "w-5 bg-border hover:bg-primary/50"
-                      }`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+            <X aria-hidden="true" className="h-5 w-5" />
+          </button>
+        </div>
+        <div className="aspect-video w-full bg-black">
+          <iframe
+            allow="fullscreen; clipboard-write"
+            className="h-full w-full border-0"
+            src="https://app.supademo.com/embed/cmwgqrewz0dfdqmknoh4h6mek"
+            title="Orbit Agro interactive demo"
+          />
+        </div>
+      </section>
+    </div>
   );
 }
