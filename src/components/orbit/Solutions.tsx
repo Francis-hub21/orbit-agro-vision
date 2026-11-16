@@ -194,6 +194,7 @@ export function Solutions() {
                   return (
                     <motion.div
                       key={f.slug}
+                      className="mobile-stable-product-card min-w-0"
                       initial={{ x: Math.cos(angle) * radius, y: Math.sin(angle) * radius, opacity: 0, scale: 0.55, rotate: -25 }}
                       whileInView={{ x: 0, y: 0, opacity: 1, scale: 1, rotate: 0 }}
                       viewport={{ once: true, margin: "-40px" }}

@@ -153,6 +153,15 @@
     background-attachment: fixed;
     overflow-x: hidden;
   }
+  @media (max-width: 767px) {
+    html, body {
+      overflow-x: clip;
+      background-attachment: scroll;
+    }
+    .mobile-stable-product-card {
+      transform: none !important;
+    }
+  }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
