@@ -92,11 +92,11 @@ export function Contact() {
 
           <Reveal delay={0.15} className="lg:col-span-2">
             <div className="space-y-5 h-full">
-              <InfoCard icon={MapPin} label="Headquarters" value="Nairobi, Kenya" />
+              <InfoCard icon={MapPin} label="Headquarters" value="Place 446 Godowns, Mombasa Road Opposite Signature Mall, P.O. Box 48870 - 00100 Nairobi, Kenya" />
               <InfoCard icon={Phone} label="Sales Line" value="+254 752 368 468" />
               <InfoCard icon={Mail} label="Email" value="orbitagro@orbitagro.co.ke" />
               <a
-                href="https://wa.me/254752368468?text=Hello%20Orbit%20Agro%2C%20I%20would%20like%20more%20information%20about%20your%20products."
+                href="https://whatsapp.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block glass-emerald rounded-2xl p-6 group hover:shadow-[0_0_30px_oklch(0.72_0.20_150/0.4)] transition-all"
@@ -111,6 +111,10 @@ export function Contact() {
                   </div>
                 </div>
               </a>
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                <a href="https://www.facebook.com/p/Orbit-Agrochemical-industries-ltd-100069240842491/" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">Facebook</a>
+                <a href="https://www.tiktok.com/@orbitagrochemicals" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">TikTok</a>
+              </div>
             </div>
           </Reveal>
         </div>
