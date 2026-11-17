@@ -27,7 +27,17 @@ import humigold from "@/assets/orbit/products/humigold.jpg";
 import morgro from "@/assets/orbit/products/morgro.jpg";
 import woprofert from "@/assets/orbit/products/woprofert.png";
 import velji from "@/assets/orbit/products/velji.png";
-import sprayer from "@/assets/orbit/cat-sprayers.jpg";
+const productPhotos = {
+  alphaCymba: "/products/alpha-cymba.png",
+  ballista: "/products/ballista.png",
+  blazer: "/products/blazer.png",
+  chordata: "/products/chordata.png",
+  devisulphur: "/products/devisulphur.png",
+  efosite: "/products/efosite.png",
+  orbitHymatic: "/products/orbit-hymatic.png",
+  orbitJacto: "/products/orbit-jacto.png",
+  sprayers: "/products/knapsack-sprayers.jpg",
+};
 
 export type Product = {
   slug: string;
@@ -85,7 +95,7 @@ export const families: Family[] = [
         benefits: ["Broad spectrum fungicide", "No known resistance", "High level of control before disease pressure"],
       }),
       p("Devisulphur 80WP", {
-        image: devisulphur,
+        image: productPhotos.devisulphur,
         activeIngredient: "Sulphur 800 g/kg",
         classification: "Multi-site inorganic",
         description:
@@ -171,58 +181,8 @@ export const families: Family[] = [
         modeOfAction: "Metalaxyl is absorbed and translocated; mancozeb gives multisite contact protection.",
         benefits: ["Rainfast", "Excellent protective and curative action", "Low resistance risk (multisite)"],
       }),
-      p("Vidalia 69WP", {
-        image: vidalia,
-        activeIngredient: "Mancozeb 600 g/kg + Dimethomorph 90 g/kg",
-        classification: "Systemic + protective wettable powder",
-        description: "Systemic and protective fungicide for tomatoes, potatoes, onions and roses.",
-        targets: ["Late blight", "Downy mildew", "Early blight"],
-        preHarvest: "3 days",
-        applicationRate: "Vegetables 50 g / 20 L (2.5 kg/Ha) · Roses 30–40 g / 20 L (1.5–2 kg/Ha)",
-        modeOfAction: "Translaminar movement through the leaf combined with contact protection.",
-        benefits: ["Translaminar activity", "High level of control before disease pressure"],
-      }),
-      p("X-Spore 43SC", {
-        image: xspore,
-        activeIngredient: "Tebuconazole 430 g/L",
-        classification: "Triazole (systemic)",
-        description:
-          "Systemic triazole fungicide with protective, curative and eradicant action across vegetables, cereals, onions and coffee.",
-        targets: [
-          "Rust, anthracnose and leafspot (French bean)",
-          "Early blight (tomato)",
-          "Leaf, stem and stripe rust, yellow leafspot (wheat)",
-          "Rust and purple blotch (onion)",
-          "Coffee rust",
-        ],
-        preHarvest: "7 days",
-        applicationRate: "10 ml / 20 L  ·  500 ml / Ha (vegetables)",
-        modeOfAction: "Sterol biosynthesis inhibitor absorbed and translocated in the plant.",
-        benefits: ["Broad spectrum", "Protective, curative and eradicant", "Good plant compatibility"],
-      }),
-      p("Headlines 700WP", {
-        image: headlines,
-        activeIngredient: "Thiophanate-methyl 700 g/kg",
-        classification: "Wettable powder · systemic",
-        description: "Systemic fungicide with curative and preventive control.",
-        targets: ["Damping off, leafspot and powdery mildew (tomato)", "Powdery mildew and botrytis (rose)"],
-        preHarvest: "3 days",
-        applicationRate: "20 g / 20 L  ·  1 kg / 1000 L / Ha",
-      }),
-      p("Esteem 50WDG", {
-        image: esteem,
-        activeIngredient: "Azoxystrobin 500 g/kg",
-        classification: "Strobilurin · water dispersible granules",
-        description: "Systemic fungicide with curative and preventive control.",
-        targets: [
-          "Leafspot and downy mildew (cucumber)",
-          "Downy mildew and botrytis (rose)",
-          "Rust, leafspot and anthracnose (French bean)",
-        ],
-        applicationRate: "15 g / 20 L  ·  500 g / 600 L / Ha",
-      }),
       p("Efosite 80WP", {
-        image: efosite,
+        image: productPhotos.efosite,
         activeIngredient: "Fosetyl-aluminium 800 g/kg",
         classification: "Wettable powder · systemic",
         description: "Systemic fungicide with curative and preventive control.",
