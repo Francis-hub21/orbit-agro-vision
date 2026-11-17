@@ -123,7 +123,7 @@ function FamilyPanel({ family, onContact }: { family: Family; onContact: (n: str
           </div>
         </div>
         {m && (
-          <div className="rounded-xl overflow-hidden mb-6 aspect-[16/7] sm:aspect-[21/7] bg-white/90">
+          <div className="rounded-xl overflow-hidden mb-6 aspect-[16/7] sm:aspect-[21/7] bg-card">
             <img src={m.image.url} alt={family.title} loading="lazy" className="w-full h-full object-contain p-3" />
           </div>
         )}
