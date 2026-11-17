@@ -7,9 +7,8 @@ import { Footer } from "@/components/orbit/Footer";
 import { ContactModal } from "@/components/orbit/ContactModal";
 import { families, getFamily, type Product } from "@/data/products";
 
-import cataloguePdf from "@/assets/orbit/orbit-agro-product-catalogue-2025.pdf.asset.json";
-
-const CATALOGUE_URL = cataloguePdf.url;
+const CATALOGUE_URL = "/orbit-agro-catalogue-2025..pdf";
+const CATALOGUE_FILENAME = "Orbit-Agro-Catalogue-2025.pdf";
 
 export const Route = createFileRoute("/products/$family")({
   validateSearch: (search: Record<string, unknown>): { from?: string } => ({
@@ -181,6 +180,7 @@ function FamilyPage() {
 
           <a
             href={CATALOGUE_URL}
+            download={CATALOGUE_FILENAME}
             target="_blank"
             rel="noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10 transition-colors"
