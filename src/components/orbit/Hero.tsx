@@ -94,7 +94,7 @@ export function Hero() {
             >
               <Link
                 to="/products"
-                className="group inline-flex items-center gap-3 rounded-full bg-orbit-red px-7 py-4 text-sm font-medium text-white transition-colors hover:bg-orbit-red/90"
+                className="group inline-flex items-center gap-3 rounded-full bg-orbit-red px-7 py-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-orbit-red/90"
               >
                 Explore Solutions
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

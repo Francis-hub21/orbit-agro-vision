@@ -127,7 +127,7 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <a
               href="/contact"
-              className="hidden sm:inline-flex rounded-full bg-orbit-red px-5 py-2 text-xs font-medium text-white transition-colors hover:bg-orbit-red/90"
+              className="hidden sm:inline-flex rounded-full bg-orbit-red px-5 py-2 text-xs font-medium text-primary-foreground transition-colors hover:bg-orbit-red/90"
             >
               Get Quote
             </a>
