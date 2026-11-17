@@ -1,22 +1,8 @@
-import penncozeb from "@/assets/orbit/products/penncozeb.jpg";
-import mosthane from "@/assets/orbit/products/mosthane.jpg";
-import zyban from "@/assets/orbit/products/zyban.jpg";
-import sherrif from "@/assets/orbit/products/sherrif.jpg";
 import lavida from "@/assets/orbit/products/lavida.jpg";
-import samurai from "@/assets/orbit/products/samurai.jpg";
-import halothrin from "@/assets/orbit/products/halothrin.jpg";
-import robust from "@/assets/orbit/products/robust.jpg";
-import rajput from "@/assets/orbit/products/rajput.jpg";
 import emactin from "@/assets/orbit/products/emactin.jpg";
-import expel from "@/assets/orbit/products/expel.jpg";
-import vagan from "@/assets/orbit/products/vagan.jpg";
 import blossom from "@/assets/orbit/products/blossom.jpg";
-import pronto from "@/assets/orbit/products/pronto.jpg";
-import glyweed from "@/assets/orbit/products/glyweed.jpg";
-import eradika from "@/assets/orbit/products/eradika.jpg";
-import humigold from "@/assets/orbit/products/humigold.jpg";
-import morgro from "@/assets/orbit/products/morgro.jpg";
-import velji from "@/assets/orbit/products/velji.png";
+
+// Public filenames are case-sensitive; keep these paths identical to the uploaded files.
 const productPhotos = {
   alphaCymba: "/products/alpha-cymba.png",
   ballista: "/products/ballista.png",
@@ -27,6 +13,25 @@ const productPhotos = {
   orbitHymatic: "/products/orbit-hymatic.png",
   orbitJacto: "/products/orbit-jacto.png",
   sprayers: "/products/knapsack-sprayers.jpg",
+  penncozeb: "/products/Penncozeb.png",
+  mosthane: "/products/Mosthane.png",
+  zyban: "/products/Zyban.png",
+  sherrif: "/products/Sherrif.png",
+  samurai: "/products/Samurai.png",
+  halothrin: "/products/Halothrin.png",
+  robust: "/products/Robust.png",
+  rajput: "/products/Rajput.png",
+  expel: "/products/Expel.png",
+  vagan: "/products/Vagan.png",
+  pronto: "/products/Pronto.png",
+  glyweed: "/products/Glyweed.png",
+  eradika: "/products/Eradika.png",
+  humigold: "/products/Humigold.png",
+  morgro: "/products/Morgro.png",
+  veljiRoot: "/products/velji-root-energizer.png",
+  veljiLeaf: "/products/velji-leaf-energizer.png",
+  veljiFruitFlower: "/products/velji-fruit-flower-energizer.png",
+  veljiTriple19: "/products/velji-triple-19.png",
 };
 
 export type Product = {
@@ -74,7 +79,7 @@ export const families: Family[] = [
       "Preventive, contact and systemic fungicides formulated for vegetables, field crops, fruits and flowers — engineered to stop disease before it takes hold and to cure active infection.",
     products: [
       p("Penncozeb 80% WP", {
-        image: penncozeb,
+        image: productPhotos.penncozeb,
         activeIngredient: "Mancozeb 800 g/kg",
         classification: "Dithiocarbamate",
         description:
@@ -100,7 +105,7 @@ export const families: Family[] = [
         benefits: ["Excellent surface coverage", "Low phytotoxicity risk", "Easy to mix and spray", "Suspends easily in the tank"],
       }),
       p("Mosthane", {
-        image: mosthane,
+        image: productPhotos.mosthane,
         activeIngredient: "Mancozeb 800 g/kg",
         classification: "Dithiocarbamate",
         description:
@@ -112,7 +117,7 @@ export const families: Family[] = [
         benefits: ["Effective against a large variety of fungi", "Protectant with redistribution", "No known resistance"],
       }),
       p("Zyban 500SC", {
-        image: zyban,
+        image: productPhotos.zyban,
         activeIngredient: "Carbendazim 500 g/L",
         classification: "Benzimidazole",
         description: "Systemic fungicide with protective and curative action on disease.",
@@ -132,7 +137,7 @@ export const families: Family[] = [
         benefits: ["Readily absorbed", "Excellent protective and curative activity"],
       }),
       p("Sherrif 75WP", {
-        image: sherrif,
+        image: productPhotos.sherrif,
         activeIngredient: "Carbendazim 120 g/kg + Mancozeb 630 g/kg",
         classification: "Benzimidazole + Dithiocarbamate",
         description:
@@ -164,7 +169,7 @@ export const families: Family[] = [
         benefits: ["Fast disintegration", "Uniform dispersion", "High suspension rate", "No known resistance"],
       }),
       p("Samurai", {
-        image: samurai,
+        image: productPhotos.samurai,
         activeIngredient: "Metalaxyl 80 g/kg + Mancozeb 640 g/kg",
         classification: "Systemic + contact wettable powder",
         description: "Systemic and contact broad spectrum fungicide with both protective and curative action.",
@@ -218,7 +223,7 @@ export const families: Family[] = [
         ],
       }),
       p("Halothrin 2.5EC", {
-        image: halothrin,
+        image: productPhotos.halothrin,
         activeIngredient: "Lambda-Cyhalothrin 25 g/L",
         classification: "Pyrethroid",
         description: "Fast and rapid knock-down insecticide with long residual activity and a short pre-harvest interval.",
@@ -238,7 +243,7 @@ export const families: Family[] = [
         benefits: ["Fast acting", "Anti-feeding and repellent action", "Reduces virus transmission", "Broad spectrum"],
       }),
       p("Robust 48EC", {
-        image: robust,
+        image: productPhotos.robust,
         activeIngredient: "Chlorpyrifos 480 g/L",
         classification: "Organophosphate",
         description: "Broad spectrum non-systemic insecticide with wide crop and pest usage.",
@@ -261,7 +266,7 @@ export const families: Family[] = [
         benefits: ["Short environmental persistence", "Flexible delivery options", "Triple action control"],
       }),
       p("Rajput 40EC", {
-        image: rajput,
+        image: productPhotos.rajput,
         activeIngredient: "Abamectin 10 g/L + Acetamiprid 30 g/L",
         classification: "Avermectin + Neonicotinoid",
         description: "Broad spectrum acaricide and insecticide for vegetables and flowers.",
@@ -312,7 +317,7 @@ export const families: Family[] = [
           "Lambda-cyhalothrin gives contact, stomach and repellent action with rapid knockdown, while thiamethoxam moves systemically to control larvae inside the plant.",
       }),
       p("Vagan 50SC", {
-        image: vagan,
+        image: productPhotos.vagan,
         activeIngredient: "Fipronil 50g/L",
         classification: "Insecticide",
         description: "Insecticide for termites and related pests. Follow the product label for approved use and precautions.",
@@ -328,7 +333,7 @@ export const families: Family[] = [
     intro: "Household, institutional and agroforestry insect control for crawling and flying pests and termites.",
     products: [
       p("Expel", {
-        image: expel,
+        image: productPhotos.expel,
         activeIngredient: "Fipronil 30g/L",
         classification: "Public Health",
         description:
@@ -376,7 +381,7 @@ export const families: Family[] = [
         ],
       }),
       p("Pronto", {
-        image: pronto,
+        image: productPhotos.pronto,
         activeIngredient: "Amino acid complex with nutritional complement",
         classification: "Amino acid based bio stimulant",
         description:
@@ -413,7 +418,7 @@ export const families: Family[] = [
     intro: "Systemic post-emergence herbicides for grasses, sedges and broad-leaved weeds — including zero-tillage programs.",
     products: [
       p("Glyweed", {
-        image: glyweed,
+        image: productPhotos.glyweed,
         activeIngredient: "Glyphosate 360 g/L",
         classification: "Glycine derivative",
         description:
@@ -424,7 +429,7 @@ export const families: Family[] = [
         benefits: ["Inactivated on contact with soil", "Rapid translocation to roots and rhizomes", "Broad spectrum activity"],
       }),
       p("Eradika", {
-        image: eradika,
+        image: productPhotos.eradika,
         activeIngredient: "Glyphosate 410 g/L",
         classification: "Glycine derivative",
         description: "A non-selective systemic post-emergence herbicide for the control of weeds in non-cropped areas.",
@@ -445,7 +450,7 @@ export const families: Family[] = [
       "Foliar fertilizers and fully water-soluble blends delivering macro-nutrients, chelated trace elements and amino acids.",
     products: [
       p("Morgro", {
-        image: morgro,
+        image: productPhotos.morgro,
         activeIngredient: "N.P.K. 14:10:8 + trace elements + amino acids",
         classification: "Multipurpose liquid foliar fertilizer",
         description:
@@ -457,28 +462,28 @@ export const families: Family[] = [
         benefits: ["Balanced foliar nutrition", "Quick crop response under stress", "Readily absorbed", "Multi-crop use"],
       }),
       p("Velji Root Energizer", {
-        image: velji,
+        image: productPhotos.veljiRoot,
         activeIngredient: "N.P.K. 12:40:15",
         classification: "Foliar fertilizer · Root Energizer",
         description: "Velji Root Energizer supports root initiation and development.",
         applicationRate: "2–4 kg / Ha  ·  30–60 g per knapsack",
       }),
       p("Velji Leaf Energizer", {
-        image: velji,
+        image: productPhotos.veljiLeaf,
         activeIngredient: "N.P.K. 27:11:9",
         classification: "Foliar fertilizer · Leaf Energizer",
         description: "High-nitrogen Velji foliar fertilizer for vegetative growth.",
         applicationRate: "2–4 kg / Ha  ·  30–60 g per knapsack",
       }),
       p("Velji Fruit & Flower Energizer", {
-        image: velji,
+        image: productPhotos.veljiFruitFlower,
         activeIngredient: "N.P.K. 15:5:35",
         classification: "Foliar fertilizer · Fruit & Flower Energizer",
         description: "Velji foliar fertilizer for flowering, fruiting, even ripening, fruit size and colour.",
         applicationRate: "2–4 kg / Ha  ·  30–60 g per knapsack",
       }),
       p("Velji Energizer Triple 19", {
-        image: velji,
+        image: productPhotos.veljiTriple19,
         activeIngredient: "N.P.K. 19:19:19",
         classification: "Foliar fertilizer · Triple 19",
         description: "Balanced Velji foliar fertilizer for crop growth at any stage.",
@@ -493,7 +498,7 @@ export const families: Family[] = [
     intro: "Humic and fulvic acid based conditioners that improve nutrient availability, soil structure and root development.",
     products: [
       p("Humigold", {
-        image: humigold,
+        image: productPhotos.humigold,
         activeIngredient: "Humic acid / fulvic acid",
         classification: "Bio-organic humic granules",
         description: "Bio-organic humic granules that mix and blend well with fertilizer or manure for a rich humic based soil.",

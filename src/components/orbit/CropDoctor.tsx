@@ -235,7 +235,7 @@ export function CropDoctor() {
                             <ShieldCheck className="h-3 w-3" /> Recommended Solution
                           </div>
                           <div className="grid grid-cols-[96px_minmax(0,1fr)] items-start gap-4">
-                            <div className="aspect-square w-24 shrink-0 rounded-lg bg-background/40 overflow-hidden">
+                            <div className="aspect-square w-24 shrink-0 rounded-lg bg-card overflow-hidden">
                               {primary.image ? (
                                 <img
                                   src={primary.image}
@@ -297,7 +297,7 @@ export function CropDoctor() {
                                 search={{ from: "crop-doctor" }}
                                 className="grid grid-cols-[56px_minmax(0,1fr)] items-center gap-3 rounded-xl border border-border p-3 hover:border-primary/60 transition-colors"
                               >
-                                <div className="aspect-square w-14 shrink-0 rounded-lg bg-primary/5 overflow-hidden">
+                                <div className="aspect-square w-14 shrink-0 rounded-lg bg-card overflow-hidden">
                                   {m.image ? (
                                     <img
                                       src={m.image}
