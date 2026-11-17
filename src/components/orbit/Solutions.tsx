@@ -115,6 +115,7 @@ function FamilyPanel({ family, onContact }: { family: Family; onContact: (n: str
             </Link>
             <a
               href={CATALOGUE_URL}
+              download={CATALOGUE_FILENAME}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10 transition-colors"
@@ -262,6 +263,7 @@ export function Solutions() {
             </div>
             <a
               href={CATALOGUE_URL}
+              download={CATALOGUE_FILENAME}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground shadow-[0_0_24px_oklch(0.72_0.20_150/0.5)] hover:shadow-[0_0_40px_oklch(0.72_0.20_150/0.7)] transition-all"

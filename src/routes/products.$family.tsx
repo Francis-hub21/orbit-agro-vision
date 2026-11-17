@@ -180,6 +180,7 @@ function FamilyPage() {
 
           <a
             href={CATALOGUE_URL}
+            download={CATALOGUE_FILENAME}
             target="_blank"
             rel="noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10 transition-colors"
