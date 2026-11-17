@@ -222,7 +222,7 @@ export function CropDoctor() {
                         </div>
                         <div className="flex flex-wrap gap-2">
                           {crop.threats.map((t) => (
-                            <span key={t} className="rounded-full px-3 py-1 text-xs glass border-destructive/30 text-foreground/90">
+            <span key={t} className="rounded-full px-3 py-1 text-xs border border-orbit-red/25 bg-orbit-yellow/20 text-foreground">
                               {t}
                             </span>
                           ))}
