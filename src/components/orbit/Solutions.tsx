@@ -5,6 +5,7 @@ import { Link } from "@tanstack/react-router";
 import { Reveal, SectionHeader } from "./Reveal";
 import { ContactModal } from "./ContactModal";
 import { families, type Family, type Product } from "@/data/products";
+import { ProductSearch } from "./ProductSearch";
 import imgFung from "@/assets/orbit/categories/fungicides.png.asset.json";
 import imgInsect from "@/assets/orbit/categories/insecticides.png.asset.json";
 import imgBio from "@/assets/orbit/categories/biostimulants.png.asset.json";
@@ -24,7 +25,7 @@ const meta: Record<string, { icon: typeof Bug; image: { url: string } }> = {
   fertilizers: { icon: Droplets, image: imgFert },
   "soil-conditioners": { icon: FlaskConical, image: imgSoil },
   "public-health": { icon: HeartPulse, image: imgPub },
-  "knapsack-sprayers": { icon: SprayCan, image: imgSpray },
+  "knapsack-sprayers": { icon: SprayCan, image: { url: "/products/knapsack-sprayers.jpg" } },
 };
 
 function Row({ label, value }: { label: string; value?: string }) {
@@ -57,7 +58,7 @@ function ProductCard({ p, onContact }: { p: Product; onContact: (n: string) => v
   return (
     <div className="glass rounded-2xl overflow-hidden flex flex-col">
       {p.image && (
-        <div className="aspect-[4/3] bg-primary/5 overflow-hidden">
+        <div className="aspect-[4/3] bg-card overflow-hidden">
           <img src={p.image} alt={`${p.name} pack`} loading="lazy" className="w-full h-full object-contain p-3" />
         </div>
       )}
@@ -171,6 +172,9 @@ export function Solutions() {
           title={<>Superior quality <span className="text-gradient-emerald">crop protection</span> for the Kenyan farmer.</>}
           desc="Eight product lines specially formulated to help farmers enjoy high yields with very minimal investment."
         />
+        <div className="mb-8 flex justify-center">
+          <ProductSearch label="Search the product catalogue" />
+        </div>
 
         {rows.map((row, r) => {
           const openInRow = row.find((f) => f.slug === open);
@@ -206,15 +210,14 @@ export function Solutions() {
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         className={`group relative h-auto w-full text-left glass rounded-2xl overflow-hidden cursor-pointer md:h-full ${isOpen ? "ring-1 ring-primary/60 shadow-[0_0_30px_oklch(0.72_0.20_150/0.25)]" : ""}`}
                       >
-                        <div className="aspect-[4/3] overflow-hidden relative bg-white/90">
+                        <div className="aspect-[4/3] overflow-hidden relative bg-card">
                           <img
                             src={meta[f.slug]?.image?.url}
                             alt={f.title}
                             loading="lazy"
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            className="w-full h-full object-contain p-3 transition-transform duration-700 group-hover:scale-[1.03]"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
-                          <div className="absolute top-3 left-3 inline-flex h-10 w-10 items-center justify-center rounded-xl glass-emerald">
+                          <div className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-card">
                             <Icon className="h-4 w-4 text-primary" />
                           </div>
                         </div>
@@ -225,7 +228,7 @@ export function Solutions() {
                           </h3>
                           <p className="text-sm text-muted-foreground leading-relaxed">{f.tagline}</p>
                           <div className="mt-3 text-xs text-primary/90">
-                            {f.products.length} product{f.products.length > 1 ? "s" : ""} →
+                            {f.slug === "knapsack-sprayers" ? "2 products" : `${f.products.length} product${f.products.length > 1 ? "s" : ""}`} →
                           </div>
                         </div>
                       </motion.button>
