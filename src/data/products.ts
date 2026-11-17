@@ -9,6 +9,7 @@ import robust from "@/assets/orbit/products/robust.jpg";
 import rajput from "@/assets/orbit/products/rajput.jpg";
 import emactin from "@/assets/orbit/products/emactin.jpg";
 import expel from "@/assets/orbit/products/expel.jpg";
+import vagan from "@/assets/orbit/products/vagan.jpg";
 import blossom from "@/assets/orbit/products/blossom.jpg";
 import pronto from "@/assets/orbit/products/pronto.jpg";
 import glyweed from "@/assets/orbit/products/glyweed.jpg";
@@ -88,7 +89,6 @@ export const families: Family[] = [
       p("Devisulphur 80WP", {
         image: productPhotos.devisulphur,
         activeIngredient: "Sulphur 800 g/kg",
-        family: "Fungicide",
         classification: "Multi-site inorganic",
         description:
           "A premium sulphur fungicide and miticide with preventative action — a micronized wettable formulation designed to deliver superior disease and mite control.",
@@ -312,7 +312,7 @@ export const families: Family[] = [
           "Lambda-cyhalothrin gives contact, stomach and repellent action with rapid knockdown, while thiamethoxam moves systemically to control larvae inside the plant.",
       }),
       p("Vagan 50SC", {
-        image: "/products/vagan.jpg",
+        image: vagan,
         activeIngredient: "Fipronil 50g/L",
         classification: "Insecticide",
         description: "Insecticide for termites and related pests. Follow the product label for approved use and precautions.",
@@ -536,6 +536,15 @@ export const families: Family[] = [
 ];
 
 export const getFamily = (slug: string) => families.find((f) => f.slug === slug);
+
+export const pendingProducts: Product[] = [
+  p("Esteem", {
+    description: "Category confirmation pending. Verified product details are required before assigning a product family.",
+  }),
+  p("Headlines", {
+    description: "Category confirmation pending. Verified product details are required before assigning a product family.",
+  }),
+];
 
 export const allProducts = families.flatMap((f) =>
   f.products.map((prod) => ({ ...prod, family: f.title, familySlug: f.slug })),

@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { allProducts } from "@/data/products";
+import { crops } from "@/data/crops";
 
 export function ProductSearch({ label = "Search products, crops or pests" }: { label?: string }) {
   const [query, setQuery] = useState("");
@@ -9,13 +10,14 @@ export function ProductSearch({ label = "Search products, crops or pests" }: { l
     const term = query.trim().toLocaleLowerCase();
     if (!term) return [];
     return allProducts
-      .filter((product) =>
-        [product.name, product.activeIngredient, product.classification, product.description, product.family, ...(product.targets ?? [])]
+      .filter((product) => {
+        const associatedCrops = crops.filter((crop) => crop.recommended.includes(product.slug)).map((crop) => crop.name);
+        return [product.name, product.activeIngredient, product.classification, product.description, product.family, ...associatedCrops, ...(product.targets ?? [])]
           .filter(Boolean)
           .join(" ")
           .toLocaleLowerCase()
-          .includes(term),
-      )
+          .includes(term);
+      })
       .slice(0, 7);
   }, [query]);
 
