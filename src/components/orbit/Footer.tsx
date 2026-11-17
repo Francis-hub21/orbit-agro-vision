@@ -21,7 +21,7 @@ export function Footer() {
               <div><span className="text-primary">Address:</span> Place 446 Godowns, Mombasa Road Opposite Signature Mall, P.O. Box 48870 - 00100 Nairobi, Kenya</div>
             </div>
             <a
-              href="https://whatsapp.com"
+              href="https://wa.me/254752368468"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-2.5 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10 transition-colors"

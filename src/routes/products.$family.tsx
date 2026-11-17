@@ -7,7 +7,9 @@ import { Footer } from "@/components/orbit/Footer";
 import { ContactModal } from "@/components/orbit/ContactModal";
 import { families, getFamily, type Product } from "@/data/products";
 
-const CATALOGUE_URL = "https://www.orbitagro.co.ke/assets/orbit-agro-product-catalogue_web.pdf";
+import cataloguePdf from "@/assets/orbit/orbit-agro-product-catalogue-2025.pdf.asset.json";
+
+const CATALOGUE_URL = cataloguePdf.url;
 
 export const Route = createFileRoute("/products/$family")({
   validateSearch: (search: Record<string, unknown>): { from?: string } => ({

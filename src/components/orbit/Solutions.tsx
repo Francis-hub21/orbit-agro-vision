@@ -15,7 +15,9 @@ import imgSoil from "@/assets/orbit/categories/soil-conditioners.png.asset.json"
 import imgPub from "@/assets/orbit/categories/public-health.png.asset.json";
 import imgSpray from "@/assets/orbit/categories/knapsack-sprayers.png.asset.json";
 
-const CATALOGUE_URL = "https://www.orbitagro.co.ke/assets/orbit-agro-product-catalogue_web.pdf";
+import cataloguePdf from "@/assets/orbit/orbit-agro-product-catalogue-2025.pdf.asset.json";
+
+const CATALOGUE_URL = cataloguePdf.url;
 
 const meta: Record<string, { icon: typeof Bug; image: { url: string } }> = {
   fungicides: { icon: Shield, image: imgFung },
