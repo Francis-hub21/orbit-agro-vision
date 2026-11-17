@@ -311,6 +311,14 @@ export const families: Family[] = [
         modeOfAction:
           "Lambda-cyhalothrin gives contact, stomach and repellent action with rapid knockdown, while thiamethoxam moves systemically to control larvae inside the plant.",
       }),
+      p("Vagan 50SC", {
+        image: "/products/vagan.jpg",
+        activeIngredient: "Fipronil 50g/L",
+        classification: "Insecticide",
+        description: "Insecticide for termites and related pests. Follow the product label for approved use and precautions.",
+        targets: ["Termites", "Thrips"],
+        applicationRate: "50 ml / 20 L · 75 ml / 30 L · 2.5 L / 1000 L / Ha",
+      }),
     ],
   },
   {
@@ -332,7 +340,7 @@ export const families: Family[] = [
   },
   {
     slug: "bio-stimulants",
-    title: "Bio Stimulants",
+    title: "Biostimulants",
     tagline: "Bio-active compounds that unlock yield potential and stress resilience.",
     intro:
       "Plant growth promoters and amino-acid based biostimulants that drive flowering, fruit set, stress recovery and nutrient uptake.",
