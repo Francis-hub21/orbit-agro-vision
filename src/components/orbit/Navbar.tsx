@@ -128,7 +128,7 @@ export function Navbar() {
             <div className="hidden items-center gap-1 sm:flex">
               <a href="https://www.facebook.com/p/Orbit-Agrochemical-industries-ltd-100069240842491/" target="_blank" rel="noopener noreferrer" aria-label="Orbit Agro on Facebook" title="Facebook" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-secondary hover:text-primary"><Facebook className="h-4 w-4" /></a>
               <a href="https://www.tiktok.com/@orbitagrochemicals" target="_blank" rel="noopener noreferrer" aria-label="Orbit Agro on TikTok" title="TikTok" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-secondary hover:text-primary"><Music2 className="h-4 w-4" /></a>
-              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="Orbit Agro on WhatsApp" title="WhatsApp" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-secondary hover:text-primary"><MessageCircle className="h-4 w-4" /></a>
+              <a href="https://wa.me/254752368468" target="_blank" rel="noopener noreferrer" aria-label="Orbit Agro on WhatsApp" title="WhatsApp" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-secondary hover:text-primary"><MessageCircle className="h-4 w-4" /></a>
             </div>
             <a
               href="/contact"
@@ -229,7 +229,7 @@ export function Navbar() {
                   <li className="mt-2 flex items-center justify-around border-t border-border pt-3">
                     <a href="https://www.facebook.com/p/Orbit-Agrochemical-industries-ltd-100069240842491/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-secondary"><Facebook className="h-5 w-5" /></a>
                     <a href="https://www.tiktok.com/@orbitagrochemicals" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-secondary"><Music2 className="h-5 w-5" /></a>
-                    <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-secondary"><MessageCircle className="h-5 w-5" /></a>
+                    <a href="https://wa.me/254752368468" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-secondary"><MessageCircle className="h-5 w-5" /></a>
                   </li>
                   <li className="border-t border-border mt-2 pt-2">
                     <a
