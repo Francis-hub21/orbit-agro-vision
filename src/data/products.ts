@@ -9,7 +9,6 @@ import robust from "@/assets/orbit/products/robust.jpg";
 import rajput from "@/assets/orbit/products/rajput.jpg";
 import emactin from "@/assets/orbit/products/emactin.jpg";
 import expel from "@/assets/orbit/products/expel.jpg";
-import vagan from "@/assets/orbit/products/vagan.jpg";
 import blossom from "@/assets/orbit/products/blossom.jpg";
 import pronto from "@/assets/orbit/products/pronto.jpg";
 import glyweed from "@/assets/orbit/products/glyweed.jpg";
@@ -196,7 +195,7 @@ export const families: Family[] = [
   },
   {
     slug: "insecticides",
-    title: "Insecticides",
+    title: "Insecticides & Miticides",
     tagline: "Targeted insect control at every crop growth stage.",
     intro:
       "Fast knock-down and long-residual insecticides for aphids, thrips, whiteflies, caterpillars, bollworms, borers, armyworms and mites.",
