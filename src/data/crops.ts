@@ -27,7 +27,7 @@ export const crops: CropGuide[] = [
     emoji: "🍅",
     image: tomatoImg.url,
     threats: ["Late blight", "Early blight", "Leafminer (Tuta absoluta)", "Whitefly"],
-    recommended: ["lavida-73wdg", "vidalia-69wp", "em-actin-57sc", "headlines-700wp"],
+    recommended: ["lavida-73wdg", "em-actin-57sc", "chordata-120-ec"],
   },
   {
     id: "maize",
@@ -35,7 +35,7 @@ export const crops: CropGuide[] = [
     emoji: "🌽",
     image: maizeImg.url,
     threats: ["Fall armyworm", "Stem borers", "Rust"],
-    recommended: ["blazer-221zc", "em-actin-57sc", "morgro"],
+    recommended: ["blazer", "em-actin-57sc", "morgro"],
   },
   {
     id: "coffee",
@@ -43,7 +43,7 @@ export const crops: CropGuide[] = [
     emoji: "☕",
     image: coffeeImg.url,
     threats: ["Coffee leaf rust", "Antestia bug"],
-    recommended: ["x-spore-43sc", "robust-48ec", "pronto"],
+    recommended: ["samurai", "robust-48ec", "pronto"],
   },
   {
     id: "wheat",
@@ -51,7 +51,7 @@ export const crops: CropGuide[] = [
     emoji: "🌾",
     image: wheatImg.url,
     threats: ["Stem rust", "Stripe rust", "Yellow leafspot", "Aphids"],
-    recommended: ["x-spore-43sc", "alpha-cymba-10ec", "blossom-ec"],
+    recommended: ["samurai", "alpha-cymba-10ec", "blossom-ec"],
   },
   {
     id: "potato",
@@ -67,7 +67,7 @@ export const crops: CropGuide[] = [
     emoji: "🥬",
     image: kaleImg.url,
     threats: ["Diamond back moth", "Aphids", "Leafspot"],
-    recommended: ["halothrin-2-5ec", "mosthane", "velji"],
+    recommended: ["halothrin-2-5ec", "mosthane", "pronto"],
   },
   {
     id: "french-bean",
@@ -75,7 +75,7 @@ export const crops: CropGuide[] = [
     emoji: "🫛",
     image: frenchBeanImg.url,
     threats: ["Rust", "Anthracnose", "Leafspot", "Thrips"],
-    recommended: ["esteem-50wdg", "x-spore-43sc", "rajput-40ec"],
+    recommended: ["lavida-73wdg", "rajput-40ec"],
   },
   {
     id: "onion",
@@ -83,7 +83,7 @@ export const crops: CropGuide[] = [
     emoji: "🧅",
     image: onionImg.url,
     threats: ["Downy mildew", "Purple blotch", "Rust", "Thrips"],
-    recommended: ["efosite-80wp", "x-spore-43sc", "chordata-10-2ec"],
+    recommended: ["efosite", "chordata-120-ec"],
   },
   {
     id: "rose",
@@ -91,7 +91,7 @@ export const crops: CropGuide[] = [
     emoji: "🌹",
     image: roseImg.url,
     threats: ["Powdery mildew", "Botrytis", "Downy mildew", "Spidermites"],
-    recommended: ["headlines-700wp", "esteem-50wdg", "vagan-50sc"],
+    recommended: ["lavida-73wdg", "vagan-50sc"],
   },
 ];
 

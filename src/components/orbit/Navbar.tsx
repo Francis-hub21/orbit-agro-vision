@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { ChevronDown, Menu, X } from "lucide-react";
-import logo from "@/assets/orbit/logo.png";
-import { ThemeToggle } from "./ThemeToggle";
+import { ChevronDown, Facebook, Menu, MessageCircle, Music2, X } from "lucide-react";
 import { families } from "@/data/products";
 
 const leadingLinks = [
@@ -63,17 +61,11 @@ export function Navbar() {
       <div className="mx-auto mt-4 max-w-7xl px-6">
         <nav className="glass relative flex items-center justify-between rounded-full px-4 py-2.5 md:px-5">
           <Link to="/" className="flex items-center gap-3">
-            <img
-              src={logo}
-              alt="Orbit Agro Chemical Industries logo"
-              width={44}
-              height={44}
-              className="h-11 w-11 rounded-full object-contain shadow-[0_0_18px_oklch(0.72_0.20_150/0.45)]"
-            />
-            <span className="font-display font-medium text-sm md:text-base leading-tight">
-              Orbit<span className="text-primary"> Agro</span>
-              <span className="hidden md:block text-[9px] tracking-[0.25em] uppercase text-muted-foreground">
-                Agro Products
+            <img src="/orbit-logo.png" alt="Orbit Agro Products logo" width={56} height={48} className="h-12 w-14 shrink-0 object-contain" />
+            <span className="max-w-[190px] font-display text-[10px] font-semibold leading-tight sm:max-w-[230px] sm:text-xs md:text-sm">
+              ORBIT AGRO CHEMICAL INDUSTRIES LTD.
+              <span className="hidden text-[9px] font-normal text-muted-foreground sm:block">
+                We grow through partnerships
               </span>
             </span>
           </Link>
@@ -133,11 +125,14 @@ export function Navbar() {
           </ul>
 
           <div className="flex items-center gap-2">
-            <ThemeToggle />
+            <div className="hidden items-center gap-1 sm:flex">
+              <a href="https://www.facebook.com/p/Orbit-Agrochemical-industries-ltd-100069240842491/" target="_blank" rel="noopener noreferrer" aria-label="Orbit Agro on Facebook" title="Facebook" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-secondary hover:text-primary"><Facebook className="h-4 w-4" /></a>
+              <a href="https://www.tiktok.com/@orbitagrochemicals" target="_blank" rel="noopener noreferrer" aria-label="Orbit Agro on TikTok" title="TikTok" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-secondary hover:text-primary"><Music2 className="h-4 w-4" /></a>
+              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="Orbit Agro on WhatsApp" title="WhatsApp" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-secondary hover:text-primary"><MessageCircle className="h-4 w-4" /></a>
+            </div>
             <a
               href="/contact"
-              className="hidden sm:inline-flex rounded-full px-5 py-2 text-xs font-medium uppercase tracking-[0.15em] text-white shadow-[0_0_24px_oklch(0.58_0.22_27/0.5)] hover:shadow-[0_0_36px_oklch(0.58_0.22_27/0.8)] transition-all"
-              style={{ background: "var(--gradient-emerald-red)" }}
+              className="hidden sm:inline-flex rounded-full bg-orbit-red px-5 py-2 text-xs font-medium text-primary-foreground transition-colors hover:bg-orbit-red/90"
             >
               Get Quote
             </a>
@@ -231,6 +226,11 @@ export function Navbar() {
                       </a>
                     </li>
                   ))}
+                  <li className="mt-2 flex items-center justify-around border-t border-border pt-3">
+                    <a href="https://www.facebook.com/p/Orbit-Agrochemical-industries-ltd-100069240842491/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-secondary"><Facebook className="h-5 w-5" /></a>
+                    <a href="https://www.tiktok.com/@orbitagrochemicals" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-secondary"><Music2 className="h-5 w-5" /></a>
+                    <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-secondary"><MessageCircle className="h-5 w-5" /></a>
+                  </li>
                   <li className="border-t border-border mt-2 pt-2">
                     <a
                       href="/contact"

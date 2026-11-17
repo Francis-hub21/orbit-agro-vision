@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { TerrainScene } from "./TerrainScene";
 import { useRef, useState } from "react";
 import { DemoModal } from "./DemoModal";
+import { ProductSearch } from "./ProductSearch";
 
 function SolarParticle({ index, total, progress }: { index: number; total: number; progress: MotionValue<number> }) {
   const angle = (index / total) * Math.PI * 2;
@@ -31,15 +32,14 @@ export function Hero() {
   const sceneOpacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 0.4, 0]);
   const particleSpread = useTransform(scrollYProgress, [0, 1], [0, 1]);
   return (
-    <section ref={ref} className="relative h-screen min-h-[820px] w-full overflow-hidden">
+    <section ref={ref} className="relative min-h-screen w-full overflow-hidden pb-12 pt-28 md:pt-32">
       {/* 3D Terrain — solar system core, zooms out and tilts on scroll */}
       <motion.div style={{ scale: sceneScale, opacity: sceneOpacity, rotate: sceneRotate, y: sceneY }} className="absolute inset-0 origin-center">
         <TerrainScene />
       </motion.div>
 
       {/* Atmospheric overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/10 to-background pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,var(--background)_85%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/35 via-background/70 to-background pointer-events-none" />
 
       {/* Floating particles + scroll-driven solar dispersion */}
       <motion.div style={{ opacity: sceneOpacity }} className="absolute inset-0 pointer-events-none">
@@ -49,7 +49,7 @@ export function Hero() {
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-10 flex h-full items-center pt-28 md:pt-24">
+      <div className="relative z-10 flex min-h-[calc(100vh-7rem)] items-center">
         <div className="mx-auto max-w-7xl px-6 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -57,14 +57,15 @@ export function Hero() {
             transition={{ delay: 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-3xl"
           >
-            <div className="mb-6 inline-flex items-center gap-2 glass-emerald rounded-full px-4 py-1.5">
-              <span className="h-2 w-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_var(--color-primary)]" />
-              <span className="text-[10px] tracking-[0.3em] uppercase text-primary/90">
-                Africa · Agri-Tech Intelligence
-              </span>
+            <div className="mb-6 flex flex-wrap items-center gap-4">
+              <img src="/orbit-logo.png" alt="Orbit Agro Products" width={116} height={96} className="h-20 w-24 object-contain sm:h-24 sm:w-28" />
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-orbit-red sm:text-base">ORBIT AGRO CHEMICAL INDUSTRIES LTD.</p>
+                <p className="mt-1 text-sm text-orbit-green">we grow through...... partnerships!</p>
+              </div>
             </div>
 
-            <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.02] font-light tracking-tight">
+            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[1.04] font-light">
               Cultivating a<br />
               <span className="text-gradient-emerald font-medium">higher standard</span>
               <br />
@@ -81,6 +82,10 @@ export function Hero() {
               distribution powering the next generation of African farming.
             </motion.p>
 
+            <div className="mt-7">
+              <ProductSearch label="Search products, active ingredients, crops or pests" />
+            </div>
+
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -89,7 +94,7 @@ export function Hero() {
             >
               <Link
                 to="/products"
-                className="group inline-flex items-center gap-3 rounded-full bg-primary px-7 py-4 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground shadow-[0_0_30px_oklch(0.72_0.20_150/0.6)] hover:shadow-[0_0_50px_oklch(0.72_0.20_150/0.9)] transition-all"
+                className="group inline-flex items-center gap-3 rounded-full bg-orbit-red px-7 py-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-orbit-red/90"
               >
                 Explore Solutions
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

@@ -72,16 +72,17 @@ function ProductBlock({ product, onContact }: { product: Product; onContact: (na
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="glass rounded-3xl overflow-hidden"
+      id={product.slug}
+      className="glass scroll-mt-28 rounded-lg overflow-hidden"
     >
       <div className="grid md:grid-cols-[320px_1fr]">
-        <div className="aspect-[4/3] md:aspect-auto md:min-h-full bg-primary/5 overflow-hidden">
+        <div className="aspect-[4/3] md:aspect-auto md:min-h-full bg-card overflow-hidden">
           {product.image ? (
             <img
               src={product.image}
               alt={`${product.name} product pack`}
               loading="lazy"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain p-4"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-xs text-muted-foreground">

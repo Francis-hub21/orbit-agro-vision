@@ -26,9 +26,9 @@ function Terrain() {
   return (
     <mesh ref={mesh} rotation={[-Math.PI / 2.4, 0, 0]} position={[0, -3, 0]} geometry={geom}>
       <meshStandardMaterial
-        color={new THREE.Color("#0a2818")}
-        emissive={new THREE.Color("#1ed27a")}
-        emissiveIntensity={0.18}
+        color={new THREE.Color("#15803D")}
+        emissive={new THREE.Color("#15803D")}
+        emissiveIntensity={0.08}
         wireframe
       />
     </mesh>
@@ -60,7 +60,7 @@ function Nodes() {
       {positions.map((p, i) => (
         <mesh key={i} position={[p.x, p.y, p.z]}>
           <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial color="#3effa0" />
+          <meshBasicMaterial color="#B91C1C" />
         </mesh>
       ))}
     </group>
@@ -86,10 +86,10 @@ export function TerrainScene() {
       style={{ background: "transparent" }}
     >
       <Suspense fallback={null}>
-        <fog attach="fog" args={["#0a1a12", 6, 22]} />
-        <ambientLight intensity={0.25} />
-        <pointLight position={[0, 8, 5]} intensity={2} color="#3effa0" />
-        <pointLight position={[-10, 4, -5]} intensity={1.2} color="#1ed27a" />
+        <fog attach="fog" args={["#F3F4F6", 12, 32]} />
+        <ambientLight intensity={0.8} />
+        <pointLight position={[0, 8, 5]} intensity={1.2} color="#EAB308" />
+        <pointLight position={[-10, 4, -5]} intensity={0.9} color="#15803D" />
         <Terrain />
         <Nodes />
         <CameraDrift />

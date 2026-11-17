@@ -1,22 +1,13 @@
 import penncozeb from "@/assets/orbit/products/penncozeb.jpg";
-import devisulphur from "@/assets/orbit/products/devisulphur.jpg";
 import mosthane from "@/assets/orbit/products/mosthane.jpg";
 import zyban from "@/assets/orbit/products/zyban.jpg";
 import sherrif from "@/assets/orbit/products/sherrif.jpg";
 import lavida from "@/assets/orbit/products/lavida.jpg";
 import samurai from "@/assets/orbit/products/samurai.jpg";
-import vidalia from "@/assets/orbit/products/vidalia.jpg";
-import xspore from "@/assets/orbit/products/xspore.jpg";
-import headlines from "@/assets/orbit/products/headlines.jpg";
-import esteem from "@/assets/orbit/products/esteem.jpg";
-import efosite from "@/assets/orbit/products/efosite.jpg";
-import alphacymba from "@/assets/orbit/products/alphacymba.jpg";
 import halothrin from "@/assets/orbit/products/halothrin.jpg";
 import robust from "@/assets/orbit/products/robust.jpg";
 import rajput from "@/assets/orbit/products/rajput.jpg";
-import chordata from "@/assets/orbit/products/chordata.jpg";
 import emactin from "@/assets/orbit/products/emactin.jpg";
-import blazer from "@/assets/orbit/products/blazer.jpg";
 import expel from "@/assets/orbit/products/expel.jpg";
 import vagan from "@/assets/orbit/products/vagan.jpg";
 import blossom from "@/assets/orbit/products/blossom.jpg";
@@ -25,9 +16,18 @@ import glyweed from "@/assets/orbit/products/glyweed.jpg";
 import eradika from "@/assets/orbit/products/eradika.jpg";
 import humigold from "@/assets/orbit/products/humigold.jpg";
 import morgro from "@/assets/orbit/products/morgro.jpg";
-import woprofert from "@/assets/orbit/products/woprofert.png";
 import velji from "@/assets/orbit/products/velji.png";
-import sprayer from "@/assets/orbit/cat-sprayers.jpg";
+const productPhotos = {
+  alphaCymba: "/products/alpha-cymba.png",
+  ballista: "/products/ballista.png",
+  blazer: "/products/blazer.png",
+  chordata: "/products/chordata.png",
+  devisulphur: "/products/devisulphur.png",
+  efosite: "/products/efosite.png",
+  orbitHymatic: "/products/orbit-hymatic.png",
+  orbitJacto: "/products/orbit-jacto.png",
+  sprayers: "/products/knapsack-sprayers.jpg",
+};
 
 export type Product = {
   slug: string;
@@ -50,6 +50,8 @@ export type Family = {
   intro: string;
   products: Product[];
 };
+
+export type ProductFamilySlug = Family["slug"];
 
 const slugify = (s: string) =>
   s
@@ -85,7 +87,7 @@ export const families: Family[] = [
         benefits: ["Broad spectrum fungicide", "No known resistance", "High level of control before disease pressure"],
       }),
       p("Devisulphur 80WP", {
-        image: devisulphur,
+        image: productPhotos.devisulphur,
         activeIngredient: "Sulphur 800 g/kg",
         classification: "Multi-site inorganic",
         description:
@@ -161,7 +163,7 @@ export const families: Family[] = [
         modeOfAction: "Cymoxanil moves systemically for curative action while mancozeb protects the leaf surface.",
         benefits: ["Fast disintegration", "Uniform dispersion", "High suspension rate", "No known resistance"],
       }),
-      p("Samurai 72WP", {
+      p("Samurai", {
         image: samurai,
         activeIngredient: "Metalaxyl 80 g/kg + Mancozeb 640 g/kg",
         classification: "Systemic + contact wettable powder",
@@ -171,60 +173,10 @@ export const families: Family[] = [
         modeOfAction: "Metalaxyl is absorbed and translocated; mancozeb gives multisite contact protection.",
         benefits: ["Rainfast", "Excellent protective and curative action", "Low resistance risk (multisite)"],
       }),
-      p("Vidalia 69WP", {
-        image: vidalia,
-        activeIngredient: "Mancozeb 600 g/kg + Dimethomorph 90 g/kg",
-        classification: "Systemic + protective wettable powder",
-        description: "Systemic and protective fungicide for tomatoes, potatoes, onions and roses.",
-        targets: ["Late blight", "Downy mildew", "Early blight"],
-        preHarvest: "3 days",
-        applicationRate: "Vegetables 50 g / 20 L (2.5 kg/Ha) · Roses 30–40 g / 20 L (1.5–2 kg/Ha)",
-        modeOfAction: "Translaminar movement through the leaf combined with contact protection.",
-        benefits: ["Translaminar activity", "High level of control before disease pressure"],
-      }),
-      p("X-Spore 43SC", {
-        image: xspore,
-        activeIngredient: "Tebuconazole 430 g/L",
-        classification: "Triazole (systemic)",
-        description:
-          "Systemic triazole fungicide with protective, curative and eradicant action across vegetables, cereals, onions and coffee.",
-        targets: [
-          "Rust, anthracnose and leafspot (French bean)",
-          "Early blight (tomato)",
-          "Leaf, stem and stripe rust, yellow leafspot (wheat)",
-          "Rust and purple blotch (onion)",
-          "Coffee rust",
-        ],
-        preHarvest: "7 days",
-        applicationRate: "10 ml / 20 L  ·  500 ml / Ha (vegetables)",
-        modeOfAction: "Sterol biosynthesis inhibitor absorbed and translocated in the plant.",
-        benefits: ["Broad spectrum", "Protective, curative and eradicant", "Good plant compatibility"],
-      }),
-      p("Headlines 700WP", {
-        image: headlines,
-        activeIngredient: "Thiophanate-methyl 700 g/kg",
-        classification: "Wettable powder · systemic",
-        description: "Systemic fungicide with curative and preventive control.",
-        targets: ["Damping off, leafspot and powdery mildew (tomato)", "Powdery mildew and botrytis (rose)"],
-        preHarvest: "3 days",
-        applicationRate: "20 g / 20 L  ·  1 kg / 1000 L / Ha",
-      }),
-      p("Esteem 50WDG", {
-        image: esteem,
-        activeIngredient: "Azoxystrobin 500 g/kg",
-        classification: "Strobilurin · water dispersible granules",
-        description: "Systemic fungicide with curative and preventive control.",
-        targets: [
-          "Leafspot and downy mildew (cucumber)",
-          "Downy mildew and botrytis (rose)",
-          "Rust, leafspot and anthracnose (French bean)",
-        ],
-        applicationRate: "15 g / 20 L  ·  500 g / 600 L / Ha",
-      }),
-      p("Efosite 80WP", {
-        image: efosite,
+      p("Efosite", {
+        image: productPhotos.efosite,
         activeIngredient: "Fosetyl-aluminium 800 g/kg",
-        classification: "Wettable powder · systemic",
+        classification: "Fungicide",
         description: "Systemic fungicide with curative and preventive control.",
         targets: [
           "Downy mildew (cucumber, onion, lettuce, cucurbits, rose, snowpea, squash)",
@@ -235,18 +187,22 @@ export const families: Family[] = [
         ],
         applicationRate: "60 g / 20 L  ·  3 kg / 1000 L / Ha",
       }),
+      p("Valiant", {
+        classification: "Fungicide",
+        description: "See the current product label for verified active ingredient, approved crops, rates and pre-harvest interval.",
+      }),
     ],
   },
   {
     slug: "insecticides",
-    title: "Insecticides",
+    title: "Insecticides & Miticides",
     tagline: "Targeted insect control at every crop growth stage.",
     intro:
       "Fast knock-down and long-residual insecticides for aphids, thrips, whiteflies, caterpillars, bollworms, borers, armyworms and mites.",
     products: [
       p("Alpha Cymba 10EC", {
-        image: alphacymba,
-        activeIngredient: "Alpha-Cypermethrin 100 g/L",
+        image: productPhotos.alphaCymba,
+        activeIngredient: "Alpha cypermethrin 100g/L",
         classification: "Pyrethroid",
         description: "Broad spectrum, low dose acting insecticide with rapid knock-down action and high mortality.",
         targets: ["Aphids", "Cutworms", "Thrips", "Whiteflies", "Caterpillars", "Borers", "Leaf miners"],
@@ -315,9 +271,9 @@ export const families: Family[] = [
           "Acetamiprid acts systemically while abamectin works by contact and ingestion — both interfere with the insect nervous system.",
         benefits: ["Broad spectrum", "Long residual activity", "Efficacy at low dose", "Translaminar movement"],
       }),
-      p("Chordata 10.2EC", {
-        image: chordata,
-        activeIngredient: "Abamectin 20 g/L + Pyridaben 100 g/L",
+      p("Chordata 120 EC", {
+        image: productPhotos.chordata,
+        activeIngredient: "Abamectin 20g/l + Pyridaben 100g/l",
         classification: "Avermectin + Pyridazinone",
         description: "Non-systemic insecticide and miticide for mite control in vegetables and ornamentals.",
         targets: ["Spidermites", "Thrips", "Aphids", "Whiteflies", "Leafminer (Tuta absoluta)"],
@@ -344,9 +300,9 @@ export const families: Family[] = [
         applicationRate: "5 ml / 20 L (vegetables, cereals, ornamentals) · 3.6 ml / 15 L (rice)",
         benefits: ["Pack sizes 50 ml, 100 ml, 250 ml, 500 ml and 1 L"],
       }),
-      p("Blazer 221ZC", {
-        image: blazer,
-        activeIngredient: "Thiamethoxam 126 g/L + Lambda-cyhalothrin 95 g/L",
+      p("Blazer", {
+        image: productPhotos.blazer,
+        activeIngredient: "Lambda cyhalothrin 95g/L + Thiamethoxam 126g/L",
         classification: "Synthetic pyrethroid + neonicotinoid",
         description: "Broad spectrum insecticide for a wide range of pests and crops.",
         targets: ["Fall armyworms", "Thrips", "Whiteflies", "Leafminers", "Mealybugs", "Aphids", "Caterpillars"],
@@ -354,6 +310,14 @@ export const families: Family[] = [
         applicationRate: "6 ml / 20 L  ·  150 ml / 500 L / Ha",
         modeOfAction:
           "Lambda-cyhalothrin gives contact, stomach and repellent action with rapid knockdown, while thiamethoxam moves systemically to control larvae inside the plant.",
+      }),
+      p("Vagan 50SC", {
+        image: vagan,
+        activeIngredient: "Fipronil 50g/L",
+        classification: "Insecticide",
+        description: "Insecticide for termites and related pests. Follow the product label for approved use and precautions.",
+        targets: ["Termites", "Thrips"],
+        applicationRate: "50 ml / 20 L · 75 ml / 30 L · 2.5 L / 1000 L / Ha",
       }),
     ],
   },
@@ -365,25 +329,18 @@ export const families: Family[] = [
     products: [
       p("Expel", {
         image: expel,
-        activeIngredient: "Fipronil 3% w/v",
+        activeIngredient: "Fipronil 30g/L",
+        classification: "Public Health",
         description:
           "Public health insecticide for the control of flying and crawling household insects like cockroaches, bedbugs, house flies and ants.",
         targets: ["Cockroaches", "Bedbugs", "House flies", "Ants"],
         applicationRate: "50 ml per 1 L of water",
       }),
-      p("Vagan 50SC", {
-        image: vagan,
-        activeIngredient: "Fipronil 5% w/v",
-        description: "Broad spectrum insecticide and termiticide for the control of termites in agroforestry.",
-        targets: ["Termites", "Thrips"],
-        applicationRate: "50 ml / 20 L  ·  75 ml / 30 L  ·  2.5 L / 1000 L / Ha",
-        benefits: ["Agroforestry", "Building and construction", "Roses", "Carnation"],
-      }),
     ],
   },
   {
     slug: "bio-stimulants",
-    title: "Bio Stimulants",
+    title: "Biostimulants",
     tagline: "Bio-active compounds that unlock yield potential and stress resilience.",
     intro:
       "Plant growth promoters and amino-acid based biostimulants that drive flowering, fruit set, stress recovery and nutrient uptake.",
@@ -455,7 +412,7 @@ export const families: Family[] = [
     tagline: "Non-selective, systemic weed control engineered for minimum crop stress.",
     intro: "Systemic post-emergence herbicides for grasses, sedges and broad-leaved weeds — including zero-tillage programs.",
     products: [
-      p("Glyweed 41SL", {
+      p("Glyweed", {
         image: glyweed,
         activeIngredient: "Glyphosate 360 g/L",
         classification: "Glycine derivative",
@@ -466,12 +423,17 @@ export const families: Family[] = [
           "Rapidly absorbed through foliage and green stems then translocated to roots, rhizomes, tubers and stolons, inhibiting biosynthesis of essential amino acids.",
         benefits: ["Inactivated on contact with soil", "Rapid translocation to roots and rhizomes", "Broad spectrum activity"],
       }),
-      p("Eradika 41SL", {
+      p("Eradika", {
         image: eradika,
         activeIngredient: "Glyphosate 410 g/L",
         classification: "Glycine derivative",
         description: "A non-selective systemic post-emergence herbicide for the control of weeds in non-cropped areas.",
         applicationRate: "200 ml / 20 L  ·  2 L / Ha",
+      }),
+      p("Ballista", {
+        image: productPhotos.ballista,
+        activeIngredient: "Glufosinate ammonium 200g/L",
+        classification: "Herbicide",
       }),
     ],
   },
@@ -494,29 +456,33 @@ export const families: Family[] = [
           "Improves the suspendability of spray liquids, reduces transplant shock and improves root and stem development and crop uniformity.",
         benefits: ["Balanced foliar nutrition", "Quick crop response under stress", "Readily absorbed", "Multi-crop use"],
       }),
-      p("Wopro-Fert", {
-        image: woprofert,
-        activeIngredient: "Fe-DTPA 11.5% · Fe-EDDHA 6%",
-        classification: "100% water-soluble fertilizer · iron chelate",
-        description:
-          "100% water soluble fertiliser. An iron chelate usable as a foliar feed and in all fertigation systems, compatible with most pesticide products. Fe-DTPA is stable at pH up to 7.0 and resists calcium replacement; Fe-EDDHA remains stable up to pH 11.0.",
-        targets: ["Horticulture crops", "Field crops", "Cereals", "Turf grass", "Flowers", "Fruit crops"],
-        applicationRate: "1–3 g / L irrigation water · 1 kg / 200 L / Ha foliar",
-        benefits: ["Corrects iron deficiency", "Aids chlorophyll synthesis", "Improves crop yield"],
-      }),
-      p("Velji", {
+      p("Velji Root Energizer", {
         image: velji,
-        activeIngredient: "100% EDTA-chelated, fully water-soluble N.P.K. + MgO + micros",
-        classification: "Water-soluble foliar fertilizer range",
-        description:
-          "A range of fully water-soluble foliar fertilizers: Root Energizer (12:40:15) for root initiation and development; Leaf Energizer (27:11:9) high nitrogen for vegetative growth; Fruit & Flower Energizer (15:5:35) for flowering, fruiting, even ripening and fruit size and colour; and Complete Crop Energizer Triple 19 (19:19:19) for balanced growth at any stage.",
+        activeIngredient: "N.P.K. 12:40:15",
+        classification: "Foliar fertilizer · Root Energizer",
+        description: "Velji Root Energizer supports root initiation and development.",
         applicationRate: "2–4 kg / Ha  ·  30–60 g per knapsack",
-        benefits: [
-          "Suitable for greenhouse and open field",
-          "Precise stage-specific formulations",
-          "Immediate crop response",
-          "Tank-mixable with pesticides",
-        ],
+      }),
+      p("Velji Leaf Energizer", {
+        image: velji,
+        activeIngredient: "N.P.K. 27:11:9",
+        classification: "Foliar fertilizer · Leaf Energizer",
+        description: "High-nitrogen Velji foliar fertilizer for vegetative growth.",
+        applicationRate: "2–4 kg / Ha  ·  30–60 g per knapsack",
+      }),
+      p("Velji Fruit & Flower Energizer", {
+        image: velji,
+        activeIngredient: "N.P.K. 15:5:35",
+        classification: "Foliar fertilizer · Fruit & Flower Energizer",
+        description: "Velji foliar fertilizer for flowering, fruiting, even ripening, fruit size and colour.",
+        applicationRate: "2–4 kg / Ha  ·  30–60 g per knapsack",
+      }),
+      p("Velji Energizer Triple 19", {
+        image: velji,
+        activeIngredient: "N.P.K. 19:19:19",
+        classification: "Foliar fertilizer · Triple 19",
+        description: "Balanced Velji foliar fertilizer for crop growth at any stage.",
+        applicationRate: "2–4 kg / Ha  ·  30–60 g per knapsack",
       }),
     ],
   },
@@ -548,19 +514,21 @@ export const families: Family[] = [
     tagline: "Durable, precision-engineered sprayers for accurate field application.",
     intro: "High-pressure knapsack sprayers built to withstand day-to-day farm operations.",
     products: [
-      p("Orbit Premium Knapsack Sprayer", {
-        image: sprayer,
+      p("Orbit Hymatic Knapsack Sprayer", {
+        image: productPhotos.orbitHymatic,
         classification: "Application equipment",
         description:
-          "A premium, powerful and high pressure pump with a fully internal pump mechanism that keeps the spray solution off the operator. Built to withstand day to day farm operations.",
+          "External brass pressure chamber, high-pressure piston pump and UV-resistant HDPE tank.",
+        benefits: ["External brass pressure chamber", "High-pressure piston pump", "UV-resistant HDPE tank"],
+      }),
+      p("Orbit Jacto Knapsack Sprayer", {
+        image: productPhotos.orbitJacto,
+        classification: "Application equipment",
+        description: "Knapsack sprayer with an internal pump mechanism, mechanical agitator and ergonomic straps.",
         benefits: [
-          "High pressure piston pump",
-          "Lightweight with trigger on the handle",
-          "Left or right hand operation",
-          "Easy-to-adjust carrying strap",
-          "Internal mechanical agitator for constant mixing",
-          "Ergonomic design that reduces back strain",
-          "High-density polyethylene UV-resistant tank",
+          "Internal pump mechanism",
+          "Mechanical agitator",
+          "Ergonomic straps",
         ],
       }),
     ],
@@ -568,6 +536,15 @@ export const families: Family[] = [
 ];
 
 export const getFamily = (slug: string) => families.find((f) => f.slug === slug);
+
+export const pendingProducts: Product[] = [
+  p("Esteem", {
+    description: "Category confirmation pending. Verified product details are required before assigning a product family.",
+  }),
+  p("Headlines", {
+    description: "Category confirmation pending. Verified product details are required before assigning a product family.",
+  }),
+];
 
 export const allProducts = families.flatMap((f) =>
   f.products.map((prod) => ({ ...prod, family: f.title, familySlug: f.slug })),

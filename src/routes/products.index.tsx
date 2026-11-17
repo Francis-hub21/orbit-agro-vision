@@ -4,6 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/orbit/Navbar";
 import { Footer } from "@/components/orbit/Footer";
 import { families } from "@/data/products";
+import { pendingProducts } from "@/data/products";
+import { ProductSearch } from "@/components/orbit/ProductSearch";
 
 export const Route = createFileRoute("/products/")({
   head: () => ({
@@ -40,6 +42,10 @@ function ProductsIndex() {
             diseases or pests, pre-harvest interval, application rates, mode of action and benefits.
           </p>
 
+          <div className="mt-8">
+            <ProductSearch label="Search by product, ingredient, crop or pest" />
+          </div>
+
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {families.map((f, i) => (
               <motion.div
@@ -52,7 +58,7 @@ function ProductsIndex() {
                 <Link
                   to="/products/$family"
                   params={{ family: f.slug }}
-                  className="group block h-full glass rounded-2xl p-6 hover:ring-1 hover:ring-primary/50 transition-all"
+                  className="group block h-full glass rounded-lg p-6 hover:ring-1 hover:ring-primary/50 transition-all"
                 >
                   <h2 className="font-display text-xl mb-2">{f.title}</h2>
                   <p className="text-sm text-muted-foreground leading-relaxed">{f.tagline}</p>
@@ -64,6 +70,18 @@ function ProductsIndex() {
               </motion.div>
             ))}
           </div>
+          <section aria-labelledby="pending-products-title" className="mt-12 border-t border-border pt-8">
+            <h2 id="pending-products-title" className="font-display text-xl">Awaiting category confirmation</h2>
+            <p className="mt-1 text-sm text-muted-foreground">These entries remain unclassified until their product categories are confirmed.</p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {pendingProducts.map((product) => (
+                <div key={product.slug} className="rounded-lg border border-border bg-card px-4 py-3">
+                  <span className="font-medium">{product.name}</span>
+                  <span className="ml-3 rounded-full bg-orbit-yellow/30 px-2 py-1 text-xs text-foreground">Unconfirmed</span>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
       </section>
       <Footer />

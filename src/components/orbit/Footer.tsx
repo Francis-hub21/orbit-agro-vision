@@ -1,4 +1,4 @@
-import thinkLogo from "@/assets/orbit/brand/orbit-think-logo.png.asset.json";
+import { Facebook, Music2 } from "lucide-react";
 
 export function Footer() {
   return (
@@ -7,13 +7,9 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="h-8 w-8 rounded-full border border-primary/60 flex items-center justify-center">
-                <div className="h-2 w-2 rounded-full bg-primary shadow-[0_0_10px_var(--color-primary)]" />
-              </div>
-              <span className="font-display font-medium text-sm">
-                Orbit<span className="text-primary"> Agro</span> Chemical Industries
-              </span>
+            <div className="mb-5 flex items-center gap-3">
+              <img src="/orbit-logo.png" alt="Orbit Agro Products" width={104} height={86} className="h-20 w-24 object-contain" />
+              <span className="max-w-xs font-display text-sm font-semibold">ORBIT AGRO CHEMICAL INDUSTRIES LTD.</span>
             </div>
             <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
               We provide superior quality crop protection products to enable farmers to enjoy high
@@ -22,11 +18,10 @@ export function Footer() {
             <div className="mt-6 space-y-2 text-sm text-muted-foreground">
               <div><span className="text-primary">Phone:</span> <a href="tel:+254752368468" className="hover:text-primary">+254 752 368 468</a></div>
               <div><span className="text-primary">Email:</span> <a href="mailto:orbitagro@orbitagro.co.ke" className="hover:text-primary">orbitagro@orbitagro.co.ke</a></div>
-              <div><span className="text-primary">Hours:</span> Mon — Fri · 08:00 — 17:00</div>
-              <div><span className="text-primary">Address:</span> Nairobi, Kenya</div>
+              <div><span className="text-primary">Address:</span> Place 446 Godowns, Mombasa Road Opposite Signature Mall, P.O. Box 48870 - 00100 Nairobi, Kenya</div>
             </div>
             <a
-              href="https://wa.me/254752368468?text=Hello%20Orbit%20Agro%2C%20I%20would%20like%20more%20information%20about%20your%20products."
+              href="https://whatsapp.com"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-2.5 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10 transition-colors"
@@ -39,12 +34,18 @@ export function Footer() {
             <div className="mt-4 text-sm text-muted-foreground">
               <span className="text-primary">Facebook:</span>{" "}
               <a
-                href="https://www.facebook.com/people/Orbit-Agrochemical-industries-ltd/100069240842491/"
+                href="https://www.facebook.com/p/Orbit-Agrochemical-industries-ltd-100069240842491/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline decoration-primary/40 underline-offset-4 hover:text-primary"
               >
-                Orbit Agrochemical Industries Ltd
+                <Facebook aria-hidden="true" className="mr-1 inline h-3.5 w-3.5" /> Orbit Agrochemical Industries Ltd
+              </a>
+            </div>
+            <div className="mt-3 text-sm text-muted-foreground">
+              <span className="text-primary">TikTok:</span>{" "}
+              <a href="https://www.tiktok.com/@orbitagrochemicals" target="_blank" rel="noopener noreferrer" className="underline decoration-primary/40 underline-offset-4 hover:text-primary">
+                <Music2 aria-hidden="true" className="mr-1 inline h-3.5 w-3.5" /> @orbitagrochemicals
               </a>
             </div>
           </div>
@@ -70,16 +71,11 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 flex justify-center">
-          <img
-            src={thinkLogo.url}
-            alt="You need Agrochemicals.... Think Orbit Agro Products"
-            loading="lazy"
-            className="orbit-glow w-56 md:w-72"
-          />
+          <img src="/orbit-logo.png" alt="Orbit Agro Products" loading="lazy" width={232} height={190} className="w-40 object-contain sm:w-48" />
         </div>
         <div className="mt-10 pt-8 border-t border-border flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
           <div>© {new Date().getFullYear()} Orbit Agro Chemical Industries Limited · Nairobi, Kenya · All Rights Reserved</div>
-          <div className="tracking-[0.3em] uppercase">We Grow Through Partnerships</div>
+          <div>we grow through...... partnerships!</div>
         </div>
       </div>
     </footer>
