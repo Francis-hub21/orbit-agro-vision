@@ -158,8 +158,8 @@ export const families: Family[] = [
       }),
       p("Lavida 73WDG", {
         image: lavida,
-        activeIngredient: "Cymoxanil 50 g/kg + Mancozeb 680 g/kg",
-        classification: "Water dispersible granules · systemic + contact",
+        activeIngredient: "Mancozeb 680g/Kg + Cymoxanil 50g/Kg",
+        classification: "Dithiocarbamate + Cyanoacetamide oxime",
         description:
           "Broad spectrum foliar fungicide with systemic and contact action, curative and preventive, for potatoes, tomatoes, grapes, cucurbits, onions, chives, garlic and roses.",
         targets: ["Late blight", "Downy mildew", "Early blight", "Damping off"],
@@ -170,8 +170,8 @@ export const families: Family[] = [
       }),
       p("Samurai", {
         image: productPhotos.samurai,
-        activeIngredient: "Metalaxyl 80 g/kg + Mancozeb 640 g/kg",
-        classification: "Systemic + contact wettable powder",
+        activeIngredient: "Metalaxyl 8% + Mancozeb 64%",
+        classification: "Phenylamide (acylalanine) + Dithiocarbamate",
         description: "Systemic and contact broad spectrum fungicide with both protective and curative action.",
         targets: ["Early blight", "Late blight", "Downy mildew", "Damping off"],
         applicationRate: "50 g / 20 L  ·  2.0 kg / Ha",
@@ -180,8 +180,8 @@ export const families: Family[] = [
       }),
       p("Efosite", {
         image: productPhotos.efosite,
-        activeIngredient: "Fosetyl-aluminium 800 g/kg",
-        classification: "Fungicide",
+        activeIngredient: "Fosetyl-aluminium 800g/kg",
+        classification: "Phosphonate",
         description: "Systemic fungicide with curative and preventive control.",
         targets: [
           "Downy mildew (cucumber, onion, lettuce, cucurbits, rose, snowpea, squash)",
@@ -195,6 +195,14 @@ export const families: Family[] = [
       p("Valiant", {
         classification: "Fungicide",
         description: "See the current product label for verified active ingredient, approved crops, rates and pre-harvest interval.",
+      }),
+      p("Headlines", {
+        activeIngredient: "Thiophanate-methyl 700g/Kg",
+        classification: "Thiourea / Benzimidazole precursor",
+      }),
+      p("Esteem", {
+        activeIngredient: "Azoxystrobin 500g/kg",
+        classification: "Strobilurin",
       }),
     ],
   },
@@ -318,8 +326,8 @@ export const families: Family[] = [
       }),
       p("Vagan 50SC", {
         image: productPhotos.vagan,
-        activeIngredient: "Fipronil 50g/L",
-        classification: "Insecticide",
+        activeIngredient: "Fipronil 50 g/L",
+        classification: "Phenylpyrazole",
         description: "Insecticide for termites and related pests. Follow the product label for approved use and precautions.",
         targets: ["Termites", "Thrips"],
         applicationRate: "50 ml / 20 L · 75 ml / 30 L · 2.5 L / 1000 L / Ha",
@@ -335,7 +343,7 @@ export const families: Family[] = [
       p("Expel", {
         image: productPhotos.expel,
         activeIngredient: "Fipronil 30g/L",
-        classification: "Public Health",
+        classification: "Phenylpyrazole",
         description:
           "Public health insecticide for the control of flying and crawling household insects like cockroaches, bedbugs, house flies and ants.",
         targets: ["Cockroaches", "Bedbugs", "House flies", "Ants"],
@@ -541,15 +549,6 @@ export const families: Family[] = [
 ];
 
 export const getFamily = (slug: string) => families.find((f) => f.slug === slug);
-
-export const pendingProducts: Product[] = [
-  p("Esteem", {
-    description: "Category confirmation pending. Verified product details are required before assigning a product family.",
-  }),
-  p("Headlines", {
-    description: "Category confirmation pending. Verified product details are required before assigning a product family.",
-  }),
-];
 
 export const allProducts = families.flatMap((f) =>
   f.products.map((prod) => ({ ...prod, family: f.title, familySlug: f.slug })),

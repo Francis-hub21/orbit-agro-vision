@@ -6,27 +6,13 @@ import { Reveal, SectionHeader } from "./Reveal";
 import { ContactModal } from "./ContactModal";
 import { families, type Family, type Product } from "@/data/products";
 import { ProductSearch } from "./ProductSearch";
-import imgFung from "@/assets/orbit/categories/fungicides.png.asset.json";
-import imgInsect from "@/assets/orbit/categories/insecticides.png.asset.json";
-import imgBio from "@/assets/orbit/categories/biostimulants.png.asset.json";
-import imgHerb from "@/assets/orbit/categories/herbicides.png.asset.json";
-import imgFert from "@/assets/orbit/categories/fertilizers.png.asset.json";
-import imgSoil from "@/assets/orbit/categories/soil-conditioners.png.asset.json";
-import imgPub from "@/assets/orbit/categories/public-health.png.asset.json";
-import imgSpray from "@/assets/orbit/categories/knapsack-sprayers.png.asset.json";
+import { FamilyComposition } from "./FamilyComposition";
 
 const CATALOGUE_URL = "/orbit-agro-catalogue-2025..pdf";
-const CATALOGUE_FILENAME = "Orbit-Agro-Catalogue-2025.pdf";
-
-const meta: Record<string, { icon: typeof Bug; image: { url: string } }> = {
-  fungicides: { icon: Shield, image: imgFung },
-  insecticides: { icon: Bug, image: imgInsect },
-  "bio-stimulants": { icon: Sprout, image: imgBio },
-  herbicides: { icon: Leaf, image: imgHerb },
-  fertilizers: { icon: Droplets, image: imgFert },
-  "soil-conditioners": { icon: FlaskConical, image: imgSoil },
-  "public-health": { icon: HeartPulse, image: imgPub },
-  "knapsack-sprayers": { icon: SprayCan, image: { url: "/products/knapsack-sprayers.jpg" } },
+const meta: Record<string, { icon: typeof Bug }> = {
+  fungicides: { icon: Shield }, insecticides: { icon: Bug }, "bio-stimulants": { icon: Sprout },
+  herbicides: { icon: Leaf }, fertilizers: { icon: Droplets }, "soil-conditioners": { icon: FlaskConical },
+  "public-health": { icon: HeartPulse }, "knapsack-sprayers": { icon: SprayCan },
 };
 
 function Row({ label, value }: { label: string; value?: string }) {
@@ -115,9 +101,8 @@ function FamilyPanel({ family, onContact }: { family: Family; onContact: (n: str
             </Link>
             <a
               href={CATALOGUE_URL}
-              download={CATALOGUE_FILENAME}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10 transition-colors"
             >
               <Download className="h-3.5 w-3.5" /> Full Catalogue
@@ -126,7 +111,7 @@ function FamilyPanel({ family, onContact }: { family: Family; onContact: (n: str
         </div>
         {m && (
           <div className="rounded-xl overflow-hidden mb-6 aspect-[16/7] sm:aspect-[21/7] bg-card">
-            <img src={m.image.url} alt={family.title} loading="lazy" className="w-full h-full object-contain p-3" />
+            <FamilyComposition family={family} />
           </div>
         )}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -183,15 +168,6 @@ export function Solutions() {
           return (
             <div key={r} className="mb-5">
               <div className="relative grid grid-cols-1 items-start gap-5 sm:grid-cols-2 md:items-stretch lg:grid-cols-4">
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center -z-10">
-                  <motion.div
-                    initial={{ scale: 0.6, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ margin: "-100px" }}
-                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                    className="h-40 w-40 rounded-full bg-[radial-gradient(circle,oklch(0.72_0.20_150/0.35),transparent_70%)] blur-2xl"
-                  />
-                </div>
                 {row.map((f, i) => {
                   const angle = ((r * 4 + i) / families.length) * Math.PI * 2;
                   const radius = 180;
@@ -213,12 +189,7 @@ export function Solutions() {
                         className={`group relative h-auto w-full text-left glass rounded-2xl overflow-hidden cursor-pointer md:h-full ${isOpen ? "ring-1 ring-primary/60 shadow-[0_0_30px_oklch(0.72_0.20_150/0.25)]" : ""}`}
                       >
                         <div className="aspect-[4/3] overflow-hidden relative bg-card">
-                          <img
-                            src={meta[f.slug]?.image?.url}
-                            alt={f.title}
-                            loading="lazy"
-                            className="w-full h-full object-contain p-3 transition-transform duration-700 group-hover:scale-[1.03]"
-                          />
+                          <FamilyComposition family={f} />
                           <div className="absolute left-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-card">
                             <Icon className="h-4 w-4 text-primary" />
                           </div>
@@ -263,9 +234,8 @@ export function Solutions() {
             </div>
             <a
               href={CATALOGUE_URL}
-              download={CATALOGUE_FILENAME}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground shadow-[0_0_24px_oklch(0.72_0.20_150/0.5)] hover:shadow-[0_0_40px_oklch(0.72_0.20_150/0.7)] transition-all"
             >
               <Download className="h-4 w-4" /> Download Catalogue

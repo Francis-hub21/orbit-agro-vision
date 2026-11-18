@@ -25,6 +25,7 @@ export const Route = createFileRoute("/")({
         content: "The operating system of African agriculture. Crop intelligence, dosage precision and distribution at scale.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,

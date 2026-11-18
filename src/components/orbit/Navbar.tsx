@@ -1,251 +1,101 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
-import { Link } from "@tanstack/react-router";
-import { ChevronDown, Facebook, Menu, MessageCircle, Music2, X } from "lucide-react";
-import { families } from "@/data/products";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { SocialLinks } from "./SocialLinks";
+import { ProductSearch } from "./ProductSearch";
 
-const leadingLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+const divisions = [
+  { title: "Crop Protection", families: [{ slug: "fungicides", title: "Fungicides" }, { slug: "insecticides", title: "Insecticides & Miticides" }, { slug: "herbicides", title: "Herbicides" }] },
+  { title: "Plant Nutrition & Soil", families: [{ slug: "fertilizers", title: "Foliar Fertilizers" }, { slug: "bio-stimulants", title: "Biostimulants" }, { slug: "soil-conditioners", title: "Soil Conditioners" }] },
+  { title: "Public Health", families: [{ slug: "public-health", title: "Public Health Insecticides" }] },
+  { title: "Application Equipment", families: [{ slug: "knapsack-sprayers", title: "Knapsack Sprayers" }] },
 ];
-
-const links = [
-  { href: "/crop-doctor", label: "Crop Doctor" },
-  { href: "/news", label: "News" },
-  { href: "/location", label: "Location" },
-  { href: "/contact", label: "Contact" },
+const aboutLinks = [
+  { title: "Vision & Mission", hash: "vision-mission" },
+  { title: "Company Overview", hash: "company-overview" },
+  { title: "Partnerships & Careers", hash: "partnerships-careers" },
 ];
+const pageLinks = [
+  { href: "/crop-doctor", title: "Crop Doctor" },
+  { href: "/news", title: "News" },
+  { href: "/location", title: "Location" },
+  { href: "/contact", title: "Contact Us" },
+] as const;
 
 export function Navbar() {
-  const { scrollY } = useScroll();
-  const [hidden, setHidden] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
-  const last = useRef(0);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useMotionValueEvent(scrollY, "change", (y) => {
-    const prev = last.current;
-    last.current = y;
-    if (y > prev && y > 80) {
-      setHidden(true);
-      setMenuOpen(false);
-    } else if (y < prev - 4) {
-      setHidden(false);
-    }
-  });
-
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState<"about" | "products" | null>(null);
+  const [division, setDivision] = useState<string | null>(null);
+  const navRef = useRef<HTMLElement>(null);
+  const close = () => { setMobileOpen(false); setOpen(null); setDivision(null); };
   useEffect(() => {
-    return () => {
-      if (closeTimer.current) clearTimeout(closeTimer.current);
+    const dismiss = (event: PointerEvent) => {
+      if (event.target instanceof Node && !navRef.current?.contains(event.target)) close();
     };
+    const escape = (event: KeyboardEvent) => { if (event.key === "Escape") close(); };
+    document.addEventListener("pointerdown", dismiss);
+    document.addEventListener("keydown", escape);
+    return () => { document.removeEventListener("pointerdown", dismiss); document.removeEventListener("keydown", escape); };
   }, []);
-
-
-  const openMenu = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setMenuOpen(true);
-  };
-  const scheduleClose = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setMenuOpen(false), 180);
-  };
-
-  return (
-    <motion.header
-      initial={{ y: -40, opacity: 0 }}
-      animate={{ y: hidden ? -120 : 0, opacity: hidden ? 0 : 1 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50"
-    >
-      <div className="mx-auto mt-4 max-w-7xl px-6">
-        <nav className="glass relative flex items-center justify-between rounded-full px-4 py-2.5 md:px-5">
-          <Link to="/" className="flex items-center gap-3">
-            <img src="/orbit-logo.png" alt="Orbit Agro Products logo" width={56} height={48} className="h-12 w-14 shrink-0 object-contain" />
-            <span className="max-w-[190px] font-display text-[10px] font-semibold leading-tight sm:max-w-[230px] sm:text-xs md:text-sm">
-              ORBIT AGRO CHEMICAL INDUSTRIES LTD.
-              <span className="hidden text-[9px] font-normal text-muted-foreground sm:block">
-                We grow through partnerships
-              </span>
-            </span>
-          </Link>
-
-          <ul className="hidden lg:flex items-center gap-7 text-xs tracking-[0.15em] uppercase text-muted-foreground">
-            {leadingLinks.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} className="hover:text-primary transition-colors duration-300">
-                  {l.label}
-                </a>
-              </li>
-            ))}
-            <li className="relative" onMouseEnter={openMenu} onMouseLeave={scheduleClose}>
-              <Link
-                to="/products"
-                className="flex items-center gap-1.5 hover:text-primary transition-colors duration-300"
-              >
-                Products
-                <ChevronDown className={`h-3 w-3 transition-transform ${menuOpen ? "rotate-180" : ""}`} />
-              </Link>
-              <AnimatePresence>
-                {menuOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 6 }}
-                    transition={{ duration: 0.22 }}
-                    className="absolute left-1/2 top-full -translate-x-1/2 pt-4"
-                  >
-                    <div className="glass rounded-2xl p-2 w-64 shadow-[0_20px_60px_oklch(0_0_0/0.25)]">
-                      {families.map((f) => (
-                        <Link
-                          key={f.slug}
-                          to="/products/$family"
-                          params={{ family: f.slug }}
-                          onClick={() => setMenuOpen(false)}
-                          className="flex items-center justify-between rounded-xl px-3 py-2.5 text-[11px] tracking-[0.12em] hover:bg-primary/10 hover:text-primary transition-colors"
-                        >
-                          {f.title}
-                          <span className="text-primary/70 normal-case tracking-normal text-[10px]">
-                            {f.products.length}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </li>
-            {links.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} className="hover:text-primary transition-colors duration-300">
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex items-center gap-2">
-            <div className="hidden items-center gap-1 sm:flex">
-              <a href="https://www.facebook.com/p/Orbit-Agrochemical-industries-ltd-100069240842491/" target="_blank" rel="noopener noreferrer" aria-label="Orbit Agro on Facebook" title="Facebook" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-secondary hover:text-primary"><Facebook className="h-4 w-4" /></a>
-              <a href="https://www.tiktok.com/@orbitagrochemicals" target="_blank" rel="noopener noreferrer" aria-label="Orbit Agro on TikTok" title="TikTok" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-secondary hover:text-primary"><Music2 className="h-4 w-4" /></a>
-              <a href="https://wa.me/254752368468" target="_blank" rel="noopener noreferrer" aria-label="Orbit Agro on WhatsApp" title="WhatsApp" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground hover:bg-secondary hover:text-primary"><MessageCircle className="h-4 w-4" /></a>
-            </div>
-            <a
-              href="/contact"
-              className="hidden sm:inline-flex rounded-full bg-orbit-red px-5 py-2 text-xs font-medium text-primary-foreground transition-colors hover:bg-orbit-red/90"
-            >
-              Get Quote
-            </a>
-            <button
-              type="button"
-              aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-              aria-expanded={menuOpen}
-              aria-controls="mobile-navigation"
-              onClick={() => setMenuOpen((open) => !open)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-foreground hover:bg-primary/10 hover:text-primary transition-colors lg:hidden"
-            >
-              {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
+  const toggle = (menu: "about" | "products") => { setOpen(open === menu ? null : menu); setDivision(null); };
+  return <>
+    <div className="border-t-4 border-orbit-green bg-card px-4 py-5 sm:px-6">
+      <div className="mx-auto max-w-7xl">
+        <Link to="/" className="flex items-center gap-3 sm:gap-5">
+          <img src="/orbit-logo.png" alt="Orbit Agro Products logo" width={120} height={96} className="h-20 w-20 shrink-0 object-contain sm:h-24 sm:w-28" />
+          <div className="min-w-0">
+            <p className="font-display text-2xl font-extrabold leading-tight text-orbit-green sm:text-3xl md:text-4xl">ORBIT AGRO CHEMICAL INDUSTRIES LTD.</p>
+            <p className="mt-2 text-sm font-semibold text-orbit-red sm:text-base">We grow through ... Partnerships</p>
           </div>
-
-          <AnimatePresence>
-            {menuOpen && (
-              <motion.div
-                id="mobile-navigation"
-                initial={{ opacity: 0, y: -8, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -6, scale: 0.98 }}
-                transition={{ duration: 0.18 }}
-                className="absolute left-0 right-0 top-[calc(100%+0.5rem)] max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-2xl border border-border bg-background p-3 shadow-[0_20px_60px_oklch(0_0_0/0.25)] backdrop-blur-xl lg:hidden"
-              >
-                <ul className="flex flex-col text-sm text-foreground">
-                  {leadingLinks.map((link) => (
-                    <li key={link.href}>
-                      <a
-                        href={link.href}
-                        onClick={() => setMenuOpen(false)}
-                        className="block rounded-xl px-4 py-3 hover:bg-primary/10 hover:text-primary transition-colors"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                  <li>
-                    <button
-                      type="button"
-                      aria-expanded={mobileProductsOpen}
-                      aria-controls="mobile-product-links"
-                      onClick={() => setMobileProductsOpen((open) => !open)}
-                      className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left hover:bg-primary/10 hover:text-primary transition-colors"
-                    >
-                      Our Products <ChevronDown className={`h-4 w-4 transition-transform ${mobileProductsOpen ? "rotate-180" : ""}`} />
-                    </button>
-                    <AnimatePresence initial={false}>
-                      {mobileProductsOpen && (
-                        <motion.div
-                          id="mobile-product-links"
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="ml-4 border-l border-primary/20 py-1 pl-3">
-                            <Link
-                              to="/products"
-                              onClick={() => setMenuOpen(false)}
-                              className="block rounded-lg px-3 py-2 text-sm font-medium text-primary hover:bg-primary/10"
-                            >
-                              Browse all products
-                            </Link>
-                            {families.map((family) => (
-                              <Link
-                                key={family.slug}
-                                to="/products/$family"
-                                params={{ family: family.slug }}
-                                onClick={() => setMenuOpen(false)}
-                                className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
-                              >
-                                {family.title}
-                                <span className="text-xs text-muted-foreground">{family.products.length}</span>
-                              </Link>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </li>
-                  {links.map((link) => (
-                    <li key={link.href}>
-                      <a
-                        href={link.href}
-                        onClick={() => setMenuOpen(false)}
-                        className="block rounded-xl px-4 py-3 hover:bg-primary/10 hover:text-primary transition-colors"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                  <li className="mt-2 flex items-center justify-around border-t border-border pt-3">
-                    <a href="https://www.facebook.com/p/Orbit-Agrochemical-industries-ltd-100069240842491/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-secondary"><Facebook className="h-5 w-5" /></a>
-                    <a href="https://www.tiktok.com/@orbitagrochemicals" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-secondary"><Music2 className="h-5 w-5" /></a>
-                    <a href="https://wa.me/254752368468" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-secondary"><MessageCircle className="h-5 w-5" /></a>
-                  </li>
-                  <li className="border-t border-border mt-2 pt-2">
-                    <a
-                      href="/contact"
-                      onClick={() => setMenuOpen(false)}
-                      className="block rounded-xl bg-primary px-4 py-3 text-center font-medium text-primary-foreground"
-                    >
-                      Get Quote
-                    </a>
-                  </li>
-                </ul>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </nav>
+        </Link>
+        {pathname === "/" && <div className="mt-5"><ProductSearch label="Search products, active ingredients, crops or pests" /></div>}
       </div>
-    </motion.header>
-  );
+    </div>
+    <header ref={navRef} className="sticky top-0 z-50 border-y border-border bg-card shadow-sm">
+      <nav aria-label="Main navigation" className="relative mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2 sm:px-6">
+        <div className="hidden items-center gap-1 lg:flex">
+          <Button variant="ghost" asChild><Link to="/" onClick={close}>Home</Link></Button>
+          <div className="relative" onMouseEnter={() => setOpen("about")} onMouseLeave={() => setOpen(null)}>
+            <Button variant="ghost" onClick={() => toggle("about")} aria-expanded={open === "about"} aria-controls="desktop-about-menu">About Us <ChevronDown /></Button>
+            {open === "about" && <div id="desktop-about-menu" className="absolute left-0 top-full w-64 rounded-lg border border-border bg-card p-2 shadow-lg">
+              {aboutLinks.map((item) => <Link key={item.hash} to="/about" hash={item.hash} onClick={close} className="block rounded-md px-3 py-3 text-sm hover:bg-secondary hover:text-orbit-green">{item.title}</Link>)}
+            </div>}
+          </div>
+          <div className="relative" onMouseEnter={() => setOpen("products")} onMouseLeave={() => { setOpen(null); setDivision(null); }}>
+            <Button variant="ghost" onClick={() => toggle("products")} aria-expanded={open === "products"} aria-controls="desktop-products-menu">Our Products <ChevronDown /></Button>
+            {open === "products" && <div id="desktop-products-menu" className="absolute left-0 top-full w-64 rounded-lg border border-border bg-card p-2 shadow-lg">
+              <Link to="/products" onClick={close} className="block border-b border-border px-3 py-3 text-sm font-semibold text-orbit-red">All products</Link>
+              {divisions.map((item) => <div key={item.title} className="relative" onMouseEnter={() => setDivision(item.title)}>
+                <Button variant="ghost" className="h-auto w-full justify-between px-3 py-3 text-left" aria-expanded={division === item.title} onClick={() => setDivision(division === item.title ? null : item.title)}>{item.title}<ChevronRight /></Button>
+                {division === item.title && <div className="absolute left-full top-0 w-64 rounded-lg border border-border bg-card p-2 shadow-lg">
+                  {item.families.map((family) => <Link key={family.slug} to="/products/$family" params={{ family: family.slug }} onClick={close} className="block rounded-md px-3 py-3 text-sm hover:bg-secondary hover:text-orbit-green">{family.title}</Link>)}
+                </div>}
+              </div>)}
+            </div>}
+          </div>
+          {pageLinks.map((item) => <Button key={item.href} variant="ghost" asChild><Link to={item.href} onClick={close}>{item.title}</Link></Button>)}
+        </div>
+        <Button variant="ghost" size="icon" className="lg:hidden" aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={() => { setMobileOpen(!mobileOpen); setOpen(null); }}>
+          {mobileOpen ? <X /> : <Menu />}
+        </Button>
+        <div className="flex items-center gap-2"><SocialLinks /><Button asChild className="hidden sm:inline-flex"><Link to="/contact">Get Quote</Link></Button></div>
+        {mobileOpen && <div id="mobile-navigation" className="absolute left-0 right-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-border bg-card p-3 shadow-lg lg:hidden">
+          <Link to="/" onClick={close} className="block px-3 py-3 text-sm">Home</Link>
+          <Button variant="ghost" className="h-12 w-full justify-between" onClick={() => toggle("about")} aria-expanded={open === "about"}>About Us <ChevronDown /></Button>
+          {open === "about" && <div className="ml-4 border-l-2 border-orbit-green pl-2">{aboutLinks.map((item) => <Link key={item.hash} to="/about" hash={item.hash} onClick={close} className="block px-3 py-3 text-sm">{item.title}</Link>)}</div>}
+          <Button variant="ghost" className="h-12 w-full justify-between" onClick={() => toggle("products")} aria-expanded={open === "products"}>Our Products <ChevronDown /></Button>
+          {open === "products" && <div className="ml-4 border-l-2 border-orbit-green pl-2">
+            <Link to="/products" onClick={close} className="block px-3 py-3 text-sm font-semibold text-orbit-red">All products</Link>
+            {divisions.map((item) => <div key={item.title}>
+              <Button variant="ghost" className="h-12 w-full justify-between text-left" onClick={() => setDivision(division === item.title ? null : item.title)} aria-expanded={division === item.title}>{item.title}<ChevronDown /></Button>
+              {division === item.title && <div className="ml-3 border-l border-border pl-2">{item.families.map((family) => <Link key={family.slug} to="/products/$family" params={{ family: family.slug }} onClick={close} className="block px-3 py-3 text-sm">{family.title}</Link>)}</div>}
+            </div>)}
+          </div>}
+          {pageLinks.map((item) => <Link key={item.href} to={item.href} onClick={close} className="block px-3 py-3 text-sm">{item.title}</Link>)}
+        </div>}
+      </nav>
+    </header>
+  </>;
 }

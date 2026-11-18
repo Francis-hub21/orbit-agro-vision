@@ -4,7 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { TerrainScene } from "./TerrainScene";
 import { useRef, useState } from "react";
 import { DemoModal } from "./DemoModal";
-import { ProductSearch } from "./ProductSearch";
+import { Button } from "@/components/ui/button";
 
 function SolarParticle({ index, total, progress }: { index: number; total: number; progress: MotionValue<number> }) {
   const angle = (index / total) * Math.PI * 2;
@@ -32,7 +32,7 @@ export function Hero() {
   const sceneOpacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 0.4, 0]);
   const particleSpread = useTransform(scrollYProgress, [0, 1], [0, 1]);
   return (
-    <section ref={ref} className="relative min-h-screen w-full overflow-hidden pb-12 pt-28 md:pt-32">
+    <section ref={ref} className="relative min-h-[640px] w-full overflow-hidden pb-12 pt-10 md:pt-12">
       {/* 3D Terrain — solar system core, zooms out and tilts on scroll */}
       <motion.div style={{ scale: sceneScale, opacity: sceneOpacity, rotate: sceneRotate, y: sceneY }} className="absolute inset-0 origin-center">
         <TerrainScene />
@@ -49,7 +49,7 @@ export function Hero() {
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-[calc(100vh-7rem)] items-center">
+      <div className="relative z-10 flex min-h-[580px] items-center">
         <div className="mx-auto max-w-7xl px-6 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -57,14 +57,6 @@ export function Hero() {
             transition={{ delay: 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-3xl"
           >
-            <div className="mb-6 flex flex-wrap items-center gap-4">
-              <img src="/orbit-logo.png" alt="Orbit Agro Products" width={116} height={96} className="h-20 w-24 object-contain sm:h-24 sm:w-28" />
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-orbit-red sm:text-base">ORBIT AGRO CHEMICAL INDUSTRIES LTD.</p>
-                <p className="mt-1 text-sm text-orbit-green">we grow through...... partnerships!</p>
-              </div>
-            </div>
-
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[1.04] font-light">
               Cultivating a<br />
               <span className="text-gradient-emerald font-medium">higher standard</span>
@@ -82,10 +74,6 @@ export function Hero() {
               distribution powering the next generation of African farming.
             </motion.p>
 
-            <div className="mt-7">
-              <ProductSearch label="Search products, active ingredients, crops or pests" />
-            </div>
-
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -99,7 +87,7 @@ export function Hero() {
                 Explore Solutions
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
-              <button
+              <Button variant="outline"
                 onClick={() => setDemo(true)}
                 className="group inline-flex items-center gap-3 rounded-full glass px-7 py-4 text-sm font-medium uppercase tracking-[0.15em] hover:border-primary/60 transition-all"
               >
@@ -107,7 +95,7 @@ export function Hero() {
                   <Play className="h-3 w-3 fill-primary text-primary" />
                 </span>
                 Watch Interactive Demo
-              </button>
+              </Button>
             </motion.div>
 
             <motion.div

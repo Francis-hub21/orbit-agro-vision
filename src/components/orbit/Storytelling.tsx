@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function Storytelling() {
   return (
-    <section id="about" className="relative py-32 px-6">
+    <section id="about" className="relative pb-12 pt-12 px-6">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="About Us"

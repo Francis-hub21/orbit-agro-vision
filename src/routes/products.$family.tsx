@@ -8,7 +8,6 @@ import { ContactModal } from "@/components/orbit/ContactModal";
 import { families, getFamily, type Product } from "@/data/products";
 
 const CATALOGUE_URL = "/orbit-agro-catalogue-2025..pdf";
-const CATALOGUE_FILENAME = "Orbit-Agro-Catalogue-2025.pdf";
 
 export const Route = createFileRoute("/products/$family")({
   validateSearch: (search: Record<string, unknown>): { from?: string } => ({
@@ -31,6 +30,7 @@ export const Route = createFileRoute("/products/$family")({
         { property: "og:title", content: title },
         { property: "og:description", content: loaderData.family.intro },
         { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary" },
       ],
     };
   },
@@ -142,7 +142,7 @@ function FamilyPage() {
   return (
     <main className="relative">
       <Navbar />
-      <section className="px-6 pt-40 pb-16">
+      <section className="px-6 pt-12 pb-16">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-center gap-3">
             {back && (
@@ -180,9 +180,8 @@ function FamilyPage() {
 
           <a
             href={CATALOGUE_URL}
-            download={CATALOGUE_FILENAME}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-xs uppercase tracking-[0.15em] text-primary hover:bg-primary/10 transition-colors"
           >
             <Download className="h-3.5 w-3.5" /> Download Catalogue

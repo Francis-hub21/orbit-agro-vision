@@ -7,5 +7,8 @@
 - [x] Add the supplied product and sprayer images, and map them to their products
 - [x] Correct social links and publish official company contact details
 - [x] Link the supplied 2025 catalogue PDF to the Download Catalogue buttons
-- [ ] Align every product family with the requested chemical classifications and preserve pending entries
+- [ ] Apply the final unified header, top search, and cascading desktop/mobile navigation
+- [ ] Display the official Vision and Mission and link About sections
+- [ ] Confirm chemical classifications and move Headlines and Esteem into Fungicides
+- [ ] Replace category photos with sharp product compositions and update social logos and catalogue behavior
 - [ ] Verify classification rules, search behavior, desktop/mobile rendering, and preview build

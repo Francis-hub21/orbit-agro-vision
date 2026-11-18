@@ -7,7 +7,7 @@ export function PageShell({ children }: { children: ReactNode }) {
   return (
     <main className="relative">
       <Navbar />
-      <div className="pt-16">{children}</div>
+      <div>{children}</div>
       <Footer />
       <AIAssistant />
     </main>

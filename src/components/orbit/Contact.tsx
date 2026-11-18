@@ -1,6 +1,7 @@
 import { Reveal, SectionHeader } from "./Reveal";
-import { MapPin, Phone, Mail, MessageCircle, Check } from "lucide-react";
+import { MapPin, Phone, Mail, Check } from "lucide-react";
 import { useState } from "react";
+import { SocialLinks, SocialLogo } from "./SocialLinks";
 
 const INQUIRY_TYPES = ["Farmer", "Distributor", "Enterprise", "Export"];
 
@@ -96,14 +97,14 @@ export function Contact() {
               <InfoCard icon={Phone} label="Sales Line" value="+254 752 368 468" />
               <InfoCard icon={Mail} label="Email" value="orbitagro@orbitagro.co.ke" />
               <a
-                href="https://wa.me/254752368468"
+                href="https://whatsapp.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block glass-emerald rounded-2xl p-6 group hover:shadow-[0_0_30px_oklch(0.72_0.20_150/0.4)] transition-all"
               >
                 <div className="flex items-center gap-4">
                   <div className="h-12 w-12 rounded-xl bg-primary/20 flex items-center justify-center">
-                    <MessageCircle className="h-5 w-5 text-primary" />
+                    <SocialLogo name="WhatsApp" />
                   </div>
                   <div>
                     <div className="text-[10px] tracking-[0.3em] uppercase text-primary">Instant</div>
@@ -111,10 +112,7 @@ export function Contact() {
                   </div>
                 </div>
               </a>
-              <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
-                <a href="https://www.facebook.com/p/Orbit-Agrochemical-industries-ltd-100069240842491/" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">Facebook</a>
-                <a href="https://www.tiktok.com/@orbitagrochemicals" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">TikTok</a>
-              </div>
+              <SocialLinks />
             </div>
           </Reveal>
         </div>
