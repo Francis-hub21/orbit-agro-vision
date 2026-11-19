@@ -32,6 +32,8 @@ const productPhotos = {
   veljiLeaf: "/products/velji-leaf-energizer.png",
   veljiFruitFlower: "/products/velji-fruit-flower-energizer.png",
   veljiTriple19: "/products/velji-triple-19.png",
+  vidalia: "/products/vidalia.png",
+
 };
 
 export type Product = {
@@ -192,18 +194,24 @@ export const families: Family[] = [
         ],
         applicationRate: "60 g / 20 L  ·  3 kg / 1000 L / Ha",
       }),
-      p("Valiant", {
-        classification: "Fungicide",
-        description: "See the current product label for verified active ingredient, approved crops, rates and pre-harvest interval.",
+            p("Vidalia 69WP", {
+        image: productPhotos.vidalia,
+        activeIngredient: "Mancozeb 600g/kg + Dimethomorph 90g/kg",
+        classification: "Dithiocarbamate + Morpholine",
+        description: "Systemic and contact fungicide for effective control of downy mildew and late blight.",
+        targets: ["Late blight", "Downy mildew"],
       }),
       p("Headlines", {
         activeIngredient: "Thiophanate-methyl 700g/Kg",
         classification: "Thiourea / Benzimidazole precursor",
+        description: "Systemic broad-spectrum fungicide with preventive and curative action.",
       }),
       p("Esteem", {
         activeIngredient: "Azoxystrobin 500g/kg",
         classification: "Strobilurin",
+        description: "Broad-spectrum systemic strobilurin fungicide for high-value crops.",
       }),
+
     ],
   },
   {
