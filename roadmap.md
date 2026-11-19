@@ -12,4 +12,7 @@
 - [x] Confirm chemical classifications and move Headlines and Esteem into Fungicides
 - [x] Replace category photos with sharp product compositions and update social logos and catalogue behavior
 - [x] Verify classification rules, search behavior, desktop/mobile rendering, and preview build
+- [x] Replace the shared TikTok icon with the newly uploaded logo
+- [x] Remove the duplicate three-product strip from expanded homepage family panels
+- [x] Recheck the unified header, cascading menus, catalogue and social links
 - [ ] Add product photos for Headlines, Esteem and Valiant — blocked: matching photos have not been uploaded

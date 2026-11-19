@@ -1,6 +1,6 @@
 export const socialLinks = [
   { name: "Facebook", url: "https://facebook.com", image: "/facebook-vector-social-media-icon_1073073-2139-removebg-preview.png" },
-  { name: "TikTok", url: "https://tiktok.com", image: "/social-media-icon-illustration-tiktok-tiktok-icon-vector-illustration_561158-2136-removebg-preview.png" },
+  { name: "TikTok", url: "https://tiktok.com", image: "/tiktok.png" },
   { name: "WhatsApp", url: "https://whatsapp.com", image: "/WhatsApp.png.webp" },
 ];
 

@@ -71,7 +71,6 @@ function ProductCard({ p, onContact }: { p: Product; onContact: (n: string) => v
 }
 
 function FamilyPanel({ family, onContact }: { family: Family; onContact: (n: string) => void }) {
-  const m = meta[family.slug];
   const [showAll, setShowAll] = useState(false);
   const visible = showAll ? family.products : family.products.slice(0, 2);
   const hidden = family.products.length - visible.length;
@@ -109,11 +108,6 @@ function FamilyPanel({ family, onContact }: { family: Family; onContact: (n: str
             </a>
           </div>
         </div>
-        {m && (
-          <div className="rounded-xl overflow-hidden mb-6 aspect-[16/7] sm:aspect-[21/7] bg-card">
-            <FamilyComposition family={family} />
-          </div>
-        )}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {visible.map((p) => (
             <ProductCard key={p.slug} p={p} onContact={onContact} />
