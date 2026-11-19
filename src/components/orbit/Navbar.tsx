@@ -41,7 +41,7 @@ export function Navbar() {
   }, []);
   const toggle = (menu: "about" | "products") => { setOpen(open === menu ? null : menu); setDivision(null); };
   return <>
-    <div className="border-t-4 border-orbit-green bg-card px-4 py-5 sm:px-6">
+    <div className="relative z-[60] border-t-4 border-orbit-green bg-card px-4 py-5 sm:px-6">
       <div className="mx-auto max-w-7xl">
         <Link to="/" className="flex items-center gap-3 sm:gap-5">
           <img src="/orbit-logo.png" alt="Orbit Agro Products logo" width={120} height={96} className="h-20 w-20 shrink-0 object-contain sm:h-24 sm:w-28" />

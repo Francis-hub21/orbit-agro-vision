@@ -7,8 +7,9 @@
 - [x] Add the supplied product and sprayer images, and map them to their products
 - [x] Correct social links and publish official company contact details
 - [x] Link the supplied 2025 catalogue PDF to the Download Catalogue buttons
-- [ ] Apply the final unified header, top search, and cascading desktop/mobile navigation
-- [ ] Display the official Vision and Mission and link About sections
-- [ ] Confirm chemical classifications and move Headlines and Esteem into Fungicides
-- [ ] Replace category photos with sharp product compositions and update social logos and catalogue behavior
-- [ ] Verify classification rules, search behavior, desktop/mobile rendering, and preview build
+- [x] Apply the final unified header, top search, and cascading desktop/mobile navigation
+- [x] Display the official Vision and Mission and link About sections
+- [x] Confirm chemical classifications and move Headlines and Esteem into Fungicides
+- [x] Replace category photos with sharp product compositions and update social logos and catalogue behavior
+- [x] Verify classification rules, search behavior, desktop/mobile rendering, and preview build
+- [ ] Add product photos for Headlines, Esteem and Valiant — blocked: matching photos have not been uploaded
