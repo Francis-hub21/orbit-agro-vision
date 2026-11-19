@@ -20,7 +20,8 @@ export function Footer() {
               <div><span className="text-primary">Email:</span> <a href="mailto:orbitagro@orbitagro.co.ke" className="hover:text-primary">orbitagro@orbitagro.co.ke</a></div>
               <div><span className="text-primary">Address:</span> Place 446 Godowns, Mombasa Road Opposite Signature Mall, P.O. Box 48870 - 00100 Nairobi, Kenya</div>
             </div>
-            <SocialLinks className="mt-6" />
+            <SocialLinks showLabels={true} className="mt-6 flex-col items-start gap-2.5" />
+
           </div>
           <div>
             <div className="text-[10px] tracking-[0.3em] uppercase text-primary mb-4">Products</div>
