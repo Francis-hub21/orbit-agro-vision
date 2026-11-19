@@ -4,37 +4,44 @@ import blossom from "@/assets/orbit/products/blossom.jpg";
 
 // Public filenames are case-sensitive; keep these paths identical to the uploaded files.
 const productPhotos = {
-  alphaCymba: "/products/alpha-cymba.png",
-  ballista: "/products/ballista.png",
-  blazer: "/products/blazer.png",
-  chordata: "/products/chordata.png",
-  devisulphur: "/products/devisulphur.png",
-  efosite: "/products/efosite.png",
+  alphaCymba: "/products/ALPHA CYMBA.JPG",
+  ballista: "/products/ballista-bottle-01.png",
+  blazer: "/products/BLAZER.jpg",
+  blossom: "/products/BLOSSOM.jpg",
+  chordata: "/products/CHORDATA.JPG",
+  devisulphur: "/products/DEVISULPHUR.JPG",
+  efosite: "/products/EFOSITE.JPG",
+  emActin: "/products/EM-ACTIN.jpg",
   orbitHymatic: "/products/orbit-hymatic.png",
   orbitJacto: "/products/orbit-jacto.png",
   sprayers: "/products/knapsack-sprayers.jpg",
-  penncozeb: "/products/Penncozeb.png",
-  mosthane: "/products/Mosthane.png",
-  zyban: "/products/Zyban.png",
-  sherrif: "/products/Sherrif.png",
-  samurai: "/products/Samurai.png",
-  halothrin: "/products/Halothrin.png",
+  penncozeb: "/products/PENNCOZEB.jpg",
+  mosthane: "/products/MOSTHANE (2).JPG",
+  zyban: "/products/ZYBAN.JPG",
+  sherrif: "/products/SHERRIF.jpg",
+  samurai: "/products/SAMURAI.JPG",
+  halothrin: "/products/HALOTHRIN.jpg",
+  lavida: "/products/LAVIDA.JPG",
   robust: "/products/Robust.png",
-  rajput: "/products/Rajput.png",
+  rajput: "/products/RAJPUT.JPG",
   expel: "/products/Expel.png",
   vagan: "/products/Vagan.png",
-  pronto: "/products/Pronto.png",
-  glyweed: "/products/Glyweed.png",
-  eradika: "/products/Eradika.png",
-  humigold: "/products/Humigold.png",
-  morgro: "/products/Morgro.png",
+  pronto: "/products/PRONTO.JPG",
+  glyweed: "/products/GLYWEED.JPG",
+  eradika: "/products/ERADIKA.jpg",
+  humigold: "/products/HUMIGOLD.JPG",
+  morgro: "/products/MORGRO.JPG",
+  leafshiner: "/products/LEAFSHINER.JPG",
   veljiRoot: "/products/velji-root-energizer.png",
   veljiLeaf: "/products/velji-leaf-energizer.png",
   veljiFruitFlower: "/products/velji-fruit-flower-energizer.png",
-  veljiTriple19: "/products/velji-triple-19.png",
-  vidalia: "/products/vidalia.png",
-
+  veljiTriple19: "/products/VELJI 19.JPG",
+  veljiHighK: "/products/VELJI HIGH K.jpg",
+  veljiHighN: "/products/VELJI HIGH N.JPG",
+  veljiHighPP: "/products/VELJI HIGH PP.JPG",
+  vidalia: "/products/VIDALIA.jpg",
 };
+
 
 export type Product = {
   slug: string;
@@ -159,7 +166,8 @@ export const families: Family[] = [
         benefits: ["Multiple application modes", "Excellent protective and curative action", "Fast acting"],
       }),
       p("Lavida 73WDG", {
-        image: lavida,
+        image: productPhotos.lavida,
+
         activeIngredient: "Mancozeb 680g/Kg + Cymoxanil 50g/Kg",
         classification: "Dithiocarbamate + Cyanoacetamide oxime",
         description:
@@ -304,7 +312,7 @@ export const families: Family[] = [
         benefits: ["Rapid knockdown with long residual", "Effective at low rates"],
       }),
       p("Em-actin 57SC", {
-        image: emactin,
+        image: productPhotos.emActin,
         activeIngredient: "Emamectin benzoate 57 g/L",
         classification: "Avermectin · suspension concentrate",
         description: "Broad spectrum contact and systemic insecticide and miticide.",
@@ -367,7 +375,7 @@ export const families: Family[] = [
       "Plant growth promoters and amino-acid based biostimulants that drive flowering, fruit set, stress recovery and nutrient uptake.",
     products: [
       p("Blossom EC", {
-        image: blossom,
+        image: productPhotos.blossom,
         activeIngredient: "2.2% w/w aromatic nitrogen + proteins + vitamins",
         classification: "Plant growth promoter",
         description:
@@ -504,6 +512,30 @@ export const families: Family[] = [
         classification: "Foliar fertilizer · Triple 19",
         description: "Balanced Velji foliar fertilizer for crop growth at any stage.",
         applicationRate: "2–4 kg / Ha  ·  30–60 g per knapsack",
+      }),
+            p("Leafshiner", {
+        image: productPhotos.leafshiner,
+        activeIngredient: "Foliar Nutrient & Leaf Gloss Enhancer",
+        classification: "Foliar Fertilizer · Ornamental & Crop Care",
+        description: "Enhances leaf shine, vigor, and foliar nutrient uptake across horticultural and ornamental crops.",
+      }),
+      p("Velji High K", {
+        image: productPhotos.veljiHighK,
+        activeIngredient: "High-Potassium (K) Foliar NPK Formulation",
+        classification: "Foliar Fertilizer · Fruit Fill & Quality",
+        description: "High-potassium foliar fertilizer formulated to boost fruit sizing, sugar content, and shelf life.",
+      }),
+      p("Velji High N", {
+        image: productPhotos.veljiHighN,
+        activeIngredient: "High-Nitrogen (N) Foliar NPK Formulation",
+        classification: "Foliar Fertilizer · Vegetative Growth",
+        description: "High-nitrogen foliar feed designed to drive rapid canopy development and lush green foliage.",
+      }),
+      p("Velji High PP", {
+        image: productPhotos.veljiHighPP,
+        activeIngredient: "High-Phosphorus (P) Foliar NPK Formulation",
+        classification: "Foliar Fertilizer · Rooting & Flowering",
+        description: "High-phosphorus foliar starter promoting strong root establishment and early flowering.",
       }),
     ],
   },
