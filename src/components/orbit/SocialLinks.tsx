@@ -1,7 +1,7 @@
 export const socialLinks = [
-  { name: "Facebook", url: "https://facebook.com", image: "/facebook-vector-social-media-icon_1073073-2139-removebg-preview.png" },
-  { name: "TikTok", url: "https://tiktok.com", image: "/tiktok.png" },
-  { name: "WhatsApp", url: "https://whatsapp.com", image: "/WhatsApp.png.webp" },
+  { name: "Facebook", url: "https://www.facebook.com/p/Orbit-Agrochemical-industries-ltd-100069240842491/", image: "/facebook-vector-social-media-icon_1073073-2139-removebg-preview.png" },
+  { name: "TikTok", url: "https://www.tiktok.com/@orbitagrochemicals", image: "/tiktok.png" },
+  { name: "WhatsApp", url: "https://api.whatsapp.com/send?phone=254752368468", image: "/WhatsApp.png.webp" },
 ];
 
 export function SocialLogo({ name }: { name: string }) {
