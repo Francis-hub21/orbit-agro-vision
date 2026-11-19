@@ -27,13 +27,13 @@ export function SocialLogo({ name }: { name: string }) {
 
 export function SocialLinks({
   className = "",
-  showLabels = true,
+  showLabels = false,
 }: {
   className?: string;
   showLabels?: boolean;
 }) {
   return (
-    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
+    <div className={`flex flex-wrap items-center gap-2 ${className}`}>
       {socialLinks.map((social) => (
         <a
           key={social.name}
@@ -41,7 +41,11 @@ export function SocialLinks({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={social.name}
-          className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-800 shadow-xs transition hover:border-gray-300 hover:bg-gray-50"
+          className={
+            showLabels
+              ? "inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-800 shadow-xs transition hover:border-gray-300 hover:bg-gray-50"
+              : "inline-flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-white shadow-xs transition hover:border-gray-300 hover:bg-gray-50"
+          }
         >
           <SocialLogo name={social.name} />
           {showLabels && <span>{social.label}</span>}
