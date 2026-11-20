@@ -41,11 +41,12 @@ export function DemoModal({ open, onClose }: { open: boolean; onClose: () => voi
             <X aria-hidden="true" className="h-5 w-5" />
           </button>
         </div>
-        <div className="aspect-video w-full bg-black">
+        <div className="aspect-[16/9] w-full bg-black">
           <iframe
             allow="fullscreen; clipboard-write"
+            allowFullScreen
             className="h-full w-full border-0"
-            src="https://app.supademo.com/embed/cmwgqrewz0dfdqmknoh4h6mek"
+            src="https://app.supademo.com/embed/cmwnjoffk004ay00kot752gr4?embed_v=2"
             title="Orbit Agro interactive demo"
           />
         </div>
