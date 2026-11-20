@@ -2,19 +2,19 @@ export const socialLinks = [
   {
     name: "Facebook",
     label: "Orbit Agrochemical Industries Ltd",
-    url: "https://facebook.com",
+    url: "https://www.facebook.com/p/Orbit-Agrochemical-industries-ltd-100069240842491/",
     image: "/facebook-vector-social-media-icon_1073073-2139-removebg-preview.png",
   },
   {
     name: "TikTok",
     label: "@orbitagrochemicals",
-    url: "https://tiktok.com",
+    url: "https://www.tiktok.com/@orbitagrochemicals",
     image: "/tiktok.png",
   },
   {
     name: "WhatsApp",
     label: "+254 752 368 468",
-    url: "https://wa.me",
+    url: "https://api.whatsapp.com/send?phone=254752368468",
     image: "/WhatsApp.png.webp",
   },
 ];
