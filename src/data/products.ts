@@ -16,7 +16,7 @@ const productPhotos = {
   orbitJacto: "/products/orbit-jacto.png",
   sprayers: "/products/knapsack-sprayers.jpg",
   penncozeb: "/products/PENNCOZEB.jpg",
-  mosthane: "/products/MOSTHANE (2).JPG",
+  mosthane: "/products/mosthane.jpg",
   zyban: "/products/ZYBAN.JPG",
   sherrif: "/products/SHERRIF.jpg",
   samurai: "/products/SAMURAI.JPG",
